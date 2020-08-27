@@ -1,8 +1,0 @@
-<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-transform:translate(-50%,-50%);
-transform: width 0.5s;
-overflow: hidden;
-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-border-radius: 4px;

@@ -1,5 +1,5 @@
-$(document.ready(function(){
-  $('.searchIcon svg').click(function(){
+document.addEventListener('DOMContentLoaded',function(){
+  $('.Search i').on('click',function(){
     $('.Search').toggleClass('active')
   })
-}))
+})
