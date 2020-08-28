@@ -1,5 +1,8 @@
-document.addEventListener('DOMContentLoaded',function(){
-  $('.Search i').on('click',function(){
-    $('.Search').toggleClass('active')
-  })
-})
+
+     AOS.init({
+       easing: 'ease-out-back',
+       duration: 1000
+     });
+
+
+ 		

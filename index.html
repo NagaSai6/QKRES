@@ -7,27 +7,28 @@
   <title>Sample Design</title>
   <!-- css -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="CSS/aos.css">
 
   <!-- js -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
   <!-- fontawesome -->
   <script defer src="js/friconix.js"> </script>
-  <!-- <script defer src="js/searchicon.js"> </script> -->
-
-
-
+  <link rel="shortcut icon" href="images/favicon.ico">
 </head>
 
 <body>
+  <div class="backgrounds overlay">
+    <div class="background" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".section--hero" style="background-image: url('images/question.jpg');"></div>
+  </div>
 
-  <div id="particles-js" class="container-fluid"><canvas class="particles-js-canvas-el" width="1889" height="349" style="width: 100%; height: 100%;"></canvas></div>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top white double-nav">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top double-nav">
+    <div class="container-fluid nav-div">
       <div id="icon">
         <a class="navbar-brand" href="#"><img class="img-fluid" style="height:40px" src="images/Qres.logo.png" alt=""></a>
       </div>
@@ -39,7 +40,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#" style="font-weight:bold;color:black;font-size:1rem;">
+            <a class="nav-link" href="#" style="font-weight:bold;color:#000;font-size:1rem;">
               QkRes Technology and Research<span class="sr-only">(current)</span>
             </a>
           </li>
@@ -79,22 +80,99 @@
         <div class="Search">
           <div class="searchIcon">
 
-          <i class="fi-xnsuhl-search"></i>
+            <i class="fi-xnsuhl-search"></i>
           </div>
         </div>
       </div>
     </div>
   </nav>
-<section id="first">
+  <main>
+    <header class="hero">
+      <div class="hero-center">
+        <h1 class="hero__logo" data-aos="fade-right" style="font-family: 'Oswald',sans-serif;
+        color: #ddf3f5;">Welcome to <span class="glow">QkRes</span></h1>
+        <h6 class="hero__text" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="400" style="color:#000;">A place to serve your needs</h6>
+      </div>
+    </header>
+    <div class="about container-fluid" data-aos='fade-right'>
+      <div class="heading">
+        <h1>What we do ?</h1>
+      </div>
+      <div class="body-1">
+        <p>We offer quick and reliable solutions and services for Research & Development based requirements.</p>
+        <p>We procure instruments for different engineering and science departments, research labs and startups.</p>
+      </div>
+    </div>
+    <div class="objective container-fluid" data-aos='fade-left'>
+      <div class="heading">
+        <h2>Objective</h2>
+      </div>
+      <div class="body-2">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-body">
+                <img src="images/science.png" style="padding-bottom:5px;" alt="" />
+                <br>
+                <p>Are you one of passionate researchers who is struck
+                  in between your research ?
+                </p>
+                <p>Do you wish to have an expert's opinion on your queries?</p>
+                <p>Do you want to purchase your research equipment from
+                  a trusted vendor ?</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-body">
+                <img src="images/solution.png" style="padding-bottom:5px;" alt="" />
+                <br>
+                <p>Are you one of passionate researchers who is struck
+                  in between your research ?
+                </p>
+                <p>Do you wish to have an expert's opinion on your queries?</p>
+                <p>Do you want to purchase your research equipment from
+                  a trusted vendor ?</p>
+              </div>
+            </div>
+          <div class="carousel-item">
+            <div class="carousel-body">
+              <img src="images/solution.png" style="padding-bottom:5px;" alt="" />
+              <br>
+              <p>Are you one of passionate researchers who is struck
+                in between your research ?
+              </p>
+              <p>Do you wish to have an expert's opinion on your queries?</p>
+              <p>Do you want to purchase your research equipment from
+                a trusted vendor ?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
+    </div>
 
-</section>
+    </div>
+  </main>
 
-</div>
   <script src="js/particles.min.js" charset="utf-8"></script>
   <script src="js/apply.js" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="index.js" charset="utf-8"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="index.js" charset="utf-8"></script>
 </body>
 
 </html>
