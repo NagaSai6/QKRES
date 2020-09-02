@@ -2,16 +2,16 @@
   width: 100%;
   height: 100%;
   position: fixed;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
+  /* -webkit-transform: translateZ(0);
+          transform: translateZ(0); */
   z-index: -1; }
   .backgrounds .background {
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size:contain;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 0px;
     background-attachment: fixed; }
 
 
@@ -27,7 +27,7 @@
 
   .hero {
   width: 100%;
-  height: 100vh;
+  height: 75vh;
   position: relative;
   overflow: hidden;
   color: #FFF;
@@ -36,7 +36,7 @@
 .hero-center {
   width: 100%;
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 0;
   -webkit-transform: translate(0, -50%);
       -ms-transform: translate(0, -50%);

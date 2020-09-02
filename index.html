@@ -3,175 +3,227 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Sample Design</title>
   <!-- css -->
+  <!-- <link rel="stylesheet" href="CSS/halfmoon.min.css"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="CSS/aos.css">
 
+
   <!-- js -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.6/lib/darkmode-js.min.js"></script>
+
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&family=Merriweather:ital,wght@0,700;1,900&family=Poppins&display=swap" rel="stylesheet">
   <!-- fontawesome -->
+  <!-- <script src="https://kit.fontawesome.com/7e1c9ad04d.js" crossorigin="anonymous"></script> -->
   <script defer src="js/friconix.js"> </script>
   <link rel="shortcut icon" href="images/favicon.ico">
 </head>
 
 <body>
-  <div class="backgrounds overlay">
-    <div class="background" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".section--hero" style="background-image: url('images/question.jpg');"></div>
-  </div>
+  <!-- <div class="backgrounds overlay">
+    <div class="background" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".sectionhero"></div>
+  </div> -->
+  <div id="particles-js"><canvas class="particles-js-canvas-el" width="1889" height="349" style="width: 100%; height: 100%;"></canvas></div>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top double-nav">
-    <div class="container-fluid nav-div">
-      <div id="icon">
-        <a class="navbar-brand" href="#"><img class="img-fluid" style="height:40px" src="images/Qres.logo.png" alt=""></a>
-      </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top double-nav white">
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#" style="font-weight:bold;color:#000;font-size:1rem;">
-              QkRes Technology and Research<span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link home" href="#"><i class="fi-xnluxl-home"></i></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">Facilities </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Consultancy</a>
-              <a class="dropdown-item" href="#">3D Printing</a>
-              <a class="dropdown-item" href="#">Manufacturing and Fabrics</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">
-              Material & Resources
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Chemicals</a>
-              <a class="dropdown-item" href="#">Electrical Equipments</a>
-              <a class="dropdown-item" href="#">Mechanical Equipments</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">
-              More
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Job Opportunities</a>
-              <a class="dropdown-item" href="#">About Us</a>
-              <a class="dropdown-item" href="#"><i class="fi-cnsuxl-facebook-circle"></i></a>
-              <a class="dropdown-item" href="#"><i class="fi-cnsuxl-linkedin"></i></a>
-            </div>
-          </li>
-        </ul>
-        <div class="Search">
-          <div class="searchIcon">
-
-            <i class="fi-xnsuhl-search"></i>
-          </div>
-        </div>
-      </div>
+    <div id="icon">
+      <a class="navbar-brand" href="#"><img class="img-fluid" style="height:40px" src="images/Qres.logo.png" alt=""></a>
     </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" style="font-weight:bold;color:#000;font-size:1rem;">
+            QkRes Technology and Research<span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link home" href="#"><i class="fi-xnluxl-home"></i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">Facilities </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Consultancy</a>
+            <a class="dropdown-item" href="#">3D Printing</a>
+            <a class="dropdown-item" href="#">Manufacturing and Fabrics</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">
+            Material & Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#first2">Chemicals</a>
+            <a class="dropdown-item" href="#">Electrical Equipments</a>
+            <a class="dropdown-item" href="#">Mechanical Equipments</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Job Opportunities</a>
+            <a class="dropdown-item" href="#intro">About Us</a>
+            <a class="dropdown-item" href="#"><i class="fi-cnsuxl-facebook-circle"></i></a>
+            <a class="dropdown-item" href="#"><i class="fi-cnsuxl-linkedin"></i></a>
+          </div>
+        </li>
+      </ul>
+      <div class="">
+        <a href="https://www.youtube.com/embed/tuZgM-r5hXI" target="_blank"><img style="height:32px;" src='images/youtube.svg'></img></a>
+      </div>
+
+
+
+      <!-- <div class="darkmode">
+
+        <button class="btn btn-action mr-5 " type="button" onclick="darkmode.toggle();" aria-label="toggle dark mode">
+          <i class="fa fa-moon-o" aria-hidden="true"></i>
+        </button>
+      </div> -->
+    </div>
+
   </nav>
-  <main>
+  <div class="wrap">
     <header class="hero">
       <div class="hero-center">
-        <h1 class="hero__logo" data-aos="fade-right" style="font-family: 'Oswald',sans-serif;
-        color: #ddf3f5;">Welcome to <span class="glow">QkRes</span></h1>
-        <h6 class="hero__text" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="400" style="color:#000;">A place to serve your needs</h6>
-      </div>
+        <h1 data-aos="zoom-in-up" class="hero__logo" style="font-family:'Lato',sans-serif;color:#32e0c4;">
+          Welcome to <i class="glo"><img style="height:64px;" src="images/Qres.logo.png" />kRes</i>
+        </h1>
+
+        <h6 class="hero__text" data-aos="flip-left" data-aos-easing="ease" data-aos-delay="400" style="color:#000;">A place to serve your needs</h6>
+
+        <div id="particles-js"><canvas class="particles-js-canvas-el" width="1889" height="349" style="width: 100%; height: 100%;"></canvas></div>
+
     </header>
-    <div class="about container-fluid" data-aos='fade-right'>
-      <div class="heading">
-        <h1>What we do ?</h1>
-      </div>
-      <div class="body-1">
-        <p>We offer quick and reliable solutions and services for Research & Development based requirements.</p>
-        <p>We procure instruments for different engineering and science departments, research labs and startups.</p>
-      </div>
-    </div>
-    <div class="objective container-fluid" data-aos='fade-left'>
-      <div class="heading">
-        <h2>Objective</h2>
-      </div>
-      <div class="body-2">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="carousel-body">
-                <img src="images/science.png" style="padding-bottom:5px;" alt="" />
-                <br>
-                <p>Are you one of passionate researchers who is struck
-                  in between your research ?
-                </p>
-                <p>Do you wish to have an expert's opinion on your queries?</p>
-                <p>Do you want to purchase your research equipment from
-                  a trusted vendor ?</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="carousel-body">
-                <img src="images/solution.png" style="padding-bottom:5px;" alt="" />
-                <br>
-                <p>Are you one of passionate researchers who is struck
-                  in between your research ?
-                </p>
-                <p>Do you wish to have an expert's opinion on your queries?</p>
-                <p>Do you want to purchase your research equipment from
-                  a trusted vendor ?</p>
-              </div>
-            </div>
-          <div class="carousel-item">
-            <div class="carousel-body">
-              <img src="images/solution.png" style="padding-bottom:5px;" alt="" />
-              <br>
-              <p>Are you one of passionate researchers who is struck
-                in between your research ?
-              </p>
-              <p>Do you wish to have an expert's opinion on your queries?</p>
-              <p>Do you want to purchase your research equipment from
-                a trusted vendor ?</p>
-            </div>
+    <section id="intro">
+      <div class="boxes" data-aos='flip-left'>
+        <div class="box-1" data-aos='flip-left'>
+          <h2>About us</h2>
+        </div>
+        <div class="row">
+          <div class="about col-sm-6" data-aos='fade-right'>
+            <p>We offer quick and reliable solutions and services for <b>Research & Development</b> based requirements.</p>
+          </div>
+          <div class="about col-sm-6" data-aos='fade-left'>
+            <p>We procure instruments for different <b>engineering and science departments, research labs and startups</b>.</p>
           </div>
         </div>
+
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
+    </section>
+    <section id="first">
+      <div class="boxes" data-aos='flip-right' style="background-color:#4e89ae;">
+        <div class="box-1 " data-aos='flip-right'>
+          <h2>Objective</h2>
+        </div>
+        <div class="box-2">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="carousel-body">
+                  <img src="images/science.png" style="padding-bottom:5px;" alt="" />
+                  <br>
+                  <p>Are you one of passionate researchers who is struck
+                    in between your research ?
+                  </p>
+                  <p>Do you wish to have an expert's opinion on your queries?</p>
+                  <p>Do you want to purchase your research equipment from
+                    a trusted vendor ?</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-body">
+                  <img src="images/solution.png" style="padding-bottom:5px;" alt="" />
+                  <br>
+                  <p>Are you one of passionate researchers who is struck
+                    in between your research ?
+                  </p>
+                  <p>Do you wish to have an expert's opinion on your queries?</p>
+                  <p>Do you want to purchase your research equipment from
+                    a trusted vendor ?</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-body">
+                  <img src="images/solution.png" style="padding-bottom:5px;" alt="" />
+                  <br>
+                  <p>Are you one of passionate researchers who is struck
+                    in between your research ?
+                  </p>
+                  <p>Do you wish to have an expert's opinion on your queries?</p>
+                  <p>Do you want to purchase your research equipment from
+                    a trusted vendor ?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+  </div>
+  <!-- </section> -->
+  <!-- <section id="second">
+    <div class="boxes">
+      <div class="box-1">
+        <h2> Material Resources</h2>
+      </div>
+      <div class="card-deck">
+        <div class="row info">
+          <div class=" card col-lg-4 col-md-6">
+            <img style="height:80px;display:block;border-radius:30px;" src="images/third_1.jpg" alt="">
+          </div>
+          <div class="card col-lg-4 col-md-6">
+            <img style="height:80px;display:block;border-radius:30px;" src="images/third_1.jpg" alt="">
+          </div>
+          <div class="card col-lg-4 col-md-6">
+            <img style="height:80px;display:block;border-radius:30px;" src="images/third_1.jpg" alt="">
+          </div>
 
-    </div>
+        </div>
 
-    </div>
-  </main>
+      </div>
+    </section> -->
+
+  </div>
+
 
   <script src="js/particles.min.js" charset="utf-8"></script>
   <script src="js/apply.js" charset="utf-8"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.4/js/halfmoon.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.6/lib/darkmode-js.min.js"></script> -->
   <script src="index.js" charset="utf-8"></script>
 </body>
 
