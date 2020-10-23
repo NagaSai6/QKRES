@@ -1,0 +1,21 @@
+$base:#000;
+
+
+.nav-item {
+    font-family: 'Lato', sans-serif;
+  }
+  .navbar-collapse ul li a {
+    font-weight: bold;
+    color: $base;
+    font-size: 0.9rem;
+  }
+  .dropdown-item {
+    color: $base;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .dropdown-item:hover {
+    background-color: #5eaaa8;
+  }
+  .sign{
+  margin: 2px;
+  }

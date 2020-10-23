@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <!-- internal css -->
+    <style media="screen">
+  /* body {
+    background: #d9ecf2;
+  } */
+.x{
+  border:1px solid #ffe05d;border-radius:20px;
+}
+.x:hover{
+  background: #fff8cd;
+}
+
+  .x1 {
+    border-bottom: 1px grey solid;
+  }
+</style>
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+
+  <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="/img">
+</head>
+<body>
+<%-include("../views/navbar.ejs");  %>
+
+<section class="cart">
+  <% if(session.cart) { %>
+  <div style="width:70%;" class="order container mx-auto  py-5">
+    <div class="d-flex  x1 pb-2">
+      <img class="mr-3" src="/images/cart-black.png" alt="cart-img">
+      <h1 style="font-size:x-large;">Order summary</h1>
+    </div>
+    <div class="d-flex justify-content-between">
+     <div class="my-2 ml-4">
+       <h3 style="font-size:1rem;font-family:"Lato",sans-serif;">Your Orders</h3>
+     </div>
+     <div class="mr-4 my-2">
+       <h6>Qty</h6>
+     </div>
+    </div>
+    <div class="pizza-list">
+      <%for(let x of Object.values(session.cart.items)) { %>
+      <div style="" class="p-3 x d-flex justify-content-between my-3">
+      <div style="float:right;" class="pl-4">
+        <img style="height:70px;"  src="/<%= x.item.image %>" alt="img">
+
+        <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
+      </div>
+    <span ><%= x.Qty %>Pcs</span>
+    </div>
+  <% } %>
+  </div>
+
+<hr>
+<div class="text-right">
+<% if(user){%>
+  <div>
+    <form action="/orders" method="post">
+      <input name="address" style="width:100%;border-radius:10px;border:1px #a6f6f1 solid;" class="py-3" type="text" placeholder="Address" required>
+      <input name="phone" type="text"  style="width:50%;display: inline-block;border-radius:10px;border:1px #a6f6f1 solid;" class="py-3 my-2" placeholder="Phone number" required>
+       <div>
+        <button class="btn btn-lg btn-outline-success my-2" type="submit" name="button">Order Now</button>
+
+       </div>
+    </form>
+  </div>
+<% } else{  %>
+<div>
+  <a class="btn btn-lg btn-outline-success" href="/login">login to place order</a>
+</div>
+<%} %>
+</div>
+</div>
+
+
+
+
+    <% }else { %>
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center my-4 text-center">
+  <h1 class="mt-4" style="font-size:x-large;">Cart is empty 😪 </h1>
+  <p class="my-3" style="color:grey;">You probably have not odered  yet.<br>
+      Go to Materials & Resources section to place an order</p>
+  <img style="height:110px;" class="mb-3" src="/images/empty-cart.png" alt="empty-cart">
+  <a role="button"  class="btn btn-md btn-outline-primary"  href="/">Go back</a>
+    </div>
+    <% } %>
+
+  </section>
+
+<script type="text/javascript">
+$(window).scroll(function() {
+  var scroll = $(window).scrollTop();
+  if (scroll < 150) {
+    $('.fixed-top').css('background', '#fff');
+  }
+
+   else {
+    $('.fixed-top').css('background', '#d3dbff');
+  }
+});
+</script>
+</body>
+
+</html>
