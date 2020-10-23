@@ -17,6 +17,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines":{
+    "node":"12.18.4"
+  },
   "bugs": {
     "url": "https://github.com/NagaSai6/QKRES/issues"
   },
