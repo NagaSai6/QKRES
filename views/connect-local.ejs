@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Signup</title>
+  <title>Local</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="/CSS/signup.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -23,20 +23,16 @@
   <%- include("../views/navbar.ejs")  %>
 
 <div class="signup-form container">
-  <form action="/register" method="post" class="form-signin">
-    <img class="mb-2" src="images/Qres.logo.png" alt="" height="40">
-    <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;">Create an Account</h4>
-    <p class="hint-text">Sign up with your social media account or email address</p>
+  <form action="/connect/local" method="post" class="form-signin">
+    <img class="mb-2" src="/images/Qres.logo.png" alt="" height="40">
+    <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;">Link local Account</h4>
+    <!-- <p class="hint-text">Sign up with your social media account or email address</p>
     <div class="social-btn text-center">
-      <a style="border: 1px solid black;" href="/auth/google" class="btn  btn-light btn-sm"> 
-        <span> <img style="height: 24px;" src="/images/google.svg" alt="google_icon"> </span>
-         <span class="ml-4">Google</span>
-        </a>
-			<!-- <a href="/auth/google" class="btn btn-danger btn-sm"><i class="fab fa-google"></i>Google</a> -->
-			<!-- <a href="#" class="btn btn-info btn-sm"><i class="fab fa-twitter"></i> Twitter</a> -->
-			<!-- <a href="/auth/facebook" class="btn btn-primary btn-sm"><i class="fab fa-facebook"></i>facebook</a> -->
+			<a href="/auth/google" class="btn btn-danger btn-sm"><i class="fab fa-google"></i>Google</a>
+			<a href="#" class="btn btn-info btn-sm"><i class="fab fa-twitter"></i> Twitter</a>
+			<a href="/auth/facebook" class="btn btn-primary btn-sm"><i class="fab fa-facebook"></i>facebook</a>
 		</div>
-    <div class="or-seperator"><b>or</b></div>
+    <div class="or-seperator"><b>or</b></div> -->
     <div class="form-group">
       <% if(messages.error){ %>
         <span style="color:red;"><%= messages.error %>  </span>
@@ -61,7 +57,7 @@
     <button id="signbutton" style="border-radius:50px;" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-2 mb-2 text-muted">© 2020-2021</p>
   </form>
-  <div class="text-center">Already have an account? <a style="color:green;" href="/login">Login here</a></div>
+  <!-- <div class="text-center">Already have an account? <a style="color:green;" href="signin.html">Login here</a></div> -->
 </div>
 
   <script src="/js/particles.min.js" charset="utf-8"></script>

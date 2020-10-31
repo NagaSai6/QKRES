@@ -1,9 +1,9 @@
 import axios from 'axios'
 import moment from "moment"
+import Noty from "noty"
 
 
-
-export function initAdmin() {
+export function initAdmin(socket) {
 
 
 
@@ -25,7 +25,7 @@ export function initAdmin() {
     // console.log(markup);
 
     orderTableBody.html(markup)
-  }).catch(err=>{
+  }).catch(err =>{
     console.log(err);
   })
   function renderItems(items) {
@@ -40,19 +40,34 @@ export function initAdmin() {
   function generateMarkup(orders) {
     return orders.map(order => {
       return `
-                <tr>
-                <td class=" px-4 py-2 text-green-900">
-                    <p>${ order._id }</p>
-                    <div>${ renderItems(order.items) }</div>
-                </td>
-                <td class="border border-dark px-4 py-2">${ order.customerId.customerName }</td>
-                <td class="border border-dark px-4 py-2">${ order.address }</td>
-                <td class="border border-dark px-4 py-2">
+
+      <hr style="height:2px;width:100%;background:yellow;" >
+      <div class="my-2"> <b> Order Placed at : </b>
+      ${ moment(order.createdAt).format('MMMM Do YYYY hh:mm A') }
+      </div>
+
+    
+
+               <p class="my-2"> <b>Order Id:</b> ${ order._id } </p>
+<hr>
+
+                    <div class="orderedItems my-3"> <b>Ordered Items :</b>${ renderItems(order.items) }</div>
+            
+<hr>      
+              <p class="mb-2">Name : <b>  ${ order.customerId.google ? order.customerId.google.customerName :  order.customerId.local.customerName}   </b></p>
+       
+              <b class="mb-3">Phone : <i>  ${ order.phone} </i> </b>
+               <b class="mb-3">Addresss : <i>  ${ order.address } </i> </b>
+
+               <b class="mb-3">Addresss : <i>  ${ order.pincode } </i> </b>
+
+                
                     <div class="inline-block relative w-64">
                         <form action="/admin/order/status" method="POST">
-                            <input type="hidden" name="orderId" value="${ order._id }">
-                            <select name="status" onchange="this.form.submit()"
-                                class="w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <div class="form-group">
+                            <input class="form-control input-lg" type="hidden" name="orderId" value="${ order._id }">
+                            </div>
+                            <select name="status" onchange="this.form.submit()">
                                 <option value="order_placed"
                                     ${ order.status === 'order_placed' ? 'selected' : '' }>
                                     Placed</option>
@@ -68,33 +83,29 @@ export function initAdmin() {
                                 </option>
                             </select>
                         </form>
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20">
-                                <path
-                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
+                   
                     </div>
-                </td>
-                <td class="border px-4 py-2">
-                    ${ moment(order.createdAt).format('hh:mm A') }
-                </td>
-            </tr>
+                    <hr style="height:2px;width:100%;background:yellow;" >   
+
+                    
+               
+                    
+         
         `
     }).join('')
   }
+
+
   // Socket
-  // socket.on('orderPlaced', (order) => {
-  //   new Noty({
-  //     type: 'success',
-  //     timeout: 1000,
-  //     text: 'New order!',
-  //     progressBar: false,
-  //   }).show();
-  //   orders.unshift(order)
-  //   orderTableBody.innerHTML = ''
-  //   orderTableBody.innerHTML = generateMarkup(orders)
-  // })
+  socket.on('orderPlaced', (order) => {
+    new Noty({
+      type: 'success',
+      timeout: 1000,
+      text: 'New order!',
+      progressBar: false,
+    }).show();
+    orders.unshift(order)
+    orderTableBody.html("")
+    orderTableBody.html( generateMarkup(orders))
+  })
 }

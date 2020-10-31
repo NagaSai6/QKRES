@@ -31,7 +31,7 @@ function myFunction() {
 
 
 
-let addToCart = document.querySelectorAll('.add_to_cart');
+let addToCart = document.querySelectorAll(".add_to_cart");
 let cartCounter = $("#cartCounter");
 
 function updateCart(mechEquipment){
@@ -69,3 +69,5 @@ addToCart.forEach(btn => {
     });
 
  });
+
+

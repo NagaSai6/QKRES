@@ -16,6 +16,9 @@ function authController() {
     login(req, res) {
       res.render("signin")
     },
+    profile(req,res){
+      res.render("profile")
+    },
     postRegister(req, res) {
 
       const customerName = req.body.customerName;
@@ -31,20 +34,21 @@ function authController() {
       }
       // check if email exist
       User.findOne({
-        email: email
-      }, async function(err, result) {
+        "local.email": email
+      },  function(err, result) {
         if (result) {
           req.flash("error", "This email is already taken")
           req.flash("customerName", customerName)
           req.flash('email', email)
           return res.redirect("/register")
         } else {
-          await bcrypt.hash(password, 10, function(err, hash) {
+        
             const user = new User()
-            user.customerName=customerName
-            user.email=email
-            user.password= hash
-
+            user.local.customerName=customerName
+            user.local.email=email
+            user.local.password= password
+            
+           
 
             user.save().then(function(user) {
               // login
@@ -56,7 +60,7 @@ function authController() {
               return res.redirect("/register")
 
             })
-          });
+
         }
       })
     },
@@ -90,7 +94,8 @@ function authController() {
  logout(req,res){
    req.logout()
    return res.redirect("/")
- },
+ }
+
 
 
 

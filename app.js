@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const flash = require("express-flash");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const emitter = require("events")
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -15,9 +16,9 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const mongodb_store = require("connect-mongo")(session);
 const app = express();
+// process.env.URL
 
-// "mongodb://localhost:27017/QkResDB"
-mongoose.connect(process.env.URL
+mongoose.connect("mongodb://localhost:27017/QkResDB"
   , {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -35,7 +36,11 @@ let mongoStore = new mongodb_store({
   collection: "sessions"
 })
 
+// event emiiter
 
+const eventEmitter= new emitter()
+
+app.set("eventEmitter",eventEmitter)
 
 app.set("view engine", "ejs");
 
@@ -73,6 +78,7 @@ app.use(passport.session())
 app.use((req, res, next) => {
   res.locals.session = req.session
   res.locals.user = req.user
+  res.locals.sgMail=req.sgMail
   next()
 })
 
@@ -81,10 +87,35 @@ app.use((req, res, next) => {
 
 require("./Routes/web.js")(app)
 
+app.use((req,res)=>{
+     res.status(404).render("error/404")
+})
 
 
 
 
-app.listen(process.env.PORT||3000,function(){
+
+const server = app.listen(process.env.PORT||3000,function(){
     console.log("Server is up on port 3000");
+})
+
+
+
+
+const io = require("socket.io")(server)
+
+io.on("connection",(socket)=>{
+        // console.log(socket.id);
+        socket.on("join",(orderId)=>{
+          // console.log(room);
+           socket.join(orderId)
+        })
+})
+
+eventEmitter.on("orderUpdated",(data) =>{
+  io.to(`order_${data.id}`).emit("orderUpdated",data)
+})
+
+eventEmitter.on("orderPlaced",(data) =>{
+  io.to("adminRoom").emit("orderPlaced",data)
 })

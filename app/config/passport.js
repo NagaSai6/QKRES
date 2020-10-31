@@ -30,11 +30,12 @@ function init(passport) {
 
   passport.use("local-login", new LocalStrategy({
     usernameField: "email",
-    passwordField: "password"
+    passwordField: "password",
+
   }, async (email, password, done) => {
 
     await User.findOne({
-      email: email
+     "local.email": email
     }, function(err, user) {
       if (!user) {
         return done(null, false, {
@@ -42,7 +43,8 @@ function init(passport) {
         })
       }
 
-      bcrypt.compare(password, user.password).then(match => {
+      bcrypt.compare(password, user.local.password).then(match => {
+
         if (match) {
           return done(null, user, {
             message: "logged in"
@@ -64,26 +66,152 @@ function init(passport) {
     })
 
   }));
- //
-  passport.use(new GoogleStrategy({
-      clientID: key.googleAuth.clientID,
-      clientSecret: key.googleAuth.clientSecret,
-      callbackURL: key.googleAuth.callbackURL
-      // userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-      // passReqToCallback: true
+
+     // =========================================================================
+    // LOCAL SIGNUP ============================================================
+    // =========================================================================
+    // we are using named strategies since we have one for login and one for signup
+    // by default, if there was no name, it would just be called 'local
+    passport.use('local-signup', new LocalStrategy({
+      usernameField : 'email',
+      passwordField : 'password',
+      passReqToCallback : true
     },
- function(request, accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({
-        googleId: profile.id,
-        customerName:profile.displayName,
-        email:profile.emails[0].value
+    function(req, email, password, done) {
+      process.nextTick(function() {
+        if(!req.user) {
+          User.findOne({'local.email': email}, function(err, user) {
+          if(err) {
+            console.error(err);
+            return done(err);
+            }
+          if(user) {
+            return done(null, false, req.flash("error","Oops,this Email already exists"));
+          }
+          else {
+              var newUser = new User();
+              newUser.local.customerName = req.body.customerName;
+              newUser.local.email = email;
+              newUser.local.password = newUser.generateHash(password);
+              newUser.save(function(err) {
+                if(err) {
+                  if(err.message == 'User validation failed') {
+                    return done(null, false, req.flash("error","All feilds are required!"));
+                  }
+                  console.error(err);
+                  return done(err);
+                  }
+                return done(null, newUser);
+              });
+            }
+        });
+      }
+      else {//user exists and is loggedin
+        var user = req.user; // pull the user out of the session
+        // update the current users local credentials
+        user.local.customerName = req.body.customerName;
+        user.local.email = email;
+        user.local.password = user.generateHash(password);
+        // save modifications to user
+        user.save(function(err) {
+          if (err) {
+            console.error(err);
+            return done(err);
+          }
+          return done(null, user);
+        });
+      }
+    });
+  }));
 
-      }, function(err, user) {
+      // =========================================================================
+    // GOOGLE ==================================================================
+    // =========================================================================
+    passport.use(
+      new GoogleStrategy({
+              clientID: key.googleAuth.clientID,
+              clientSecret: key.googleAuth.clientSecret,
+              callbackURL: key.googleAuth.callbackURL,
+              passReqToCallback: true, // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+          },
+          (req, token,refreshToken, profile, done) => {
+            console.log(profile);
+          // asynchronous
+          process.nextTick(function () {
+            // check if the user is already logged in
+            if (!req.user) {
+              User.findOne({ "google.googleId": profile.id }, function (err, user) {
+                if (err)
+                  return done(err);
 
-        return cb(err, user);
-      });
-    }
-  ));
+                if (user) {
+                  // if there is a user id already but no token (user was linked at one point and then removed)
+                  if (!user.google.googleToken) {
+                    user.google.googleToken = token;
+                    user.google.customerName = profile.displayName;
+                    user.google.email = profile.emails[0].value; // pull the first email
+
+                    user.save(function (err) {
+                      if (err)
+                        throw err;
+                      return done(null, user);
+                    });
+                  }
+
+                  return done(null, user);
+                } else {
+                  var newUser = new User();
+                  newUser.google.googleId = profile.id;
+                  newUser.google.googleToken = token;
+                  newUser.google.customerName = profile.displayName;
+                  newUser.google.email = profile.emails[0].value; // pull the first email
+
+                  newUser.save(function (err) {
+                    if (err)
+                      throw err;
+                    return done(null, newUser);
+                  });
+                }
+              });
+            } else {
+              // user already exists and is logged in, we have to link accounts
+              var user = req.user; // pull the user out of the session
+
+              user.google.googleId = profile.id;
+              user.google.googleToken = token;
+              user.google.customerName = profile.displayName;
+              user.google.email = profile.emails[0].value; // pull the first email
+
+              user.save(function (err) {
+                if (err)
+                  throw err;
+                return done(null, user);
+              });
+            }
+          });
+        }
+      )
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

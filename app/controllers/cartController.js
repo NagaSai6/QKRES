@@ -13,7 +13,7 @@ function cartController() {
 
       }
       let cart = req.session.cart
-      console.log(req.body);
+      // console.log(req.body);
 
       // check if item does not exist in cart
 
@@ -23,16 +23,24 @@ function cartController() {
           Qty: 1
         }
         cart.totalQty = cart.totalQty + 1
-        cart.totalPrice = cart.totalPrice + req.body.price
+        // cart.totalPrice = cart.totalPrice + req.body.price
       } else {
         cart.items[req.body._id].Qty = cart.items[req.body._id].Qty + 1
         cart.totalQty = cart.totalQty + 1
-        cart.totalPrice = cart.totalPrice + req.body.price
+        // cart.totalPrice = cart.totalPrice + req.body.price
       }
 
       return res.json({
         totalQty: req.session.cart.totalQty
       })
+    },
+    delete_cart(req,res){
+      delete req.session.cart
+      return res.redirect("/cart")
+    },
+    delete_item(req,res){
+      delete req.session.items[req.body._id]
+      return res.redirect("/cart")
     }
   }
 }

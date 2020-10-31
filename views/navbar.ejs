@@ -18,7 +18,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link home" href="/"><i class="fas fa-home" aria-hidden="true"></i></a>
+            <a class="nav-link home" href="/"> <img style="height: 20px;" src="/images/home.svg" alt="home"> </i></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight:bold;">Services</a>
@@ -33,7 +33,7 @@
               Material &amp; Resources
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <a class="dropdown-item" href="chem.html">Chemicals &amp; Equipments</a>
+              <a class="dropdown-item" href="/chem">Chemicals &amp; Equipments</a>
               <a class="dropdown-item" href="/elec">Electrical Equipments</a>
               <a class="dropdown-item" href="/mech">Mechanical Equipments</a>
             </div>
@@ -58,7 +58,14 @@
         </ul>
 
  <% if(user){ %>
-   <a class="btn btn-sm btn-outline-success" href="/logout">Log Out</a>
+ <span>  <a class="mx-2" href="/profile">  <img style="height: 25px;" src="/images/user.svg" alt=""> </i></a>
+ </span>
+                     <% if(user.local){%>
+                            <span><%= user.local.customerName %> </span>
+                      <% }else{ %>
+                           <span><%= user.google.customerName %> </span>
+                      <% } %>
+
 <% }else{ %>
   <a role="button" class="sign btn btn-sm btn-outline-success" href="/register">Sign Up</a>
   <a role="button" class="sign btn btn-sm btn-outline-success" href="/login">Log In</a>

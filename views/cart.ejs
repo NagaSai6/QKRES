@@ -15,6 +15,10 @@
   } */
 .x{
   border:1px solid #ffe05d;border-radius:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .x:hover{
   background: #fff8cd;
@@ -32,7 +36,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/89e9116ed8.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="/img">
 </head>
 <body>
@@ -40,6 +44,7 @@
 
 <section class="cart">
   <% if(session.cart) { %>
+  
   <div style="width:70%;" class="order container mx-auto  py-5">
     <div class="d-flex  x1 pb-2">
       <img class="mr-3" src="/images/cart-black.png" alt="cart-img">
@@ -47,21 +52,25 @@
     </div>
     <div class="d-flex justify-content-between">
      <div class="my-2 ml-4">
-       <h3 style="font-size:1rem;font-family:"Lato",sans-serif;">Your Orders</h3>
+       <h3 style="font-size:1rem;font-family:Lato;">Your Orders</h3>
      </div>
-     <div class="mr-4 my-2">
-       <h6>Qty</h6>
-     </div>
+     <div class="my-2">
+      <a class="btn btn-sm btn-danger" href="/delete_cart">Delete</a>
+    </div>
     </div>
     <div class="pizza-list">
       <%for(let x of Object.values(session.cart.items)) { %>
-      <div style="" class="p-3 x d-flex justify-content-between my-3">
+      <div  class="p-3 x  my-3">
       <div style="float:right;" class="pl-4">
         <img style="height:70px;"  src="/<%= x.item.image %>" alt="img">
-
-        <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
       </div>
-    <span ><%= x.Qty %>Pcs</span>
+      <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
+    <span > <b>Qty :</b> <%= x.Qty %> </span>
+<!-- 
+   <div>
+    <a class="btn btn-sm btn-danger" href="/delete_item">Delete</a>
+   </div> -->
+
     </div>
   <% } %>
   </div>
@@ -71,8 +80,16 @@
 <% if(user){%>
   <div>
     <form action="/orders" method="post">
-      <input name="address" style="width:100%;border-radius:10px;border:1px #a6f6f1 solid;" class="py-3" type="text" placeholder="Address" required>
-      <input name="phone" type="text"  style="width:50%;display: inline-block;border-radius:10px;border:1px #a6f6f1 solid;" class="py-3 my-2" placeholder="Phone number" required>
+      <div class="form-group">
+        <input type="text" class="form-control input-lg" name="address" placeholder="Address" required="required" style="margin-bottom:10px;">
+    </div>
+    <div class="form-group">
+      <input type="number" class="form-control input-lg" name="pincode" placeholder="Pincode" required="required" style="margin-bottom:10px;">
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control input-lg" name="phone" placeholder="Mobile Number" required="required" style="margin-bottom:10px;">
+</div>
+      <!-- <input name="address" style="width:100%;border-radius:10px;border:1px #a6f6f1 solid;" class="py-3" type="text" placeholder="Address" required> -->
        <div>
         <button class="btn btn-lg btn-outline-success my-2" type="submit" name="button">Order Now</button>
 

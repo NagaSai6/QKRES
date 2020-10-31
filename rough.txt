@@ -467,3 +467,25 @@ passport.use(new GoogleStrategy({
    }
   }
 ));
+   <tr>
+       <td class="px-4 py-2">
+         <span><%=order._id%></span>
+         <span><a class="btn btn-sm btn-outline-primary" href="#">Status</a></span>
+       </td>
+       <td style="font-size:1rem;" class="px-4 py-2">
+         <%= order.phone %>
+       </td>
+       <td style="font-size:1rem;" class="px-4 py-2">
+         <%= order.address %>
+       </td>
+       <td style="font-size:1rem;" class="px-4 py-2">
+         <%= moment(order.createdAt).format('MMM Do') %>,
+         <%= moment(order.createdAt).format('hh:mm A') %>
+
+       </td>
+     </tr>
+
+       <!-- <form action="/delete" method="POST">
+      <input type="hidden" name="id" value="<%= x._id %>" >
+      <button type="submit" class="btn btn-sm btn-outline-primary my-3" >Remove from cart</button>
+      </form> -->

@@ -30,12 +30,13 @@ function myFunction() {
 }
 
 
-
+let removeFromCart = document.querySelectorAll(".remove-from-cart")
 let addToCart = document.querySelectorAll('.add_to_cart');
 let cartCounter = $("#cartCounter");
 
 function updateCart(Equipment){
       axios.post("/update-cart",Equipment).then(res =>{
+        console.log(res);
         new Noty({
             type:"success",
             timeout:500,
@@ -58,6 +59,9 @@ function updateCart(Equipment){
   }
 
 
+ 
+
+
 addToCart.forEach(btn => {
 
     btn.addEventListener("click", event => {
@@ -69,6 +73,11 @@ addToCart.forEach(btn => {
     });
 
  });
+
+
+
+ 
+
 
  const alertMsg = document.querySelector('#success')
 if(alertMsg) {
