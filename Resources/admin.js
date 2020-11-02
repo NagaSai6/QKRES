@@ -57,9 +57,9 @@ export function initAdmin(socket) {
               <p class="mb-2">Name : <b>  ${ order.customerId.google ? order.customerId.google.customerName :  order.customerId.local.customerName}   </b></p>
        
               <b class="mb-3">Phone : <i>  ${ order.phone} </i> </b>
-               <b class="mb-3">Addresss : <i>  ${ order.address } </i> </b>
+               <p class="mb-3">Addresss : <b>  ${ order.address } </b> </p>
 
-               <b class="mb-3">Addresss : <i>  ${ order.pincode } </i> </b>
+               <p class="mb-3">Pincode : <b>  ${ order.pincode } </b> </p>
 
                 
                     <div class="inline-block relative w-64">
