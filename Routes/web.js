@@ -1,7 +1,7 @@
-const order = require("../app/controllers/orderController")
 const guest = require("../app/middleware/guest")
 const adminAuth=require("../app/middleware/admin")
 const secure = require("../app/middleware/auth")
+const order = require("../app/controllers/orderController")
 const auth = require("../app/controllers/authController")
 const cart = require("../app/controllers/cartController")
 const material = require("../app/controllers/materialController")
@@ -10,6 +10,7 @@ const adminOrder=require("../app/controllers/adminController")
 const forgotPassword = require("../app/controllers/passwordResetController")
 const chemical = require("../app/controllers/chemicals/chemicalController")
 const statusController = require("../app/controllers/statusController")
+const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
 
 
@@ -195,11 +196,12 @@ app.get("/forgot/:token",forgotPassword().afteremail)
 app.post("/forgot/:token",forgotPassword().newEntries)
 
 
+// ===================================================================================
+// **************************** Messenger Api ***************************************
+// ===================================================================================
 
-
-
-
-
+app.post("/webhook",webhook().index)
+app.get("/webhook",webhook().webGet)
 
 
 
