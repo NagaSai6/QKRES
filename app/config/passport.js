@@ -5,7 +5,7 @@ const findOrCreate = require("mongoose-findorcreate");
 const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const FacebookStrategy=require("passport-facebook").Strategy;
+// const FacebookStrategy=require("passport-facebook").Strategy;
 const User = require("../models/users");
 const key = require("./keys")
 
@@ -215,23 +215,23 @@ function init(passport) {
 
 
 
-  passport.use(new FacebookStrategy({
-      clientID: key.facebookAuth.clientID,
-      clientSecret: key.facebookAuth.clientSecret,
-      callbackURL: key.facebookAuth.callbackURL
-    },
-    function(accessToken, refreshToken, profile, done) {
-      console.log(profile);
-      User.findOrCreate({
-        facebookId: profile.id,
-        customerName:profile.displayName
+  // passport.use(new FacebookStrategy({
+  //     clientID: key.facebookAuth.clientID,
+  //     clientSecret: key.facebookAuth.clientSecret,
+  //     callbackURL: key.facebookAuth.callbackURL
+  //   },
+  //   function(accessToken, refreshToken, profile, done) {
+  //     console.log(profile);
+  //     User.findOrCreate({
+  //       facebookId: profile.id,
+  //       customerName:profile.displayName
 
-      }, function(err, user) {
-        if (err) { return done(err); }
-        done(null, user);
-      });
-    }
-  ));
+  //     }, function(err, user) {
+  //       if (err) { return done(err); }
+  //       done(null, user);
+  //     });
+  //   }
+  // ));
 
 
 
