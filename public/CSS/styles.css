@@ -165,8 +165,9 @@
 /* html tags */
 
 body {
-  margin-top: 60px;
+  margin-top: 80px;
   overflow-x: hidden;
+
   width: 100%;
 }
 
@@ -176,22 +177,16 @@ p {
   font-family: 'Montserrat', sans-serif;
 }
 
-#head {
-  height: 600px;
-  width: 100%;
-}
+
 #cart_link{
   background: #cffffe;border:1px solid;border-radius:10px;
 }
 #cart_link:hover{
   background: #b2ebf2;
 }
-#title {
-  height: 300px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+
+#index_image{
+  height: 320px;
 }
 
 
@@ -262,15 +257,22 @@ p {
 
 .wedueid{
   display: flex;
-  justify-content: center;
- 
   flex-direction: column;
   padding: 20px;
-
+word-wrap: break-word;
 border-radius: 20px;
 margin-bottom: 10px;
 background: #b9fffc;
 }  
+/* .kneduifr{
+  display: flex;
+  width: 100px;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+  background-color: lightslategrey;
+  transform: rotate(20deg);
+} */
 
 /* classes */
 
@@ -541,6 +543,9 @@ margin: 2px;
 
   .progress-container {
     height: 3px;
+  }
+  #index_image{
+    height: 230px;
   }
 
   .progress-bar {

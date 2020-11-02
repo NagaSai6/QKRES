@@ -64,7 +64,7 @@ app.get("/chem",chemical().index)
 
   app.get("/delete_cart",cart().delete_cart)
 
-  app.get("/delete_item",cart().delete_item)
+  app.post("/delete_item",cart().delete_item)
 
   // app.post("/delete",cart().remove)
 

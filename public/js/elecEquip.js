@@ -36,13 +36,13 @@ let cartCounter = $("#cartCounter");
 
 function updateCart(Equipment){
       axios.post("/update-cart",Equipment).then(res =>{
-        console.log(res);
+        // console.log(res);
         new Noty({
             type:"success",
             timeout:500,
             text: "Item added to cart Successfully",
-            progressBar:false,
-            layout:'bottomRight'
+            progressBar:false
+          
         }).show();
 
           cartCounter.html(res.data.totalQty)
@@ -56,6 +56,28 @@ function updateCart(Equipment){
         }).show()
     })
 
+  }
+
+
+  function DeleteCart(Equipment){
+    axios.post("/delete_item",Equipment).then(res=>{
+      console.log(res);
+      new Noty({
+        type:"success",
+        timeout:500,
+        text: "Item deleted Successfully",
+        progressBar:false
+    }).show();
+    cartCounter.html(res.data.totalQty)
+    }).catch(err => {
+      new Noty({
+          type:"error",
+          timeout:1000,
+          text: 'Something went wrong',
+          progressBar:false,
+          layout:"center"
+      }).show()
+  })
   }
 
 
@@ -73,6 +95,18 @@ addToCart.forEach(btn => {
     });
 
  });
+
+ removeFromCart.forEach(btn => {
+
+  btn.addEventListener("click", event => {
+      // console.log( event );
+      let Equipment = JSON.parse(btn.dataset.x)
+                console.log(Equipment);
+               DeleteCart(Equipment)
+
+  });
+
+});
 
 
 

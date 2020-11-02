@@ -43,7 +43,8 @@
    <% order.forEach((order)=>{ %>
   
 
-     <div class="container-fluid wedueid">
+     <div class="container-fluid  wedueid">
+    
          <div> <b>OrderId:</b>
            <span><%=order._id%></span>
            <span><a class="btn btn-sm btn-outline-primary" href="/customer/order/<%= order._id %>">Status</a></span>
@@ -51,7 +52,7 @@
      
          <p> <b>Phone:</b> <span><%= order.phone %></span></p>
         
-         <p> <b>Address:</b> <%= order.address %>
+         <p style="display: flex;flex-direction: column;"> <b>Address:</b> <%= order.address %>
         </p>
        
         <div>
@@ -63,18 +64,6 @@
         </div>
 
      </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <%   }) %>
 
