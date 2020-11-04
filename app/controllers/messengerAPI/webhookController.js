@@ -172,18 +172,21 @@ index(req,res){
     }); 
   }
 
+  // function firstTrait(nlp, name) {
+  //   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+  // }
   function firstTrait(nlp, name) {
     return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
-  }
+}
   
   function handleMessage(sender_psid,message) {
     // check greeting is here and is confident
     const greeting = firstTrait(message.nlp, 'wit$greetings');
     if (greeting && greeting.confidence > 0.8) {
-        callSendAPI(sender_psid,'Hi there!');
+        callSendAPI(sender_psid,`Hi there!`);
     } else { 
       // default logic
-      callSendAPI(sender_psid, 'default');
+      callSendAPI(sender_psid, `default`);
     }
   }
 
