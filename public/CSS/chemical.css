@@ -4,17 +4,17 @@ html {
 body {
     overflow-x: hidden;
     width: 100%;
-    /* margin-top: 60px; */
+    margin-top: 60px;
   }
   
   p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 1.2;
     font-family: 'Montserrat', sans-serif;
   }
   
   ul {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.2;
     font-family: 'Montserrat', sans-serif;
     list-style-type: square;
