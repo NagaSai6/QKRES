@@ -153,12 +153,12 @@ index(req,res){
       "recipient": {
         "id": sender_psid
       },
-      "message": response
+      "message":{"text":response}
     }
   
     // Send the HTTP request to the Messenger Platform
     request({
-      "uri": "https://graph.facebook.com/v8.0/me/messages",
+      "uri": "https://graph.facebook.com/v7.0/me/messages",
       "qs": { "access_token": PAGE_ACCESS_TOKEN },
       "method": "POST",
       "json": request_body
@@ -179,15 +179,43 @@ index(req,res){
     return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
 }
   
-  function handleMessage(sender_psid,message) {
-    // check greeting is here and is confident
-    const greeting = firstTrait(message.nlp, 'wit$greetings');
-    if (greeting && greeting.confidence > 0.8) {
-        callSendAPI(sender_psid,`Hi there!`);
-    } else { 
-      // default logic
-      callSendAPI(sender_psid, `default`);
-    }
+function handleMessage(sender_psid, message) {
+  //handle message for react, like press like button
+  // id like button: sticker_id 369239263222822
+
+  if( message && message.attachments && message.attachments[0].payload){
+      callSendAPI(sender_psid, "Thank you for watching my video !!!");
+      callSendAPIWithTemplate(sender_psid);
+      return;
   }
+
+  let entitiesArr = [ "wit$greetings", "wit$thanks", "wit$bye" ];
+  let entityChosen = "";
+  entitiesArr.forEach((name) => {
+      let entity = firstTrait(message.nlp, name);
+      if (entity && entity.confidence > 0.8) {
+          entityChosen = name;
+      }
+  });
+
+  if(entityChosen === ""){
+      //default
+      callSendAPI(sender_psid,`The bot is needed more training, try to say "thanks a lot" or "hi" to the bot` );
+  }else{
+     if(entityChosen === "wit$greetings"){
+         //send greetings message
+         callSendAPI(sender_psid,'Hi there! This bot is created by Hary Pham. Watch more videos on HaryPhamDev Channel!');
+     }
+     if(entityChosen === "wit$thanks"){
+         //send thanks message
+         callSendAPI(sender_psid,`You 're welcome!`);
+     }
+      if(entityChosen === "wit$bye"){
+          //send bye message
+          callSendAPI(sender_psid,'bye-bye!');
+      }
+  }
+}
+
 
 module.exports = webhookController
