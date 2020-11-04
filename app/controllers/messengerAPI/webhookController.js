@@ -185,7 +185,7 @@ function handleMessage(sender_psid, message) {
 
   if( message && message.attachments && message.attachments[0].payload){
       callSendAPI(sender_psid, "Attachments are not allowed !!");
-      callSendAPIWithTemplate(sender_psid);
+      // callSendAPIWithTemplate(sender_psid);
       return;
   }
 
@@ -221,50 +221,50 @@ function handleMessage(sender_psid, message) {
   }
 }
 
-let callSendAPIWithTemplate = (sender_psid) => {
-  // document fb message template
-  // https://developers.facebook.com/docs/messenger-platform/send-messages/templates
-  let body = {
-      "recipient": {
-          "id": sender_psid
-      },
-      "message": {
-          "attachment": {
-              "type": "template",
-              "payload": {
-                  "template_type": "generic",
-                  "elements": [
-                      {
-                          "title": "Looking for trusted services?",
-                          "image_url": "../../../public/images/Qres.logo.png",
-                          "subtitle": "Visit our site",
-                          "buttons": [
-                              {
-                                  "type": "web_url",
-                                  "url": "https://glacial-forest-08091.herokuapp.com/",
-                                  "title": "visit now"
-                              }
-                          ]
-                      }
-                  ]
-              }
-          }
-      }
-  };
+// let callSendAPIWithTemplate = (sender_psid) => {
+//   // document fb message template
+//   // https://developers.facebook.com/docs/messenger-platform/send-messages/templates
+//   let body = {
+//       "recipient": {
+//           "id": sender_psid
+//       },
+//       "message": {
+//           "attachment": {
+//               "type": "template",
+//               "payload": {
+//                   "template_type": "generic",
+//                   "elements": [
+//                       {
+//                           "title": "Looking for trusted services?",
+//                           "image_url": "../../../public/images/Qres.logo.png",
+//                           "subtitle": "Visit our site",
+//                           "buttons": [
+//                               {
+//                                   "type": "web_url",
+//                                   "url": "https://glacial-forest-08091.herokuapp.com/",
+//                                   "title": "visit now"
+//                               }
+//                           ]
+//                       }
+//                   ]
+//               }
+//           }
+//       }
+//   };
 
-  request({
-      "uri": "https://graph.facebook.com/v6.0/me/messages",
-      "qs": { "access_token": process.env.PAGE_TOKEN },
-      "method": "POST",
-      "json": body
-  }, (err, res, body) => {
-      if (!err) {
-          // console.log('message sent!')
-      } else {
-          console.error("Unable to send message:" + err);
-      }
-  });
-};
+//   request({
+//       "uri": "https://graph.facebook.com/v6.0/me/messages",
+//       "qs": { "access_token": process.env.PAGE_TOKEN },
+//       "method": "POST",
+//       "json": body
+//   }, (err, res, body) => {
+//       if (!err) {
+//           // console.log('message sent!')
+//       } else {
+//           console.error("Unable to send message:" + err);
+//       }
+//   });
+// };
 
 
 
