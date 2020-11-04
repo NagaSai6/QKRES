@@ -4,7 +4,7 @@ html {
 body {
     overflow-x: hidden;
     width: 100%;
-    background-image: url("/images/x.jpg");
+    margin-top: 60px;
   }
   
   p {
@@ -32,12 +32,12 @@ body {
     transition: all 2s ease-in-out;
   }
   .card:nth-child(1) {
-    background: url('/images/chem-chem.webp');
+    background: url('/images/chemicals/chem-chem.webp');
     background-size: cover;
     padding: 120px 90px 180px 90px;
   }
   .card:nth-child(2) {
-    background: url('/images/chem-lab.webp');
+    background: url('/images/chemicals/chem-lab.webp');
     background-size: cover;
     padding: 60px 120px 120px 120px;
   }
@@ -104,6 +104,12 @@ body {
     padding: 40px 20px;
     margin: 0;
     text-align: center;
+  }
+  #second > div > h3 {
+    font-size: 80px;
+  }
+  #second > div > img {
+    height: 200px;
   }
   #second > div {
     display: flex;
@@ -377,4 +383,5 @@ body {
     }
     
   }
+  
   

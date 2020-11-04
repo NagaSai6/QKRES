@@ -1,7 +1,7 @@
 function chemicalController(){
     return {
         index(req,res){
-            res.render("chemical")
+            res.render("chemicals/chem")
         }
 
 

@@ -11,8 +11,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="CSS/aos.css"> -->
   <!-- <link rel="stylesheet" href="CSS/footer.css"> -->
-  <link rel="stylesheet" href="/CSS/chemical.css">
-  <link rel="stylesheet" href="/CSS/styles.css">
+  <link rel="stylesheet" href="CSS/chemical.css">
 
 
   <!-- js -->
@@ -29,18 +28,33 @@
 
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="shortcut icon" href="images/favicon.ico">
+  <style>
+    /* .nav-item {
+  font-family: 'Lato', sans-serif;
+}
+.navbar-collapse ul li a {
+  font-weight: bold;
+  color: #000;
+  font-size: 0.9rem;
+}
+.dropdown-item {
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+}
+.dropdown-item:hover {
+  background-color: #5eaaa8;
+}
+.sign{
+margin: 2px;
+} */
+
+  </style>
 
 </head>
-
 <body>
+  <%- include("../navbar.ejs")  %>
 
-
-<!--   <div id="particles-js"><canvas class="particles-js-canvas-el" width="1889" height="349" style="width: 100%; height: 100%;"></canvas></div> -->
- 
-<%- include("../views/navbar.ejs")  %>
-   
-
-  <!-- <div class="wrap">
+  <div class="wrap">
     <header class="hero">
       <div class="hero-center">
         <h1 data-aos="zoom-in-up" class="hero-logo">
@@ -48,12 +62,8 @@
         </h1>
         <a href="#first"><i class="fas fa-arrow-down"></i></a>
       </div>
-    </header> -->
+    </header>
 
-
-
-
-<!-- 
   <section id="first">
     <div class="container-fluid" id="first-1" >
       <div >
@@ -83,8 +93,8 @@
             <li>Plasma Thawing Bath</li>
         </ul>
       </div>
-    </div> -->
-    <!-- <div id="first-2">
+    </div>
+    <div id="first-2">
       <p>We focus mainly on:</p>
       <div id="first-2-2">
         <div>
@@ -102,9 +112,12 @@
       </div>
       </ol>
     </div>
-  </section> -->
-  <!-- <section id="second">
-      <h3>We deliver</h3>
+  </section>
+  <section id="second">
+      <div>
+        <h3 style="font-size: 2rem;">We <br> deliver</h3>
+        <img style="width:250px;" src="./images/chemicals/chem-delivery.svg" alt="" data-aos='fade-right'>
+      </div>
       <div>
         <div class="card" data-aos='fade-left'>
           <h3 class="my-0">Chemicals</h3>
@@ -113,96 +126,23 @@
           <h3 class="my-0"> <br><br> Lab setup <br> and <br> Equipments</h3>
         </div>
       </div>
-      <a href="#"><button type="button" class="btn btn-primary">Submit your requirements</button></a>
-  </section> -->
-  <!-- <section id="fourth">
-    <div class="cat">
-      <p>Beakers</p>
-      <a href="chem_eqp/beakers/beakers.html"><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Bottles</p>
-        <a href="bottles.html"><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Beakers</p>
-        <a href=""><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Beakers</p>
-        <a href=""><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Beakers</p>
-        <a href=""><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Beakers</p>
-        <a href=""><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Beakers</p>
-        <a href=""><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-    <div class="cat">
-        <p>Beakers</p>
-        <a href=""><button type="button" class="btn btn-primary" data-aos="fade-up">Show More</button></a>
-    </div>
-  </section> -->
+  </section>
+
   <!-- <section id="third">
     <div id="happy" data-aos='fade-right'>
         <h3><strong>You can submit your requirements, we will make it available for you.</strong></h3>
       <h3><i>Happy to serve you! </i></h3>
     </div>
-  </section>
-
-</div>
-  <footer id="end">
-    <div class="foo">
-      <div class="foo-box">
-        <h5><i><img src="images/Qres.logo.png" />kRes</i></h5>
-        <div class="social-media">
-          <div class="button">
-            <div class="icon">
-
-              <a target="_blank" role="button" href='https://www.facebook.com/QkResTechnologies' />
-              <i class="fab fa-facebook-f"></i></a>
-            </div>
-          </div>
-          <div class="button">
-            <div class="icon">
-              <a target="_blank" href='https://mobile.twitter.com/QkRes_Tec'>
-                <i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-          <div class="button">
-            <div class="icon">
-              <a target="_blank" href='https://www.linkedin.com/mwlite/in/qkres-technologies-and-research-a25a571b1'>
-                <i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="button">
-            <div class="icon">
-              <a target="_blank" href='https://youtu.be/tuZgM-r5hXI'>
-                <i style="color:#ff0000" class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <br>
-      <p>Copyright © 2020 QkRes Technologies and Research</p>
-
-    </div>
-  </footer> -->
+  </section> -->
+  <%- include("../footer.ejs") %>
 
 <!--
   <script src="js/particles.min.js" charset="utf-8"></script>
   <script src="js/apply.js" charset="utf-8"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="index.js" charset="utf-8"></script>
-  <script src="chemical.js" charset="utf-8"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+  <!-- <script src="chemical.js" charset="utf-8"></script> -->
 
   <!-- Ion Icons -->
   <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
