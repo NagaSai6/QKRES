@@ -204,7 +204,7 @@ function handleMessage(sender_psid, message) {
   }else{
      if(entityChosen === "wit$greetings"){
          //send greetings message
-         callSendAPI(sender_psid,'Hi there! This bot is created by Hary Pham. Watch more videos on HaryPhamDev Channel!');
+         callSendAPI(sender_psid,'Hi there! This bot is created by Naga Sai. Sarcasm is an art!');
      }
      if(entityChosen === "wit$thanks"){
          //send thanks message
