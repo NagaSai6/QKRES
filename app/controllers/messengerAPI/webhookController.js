@@ -1,4 +1,5 @@
 const PAGE_ACCESS_TOKEN = process.env.PAGE_TOKEN;
+const homeServiceApi = require("../../services/homeServicesApi")
 const request = require("request")
 function webhookController (){
  return{
@@ -71,18 +72,7 @@ index(req,res){
     res.sendStatus(404);
   }
     }
-    // end of index method
-
-
-
-
-
-
-
-
-
-
-    
+    // end of index method  
     
 }
 }
@@ -172,9 +162,15 @@ index(req,res){
     }); 
   }
 
-  // function firstTrait(nlp, name) {
-  //   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
-  // }
+  async function handleSetupProfile(req,res){
+    try {
+      await homepageService.handleSetupProfileAPI();
+      return res.redirect("/");
+  } catch (e) {
+      console.log(e);
+  }
+  }
+
   function firstTrait(nlp, name) {
     return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
 }
