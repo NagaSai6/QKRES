@@ -1,8 +1,6 @@
 const PAGE_ACCESS_TOKEN = process.env.PAGE_TOKEN;
 const homeServiceApi = require("../../services/homeServicesApi");
-const fbusername = require("../../services/fbusernameService");
-const markMessages = require("../../services/markMessagesService");
-const sendType = require("../../services/sendTypinService")
+const chatbotService = require("../../services/chatBotServices")
 const request = require("request")
 function webhookController (){
  return{
@@ -74,8 +72,20 @@ index(req,res){
     // Return a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
   }
-    }
+    },
     // end of index method  
+    async handleProfile(req,res){
+      try{
+        await homeServiceApi();
+        return res.redirect("/")
+      } catch (e) {
+        console.log(e);
+    }
+
+    },
+    getProfile(req,res){
+      return res.render("TEST/tp")
+    }
     
 }
 }
@@ -125,19 +135,36 @@ index(req,res){
 //   }
   
   function handlePostback(sender_psid, received_postback) {
-    console.log('ok')
-     let response;
-    // Get the payload for the postback
     let payload = received_postback.payload;
-  
+
     // Set the response based on the postback payload
-    if (payload === 'yes') {
-      response = { "text": "Thanks!" }
-    } else if (payload === 'no') {
-      response = { "text": "Oops, try sending another image." }
+    switch (payload) {
+        case "GET_STARTED":
+        case "RESTART_CONVERSATION":
+            await chatbotService.sendMessageWelcomeNewUser(sender_psid);
+            break;
+        case "TALK_AGENT":
+            await chatbotService.requestTalkToAgent(sender_psid);
+            break;
+        case "SHOW_MECHANICALS":
+            await chatbotService.showHeadphones(sender_psid);
+            break;
+        case "SHOW_TV":
+            await chatbotService.showTVs(sender_psid);
+            break;
+        case "SHOW_PLAYSTATION":
+            await chatbotService.showPlaystation(sender_psid);
+            break;
+        case "BACK_TO_CATEGORIES":
+            await chatbotService.backToCategories(sender_psid);
+            break;
+        case "BACK_TO_MAIN_MENU":
+            await chatbotService.backToMainMenu(sender_psid);
+            break;
+        default:
+            console.log("run default switch case")
+
     }
-    // Send the message to acknowledge the postback
-    callSendAPI(sender_psid, response);
   }
   
   function callSendAPI(sender_psid, response) {
@@ -220,50 +247,6 @@ function handleMessage(sender_psid, message) {
   }
 }
 
-// let callSendAPIWithTemplate = (sender_psid) => {
-//   // document fb message template
-//   // https://developers.facebook.com/docs/messenger-platform/send-messages/templates
-//   let body = {
-//       "recipient": {
-//           "id": sender_psid
-//       },
-//       "message": {
-//           "attachment": {
-//               "type": "template",
-//               "payload": {
-//                   "template_type": "generic",
-//                   "elements": [
-//                       {
-//                           "title": "Looking for trusted services?",
-//                           "image_url": "../../../public/images/Qres.logo.png",
-//                           "subtitle": "Visit our site",
-//                           "buttons": [
-//                               {
-//                                   "type": "web_url",
-//                                   "url": "https://glacial-forest-08091.herokuapp.com/",
-//                                   "title": "visit now"
-//                               }
-//                           ]
-//                       }
-//                   ]
-//               }
-//           }
-//       }
-//   };
-
-//   request({
-//       "uri": "https://graph.facebook.com/v6.0/me/messages",
-//       "qs": { "access_token": process.env.PAGE_TOKEN },
-//       "method": "POST",
-//       "json": body
-//   }, (err, res, body) => {
-//       if (!err) {
-//           // console.log('message sent!')
-//       } else {
-//           console.error("Unable to send message:" + err);
-//       }
-//   });
-// };
 
 
 

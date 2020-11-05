@@ -203,7 +203,8 @@ app.post("/forgot/:token",forgotPassword().newEntries)
 app.post("/webhook",webhook().index)
 app.get("/webhook",webhook().webGet)
 
-
+app.post("GetStartedInitiation",webhook().handleProfile)
+app.get("/GetStartedInitiation",webhook().getProfile)
 
 
 
