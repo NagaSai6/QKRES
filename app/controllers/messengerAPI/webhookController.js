@@ -1,5 +1,8 @@
 const PAGE_ACCESS_TOKEN = process.env.PAGE_TOKEN;
-const homeServiceApi = require("../../services/homeServicesApi")
+const homeServiceApi = require("../../services/homeServicesApi");
+const fbusername = require("../../services/fbusernameService");
+const markMessages = require("../../services/markMessagesService");
+const sendType = require("../../services/sendTypinService")
 const request = require("request")
 function webhookController (){
  return{
