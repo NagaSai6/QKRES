@@ -30,7 +30,7 @@ function resetPassword() {
           user.save()
             .then(user => {
               // send email
-              let link = "http://" + req.headers.host + "/forgot/" + user.local.passwordResetToken;
+              let link = "https://" + req.headers.host + "/forgot/" + user.local.passwordResetToken;
               const mailOptions = {
                 to: user.local.email,
                 from: process.env.FROM_EMAIL,

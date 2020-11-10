@@ -10,7 +10,7 @@ const adminOrder=require("../app/controllers/adminController")
 const forgotPassword = require("../app/controllers/passwordResetController")
 const chemical = require("../app/controllers/chemicals/chemicalController")
 const statusController = require("../app/controllers/statusController")
-const webhook = require("../app/controllers/messengerAPI/webhookController")
+// const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
 
 
@@ -200,11 +200,11 @@ app.post("/forgot/:token",forgotPassword().newEntries)
 // **************************** Messenger Api ***************************************
 // ===================================================================================
 
-app.post("/webhook",webhook().index)
-app.get("/webhook",webhook().webGet)
+// app.post("/webhook",webhook().index)
+// app.get("/webhook",webhook().webGet)
 
-app.post("GetStartedInitiation",webhook().handleProfile)
-app.get("/GetStartedInitiation",webhook().getProfile)
+// app.post("GetStartedInitiation",webhook().handleProfile)
+// app.get("/GetStartedInitiation",webhook().getProfile)
 
 
 
