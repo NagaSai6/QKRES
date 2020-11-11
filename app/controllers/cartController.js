@@ -41,17 +41,25 @@ function cartController() {
       return res.redirect("/cart")
     },
     delete_item(req,res){
-      // let cart = req.session.cart
-      //   if(cart[req.body.Qty] > 1){
-      //     req.body.Qty =req.body.Qty  - 1
-      //   }
-    
+      console.log(req.body);
+    //  console.log(req.session.cart);
+     let cart = req.session.cart;
+     if(cart.items[req.body._id]){
+       if(cart.items[req.body._id].Qty > 1){
+        cart.totalQty = cart.totalQty - 1
+        cart.items[req.body._id].Qty = cart.items[req.body._id].Qty -1
+       }else if(cart.items[req.body._id].Qty === 1){
+        cart.totalQty = cart.totalQty - 1 
+        delete cart.items[req.body._id]
+        res.redirect("/cart")
+       }else{
+        return res.json({"message":"No item found"})
+       }  
+     }
+     return res.json({
+      totalQty: req.session.cart.totalQty
+     })
 
-
-      // res.json({
-      //   totalQty: req.session.cart.totalQty,
-      //   Qty:req.session.cart.items[req.body._id].Qty
-      // })
     }
   }
 }

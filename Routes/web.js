@@ -67,7 +67,7 @@ app.get("/chem",chemical().index)
 
   app.post("/delete_item",cart().delete_item)
 
-  // app.post("/delete",cart().remove)
+ 
 
  // local routes
 

@@ -59,7 +59,7 @@
        <h3 style="font-size:1rem;font-family:Lato;">Your Orders</h3>
      </div>
      <div class="my-2">
-      <a class="btn btn-sm btn-danger" href="/delete_cart">Delete</a>
+      <a class="btn btn-sm btn-danger" href="/delete_cart">Delete All</a>
     </div>
     </div>
     <div class="pizza-list">
@@ -70,6 +70,10 @@
       </div>
       <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
     <span > <b>Qty :</b> <%= x.Qty %> </span>
+    <button data-y="<%= JSON.stringify(x.item) %>" style="position:relative;top:8px;" class="btn btn-sm btn-outline-danger  remove-from-cart  mx-3" href="">
+      <span>-</span>
+      <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove-from-cart"> </span>
+    </button>
     <!-- <button data-x="<%= JSON.stringify(x) %>" style="position:relative;top:8px;" class="btn btn-sm btn-outline-success remove-from-cart  mx-3" href="">
       <span>+</span>
       <span><img style="height: 20px;" src="/images/add-to-cart.svg" alt="add-to-cart"> </span>

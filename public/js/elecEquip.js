@@ -31,6 +31,7 @@ function myFunction() {
 
 
 let removeFromCart = document.querySelectorAll(".remove-from-cart")
+let deleteFromCart = document.querySelectorAll(".delete-from-cart")
 let addToCart = document.querySelectorAll('.add_to_cart');
 let cartCounter = $("#cartCounter");
 
@@ -81,6 +82,7 @@ function updateCart(Equipment){
   }
 
 
+
  
 
 
@@ -100,13 +102,16 @@ addToCart.forEach(btn => {
 
   btn.addEventListener("click", event => {
       // console.log( event );
-      let Equipment = JSON.parse(btn.dataset.x)
+      let Equipment = JSON.parse(btn.dataset.y)
                 console.log(Equipment);
                DeleteCart(Equipment)
 
   });
 
 });
+
+
+
 
 
 
