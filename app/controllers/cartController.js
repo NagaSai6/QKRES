@@ -49,10 +49,9 @@ function cartController() {
         cart.totalQty = cart.totalQty - 1
         cart.items[req.body._id].Qty = cart.items[req.body._id].Qty -1
        }
-        if(cart.items[req.body._id].Qty === 1){
+        else if(cart.items[req.body._id].Qty === 1){
         cart.totalQty = cart.totalQty - 1 
         delete cart.items[req.body._id]
-        res.redirect("/cart")
        } 
 
        return res.json({
