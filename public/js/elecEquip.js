@@ -63,13 +63,27 @@ function updateCart(Equipment){
   function DeleteCart(Equipment){
     axios.post("/delete_item",Equipment).then(res=>{
       console.log(res);
-      new Noty({
-        type:"success",
-        timeout:500,
-        text: "Item deleted Successfully",
-        progressBar:false
-    }).show();
-    cartCounter.html(res.data.totalQty)
+ if(res.data.message==="this item not added to cart to delete"){
+  new Noty({
+    type:"error",
+    timeout:500,
+    text: "Only items present in cart can be deleted",
+    progressBar:false,
+    layout:"center"
+}).show();
+
+ }else{
+  cartCounter.html(res.data.totalQty)
+  new Noty({
+    type:"Success",
+    timeout:500,
+    text: "Item deleted Successfully",
+    progressBar:false,
+    layout:"bottomLeft"
+}).show();
+
+  
+ }
     }).catch(err => {
       new Noty({
           type:"error",
@@ -91,7 +105,7 @@ addToCart.forEach(btn => {
     btn.addEventListener("click", event => {
         // console.log( event );
         let Equipment = JSON.parse(btn.dataset.x)
-                  // console.log(Equipment);
+                  console.log(Equipment);
                  updateCart(Equipment)
 
     });
