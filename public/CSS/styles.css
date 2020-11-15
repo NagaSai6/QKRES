@@ -161,6 +161,23 @@
 	}
 }
 
+/* cart page */
+
+
+.x{
+  border:1px solid #ffe05d;border-radius:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.x:hover{
+  background: #fff8cd;
+}
+
+  .x1 {
+    border-bottom: 1px grey solid;
+  }
 
 /* html tags */
 

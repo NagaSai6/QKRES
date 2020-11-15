@@ -8,26 +8,9 @@
     <title>Cart</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/CSS/styles.css">
-    <!-- internal css -->
-    <style media="screen">
-  /* body {
-    background: #d9ecf2;
-  } */
-.x{
-  border:1px solid #ffe05d;border-radius:20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.x:hover{
-  background: #fff8cd;
-}
+    
+ 
 
-  .x1 {
-    border-bottom: 1px grey solid;
-  }
-</style>
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
@@ -37,15 +20,24 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/89e9116ed8.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
 
 
     <link rel="shortcut icon" href="/img">
 </head>
-<body>
-<%-include("../views/navbar.ejs");  %>
+<body onload="myFunction()">
 
+ 
+
+
+<div id="cartLoader" style="  position: fixed;
+width: 100%;
+height: 100vh;
+background:#fff
+url('/images/cartPage.gif')
+ no-repeat center center;	
+z-index: 999999999999999;"></div>
+<%-include("../views/navbar.ejs");  %>
 <section class="cart">
   <% if(session.cart) { %>
   
@@ -138,8 +130,13 @@ $(window).scroll(function() {
     $('.fixed-top').css('background', '#d3dbff');
   }
 });
+
+var preloader = document.getElementById("cartLoader");
+function myFunction(){
+			preloader.style.display = 'none';
+		};
 </script>
-<script src="/js/elecEquip.js" charset="utf-8"></script>
+<!-- <script src="/js/elecEquip.js" charset="utf-8"></script> -->
 
 </body>
 
