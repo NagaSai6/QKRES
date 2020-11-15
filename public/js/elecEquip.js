@@ -28,7 +28,10 @@ function myFunction() {
  var scrolled = (winScroll / height) * 100;
  document.getElementById("myBar").style.width = scrolled + "%";
 }
-
+var preloader = document.getElementById("mechLoader");
+function myFunction(){
+			preloader.style.display = 'none';
+		};
 
 
 let addToCart = document.querySelectorAll('.add_to_cart');
