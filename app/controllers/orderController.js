@@ -31,18 +31,30 @@ function orderController() {
     delete req.session.cart 
     //emit
                    const eventEmitter =req.app.get("eventEmitter")
-                            eventEmitter.emit("orderPlaced",placedOrder)
+                  eventEmitter.emit("orderPlaced",placedOrder)
+                  const mailOptions = {
+                    to:[ user.local.email,user.google.email],
+                    from: process.env.FROM_EMAIL,
+                    subject: "Order Placed",
+                    text: `Hi ${user.local ? user.local.customerName : user.google.customerName} \n
+                    Thanks for shopping with QkRes \n\n
+                    You will receive quotation from us in next 3 hours and u can check status of your order by logging in to your account\n`,
+                  };
+              
+                  sgMail.send(mailOptions, (error, result) => {
+                    if (error) {
+                      return res.status(500).json({
+                        message: error.message
+                      });
+                    }
+                    return res.redirect("/customer/orders")
+    
+                    // res.status(200).json({message: 'A reset email has been sent to ' + user.email + '.'});
+                  });
    
-    return res.redirect("/customer/orders")
+
 
   })
-
-
-
-
-
-   
- 
 
  }).catch(err=>{
    console.log(err);
