@@ -8,9 +8,26 @@
     <title>Cart</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/CSS/styles.css">
-    
- 
+    <!-- internal css -->
+    <style media="screen">
+  /* body {
+    background: #d9ecf2;
+  } */
+.x{
+  border:1px solid #ffe05d;border-radius:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.x:hover{
+  background: #fff8cd;
+}
 
+  .x1 {
+    border-bottom: 1px grey solid;
+  }
+</style>
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
@@ -22,22 +39,17 @@
     <script src="https://kit.fontawesome.com/89e9116ed8.js" crossorigin="anonymous"></script>
 
 
-
-    <link rel="shortcut icon" href="/img">
 </head>
 <body onload="myFunction()">
-
- 
-
-
-<div id="cartLoader" style="  position: fixed;
-width: 100%;
-height: 100vh;
-background:#fff
-url('/images/cartPage.gif')
- no-repeat center center;	
-z-index: 999999999999999;"></div>
+  <div id="mechLoader" style=" position: fixed;
+  width: 100%;
+  height: 100vh;
+  background:#fff
+  url('/images/mechPage.gif')
+   no-repeat center center;	
+  z-index: 2000;"></div>
 <%-include("../views/navbar.ejs");  %>
+
 <section class="cart">
   <% if(session.cart) { %>
   
@@ -54,7 +66,7 @@ z-index: 999999999999999;"></div>
       <a class="btn btn-sm btn-danger" href="/delete_cart">Delete All</a>
     </div>
     </div>
-    <div>
+    <div class="pizza-list">
       <%for(let x of Object.values(session.cart.items)) { %>
       <div  class="p-3 x  my-3">
       <div style="float:right;" class="pl-4">
@@ -62,22 +74,24 @@ z-index: 999999999999999;"></div>
       </div>
       <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
     <span > <b>Qty :</b> <%= x.Qty %> </span>
-<div style="display: flex;flex-direction: row;">
-  <form action="/del_Items" method="POST">
-    <input type="hidden" value="<%=x.item._id %>" name="id">
-    <button class="btn-sm btn-outline-danger my-2 mx-2" type="submit">
-      <span>-</span> 
-      <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove-from-cart"> </span>
-    </button>
-  </form>
-  <form action="/add_Items" method="POST">
-    <input type="hidden" value="<%=x.item._id %>" name="id">
-    <button class="btn-sm btn-outline-success my-2" type="submit">
-      <span>+</span> 
-      <span><img style="height: 20px;" src="/images/add-to-cart.svg" alt="add-to-cart"> </span> 
-    </button>
-  </form>
-</div>
+    <div style="display: flex;flex-direction: row;">
+      <form action="/del_Items" method="POST">
+      <input type="hidden" value="<%=x.item._id%>" name="id">
+         
+      <button  style="position:relative;top:8px;" class="btn btn-sm btn-outline-danger  mx-2" href="">
+        <span>-</span>
+        <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove_from_cart"> </span>
+      </button>
+    </form>
+    <form action="/add_Items" method="POST">
+      <input type="hidden" value="<%=x.item._id%>" name="id">
+         
+      <button  style="position:relative;top:8px;" class="btn btn-sm btn-outline-success  mx-2" href="">
+        <span>+</span>
+        <span><img style="height: 20px;" src="/images/add-to-cart.svg" alt="remove_from_cart"> </span>
+      </button>
+    </form>
+    </div>
     </div>
   <% } %>
   </div>
@@ -136,14 +150,13 @@ $(window).scroll(function() {
    else {
     $('.fixed-top').css('background', '#d3dbff');
   }
-});
-
-var preloader = document.getElementById("cartLoader");
+  var preloader = document.getElementById("mechLoader");
 function myFunction(){
 			preloader.style.display = 'none';
 		};
+});
 </script>
-<!-- <script src="/js/elecEquip.js" charset="utf-8"></script> -->
+<script src="/js/elecEquip.js" charset="utf-8"></script>
 
 </body>
 

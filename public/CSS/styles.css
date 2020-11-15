@@ -164,21 +164,19 @@
 /* cart page */
 
 
-.x{
-  border:1px solid #ffe05d;border-radius:20px;
-  display: flex;
-  justify-content: center;
+#cartLoader{
   align-items: center;
-  flex-direction: column;
+  cursor: none;
+	display: flex;
+  height: 100%;
+  justify-content: center;
+	position: fixed;
+	left: 0;
+  top: 0;
+	width: 100%;
+  z-index: 2000;
+  background-color: #5c6e91;
 }
-.x:hover{
-  background: #fff8cd;
-}
-
-  .x1 {
-    border-bottom: 1px grey solid;
-  }
-
 /* html tags */
 
 body {

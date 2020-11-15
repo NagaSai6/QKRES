@@ -65,9 +65,9 @@ app.get("/chem",chemical().index)
 
   app.get("/delete_cart",cart().delete_cart)
 
-  app.post("/del_Items",cart().delete_items_in_cart)
+  app.post("/del_Items",secure,cart().delete_items_in_cart)
 
-  app.post("/add_Items",cart().add_items_to_cart)
+  app.post("/add_Items",secure,cart().add_items_to_cart)
 
  
 
