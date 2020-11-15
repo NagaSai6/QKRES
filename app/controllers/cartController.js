@@ -39,9 +39,7 @@ function cartController() {
     delete_cart(req,res){
       delete req.session.cart
       return res.redirect("/cart")
-    },
-
-     
+    },  
     delete_items_in_cart(req,res){
       // console.log(req.session.cart);
       // console.log(req.body.id);
@@ -61,9 +59,13 @@ function cartController() {
        delete req.session.cart
        res.redirect("/cart")
      }
-
-   
-
+    },
+    add_items_to_cart(req,res){
+      let cart = req.session.cart
+      let id =req.body.id
+     cart.items[id].Qty = cart.items[id].Qty + 1
+     cart.totalQty = cart.totalQty+1
+     res.redirect("/cart")
     }
   }
 }

@@ -62,15 +62,22 @@ z-index: 999999999999999;"></div>
       </div>
       <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
     <span > <b>Qty :</b> <%= x.Qty %> </span>
-    <form action="/del_Items" method="POST">
-      <input type="hidden" value="<%=x.item._id %>" name="id">
-      <button class="btn-sm btn-outline-danger my-2" type="submit">
-        <span>-</span> 
-        <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove-from-cart"> </span>
-
-        
-      </button>
-    </form>
+<div style="display: flex;flex-direction: row;">
+  <form action="/del_Items" method="POST">
+    <input type="hidden" value="<%=x.item._id %>" name="id">
+    <button class="btn-sm btn-outline-danger my-2 mx-2" type="submit">
+      <span>-</span> 
+      <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove-from-cart"> </span>
+    </button>
+  </form>
+  <form action="/add_Items" method="POST">
+    <input type="hidden" value="<%=x.item._id %>" name="id">
+    <button class="btn-sm btn-outline-success my-2" type="submit">
+      <span>+</span> 
+      <span><img style="height: 20px;" src="/images/add-to-cart.svg" alt="add-to-cart"> </span> 
+    </button>
+  </form>
+</div>
     </div>
   <% } %>
   </div>
