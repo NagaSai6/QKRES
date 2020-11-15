@@ -33,7 +33,7 @@ function orderController() {
                    const eventEmitter =req.app.get("eventEmitter")
                   eventEmitter.emit("orderPlaced",placedOrder)
                   const mailOptions = {
-                    to:[ user.local.email,user.google.email],
+                    to:user.google.email || user.local.email,
                     from: process.env.FROM_EMAIL,
                     subject: "Order Placed",
                     text: `Hi ${user.local ? user.local.customerName : user.google.customerName} \n
