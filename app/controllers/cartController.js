@@ -65,6 +65,29 @@ function cartController() {
      }
     
 
+    },
+    delete_items_in_cart(req,res){
+      // console.log(req.session.cart);
+      // console.log(req.body.id);
+      let id =req.body.id
+      let cart = req.session.cart
+     if(cart.items[id] && cart.totalQty>1){
+      if(cart.items[id].Qty > 1){
+        cart.totalQty = cart.totalQty - 1
+        cart.items[id].Qty = cart.items[id].Qty -1
+        res.redirect("/cart")
+       } else if(cart.items[id].Qty === 1){
+        cart.totalQty = cart.totalQty - 1 
+        delete cart.items[id]
+        res.redirect("/cart")
+       } 
+     }else{
+       delete req.session.cart
+       res.redirect("/cart")
+     }
+
+   
+
     }
   }
 }
