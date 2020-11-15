@@ -36,7 +36,7 @@ function orderController() {
                     to:user.google.email || user.local.email,
                     from: process.env.FROM_EMAIL,
                     subject: "Order Placed",
-                    text: `Hi ${user.local ? user.local.customerName : user.google.customerName} \n
+                    text: `Hi ${user.local ? user.local.customerName : `customer`} \n
                     Thanks for shopping with QkRes \n\n
                     You will receive quotation from us in next 3 hours and u can check status of your order by logging in to your account\n`,
                   };
