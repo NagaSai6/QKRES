@@ -40,16 +40,6 @@ function resetPassword() {
                 If you did not request this, please ignore this email and your password will remain unchanged.\n`,
               };
 
-              sgMail.send(mailOptions, (error, result) => {
-                if (error) {
-                  return res.status(500).json({
-                    message: error.message
-                  });
-                }
-                res.redirect("/success")
-
-                // res.status(200).json({message: 'A reset email has been sent to ' + user.email + '.'});
-              });
             })
             .catch(err => {
               console.log(err);
