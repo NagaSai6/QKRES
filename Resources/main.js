@@ -14,7 +14,7 @@ let statuses = document.querySelectorAll(".status_line")
 let hiddenPut= document.querySelector("#hiddenInput")
  
 let order = hiddenPut ? hiddenPut.value : null
-// console.log(order);
+
 order= JSON.parse(order)
 
 let time = document.createElement("small")

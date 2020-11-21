@@ -13,9 +13,6 @@ function cartController() {
 
       }
       let cart = req.session.cart
-      // console.log(req.body);
-
-      // check if item does not exist in cart
 
       if (!cart.items[req.body._id]) {
         cart.items[req.body._id] = {
@@ -40,8 +37,6 @@ function cartController() {
       return res.redirect("/cart")
     },
     delete_items_in_cart(req,res){
-      // console.log(req.session.cart);
-      // console.log(req.body.id);
       let id =req.body.id
       let cart = req.session.cart
      if(cart.items[id] && cart.totalQty>1){

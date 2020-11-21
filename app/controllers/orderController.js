@@ -14,10 +14,12 @@ function orderController() {
     const address = req.body.address;
     const pincode=req.body.pincode;
     const phone = req.body.phone;
+    const city =req.body.city;
+ 
     // const{address,pincode,phone}=req.body
-    if(!address || !phone || !pincode|| !name){
+    if(!address || !phone || !pincode|| !name || !city){
       req.flash("error","All  fields are required")
-      return res.redirect("/cart")
+      return res.redirect("/userDetails")
     }
  const order = new Order({
    customerId:user._id,
@@ -27,7 +29,8 @@ function orderController() {
    address:req.body.address,
    pincode:req.body.pincode,
    city:req.body.city,
-   landmark:req.body.landmark 
+   landmark:req.body.landmark,
+   uEmail:req.body.uEmail
  })
  order.save().then(order=>{
 

@@ -14,6 +14,7 @@ const orderSchema = new mongoose.Schema({
     city:{type:String,required:true},
     address:{type:String,required:true},
     landmark:{type:String},
+    uEmail:{type:String},
     paymentMethod:{type:String,default:"Cash on Delivery"},
     status:{type:String,default:"order_placed"}
 },{timestamps:true})
