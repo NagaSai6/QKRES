@@ -1,10 +1,10 @@
 function cartController() {
   return {
     index(req, res) {
-      res.render("cart")
+      res.render("cart/cart")
     },
     update(req, res) {
-      if (!req.session.cart) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+      if (!req.session.cart) {
         req.session.cart = {
           items: {},
           totalQty: 0,
@@ -38,7 +38,7 @@ function cartController() {
     delete_cart(req,res){
       delete req.session.cart
       return res.redirect("/cart")
-    },  
+    },
     delete_items_in_cart(req,res){
       // console.log(req.session.cart);
       // console.log(req.body.id);
@@ -50,10 +50,10 @@ function cartController() {
         cart.items[id].Qty = cart.items[id].Qty -1
         res.redirect("/cart")
        } else if(cart.items[id].Qty === 1){
-        cart.totalQty = cart.totalQty - 1 
+        cart.totalQty = cart.totalQty - 1
         delete cart.items[id]
         res.redirect("/cart")
-       } 
+       }
      }else{
        delete req.session.cart
        res.redirect("/cart")
@@ -65,6 +65,9 @@ function cartController() {
      cart.items[id].Qty = cart.items[id].Qty + 1
      cart.totalQty = cart.totalQty+1
      res.redirect("/cart")
+    },
+    userInfo(req,res){
+      res.render("cart/orderDeliveryInfo")
     }
   }
 }

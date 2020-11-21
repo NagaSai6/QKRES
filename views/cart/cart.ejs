@@ -46,13 +46,13 @@
   height: 100vh;
   background:#fff
   url('/images/cartPage.gif')
-   no-repeat center center;	
+   no-repeat center center;
   z-index: 2000;"></div>
-<%-include("../views/navbar.ejs");  %>
+<%-include("../navbar.ejs");  %>
 
 <section class="cart">
   <% if(session.cart) { %>
-  
+
   <div style="width:70%;" class="order container mx-auto  py-5">
     <div class="d-flex  x1 pb-2">
       <img class="mr-3" src="/images/cart-black.png" alt="cart-img">
@@ -66,7 +66,7 @@
       <a class="btn btn-sm btn-danger" href="/delete_cart">Delete All</a>
     </div>
     </div>
-    <div class="pizza-list">
+    <div>
       <%for(let x of Object.values(session.cart.items)) { %>
       <div  class="p-3 x  my-3">
       <div style="float:right;" class="pl-4">
@@ -74,10 +74,10 @@
       </div>
       <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
     <span > <b>Qty :</b> <%= x.Qty %> </span>
-    <div style="display: flex;flex-direction: row;">
+    <div id="userInfo" style="display: flex;flex-direction: row;">
       <form action="/del_Items" method="POST">
       <input type="hidden" value="<%=x.item._id%>" name="id">
-         
+
       <button  style="position:relative;top:8px;" class="btn btn-sm btn-outline-danger  mx-2" href="">
         <span>-</span>
         <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove_from_cart"> </span>
@@ -85,7 +85,7 @@
     </form>
     <form action="/add_Items" method="POST">
       <input type="hidden" value="<%=x.item._id%>" name="id">
-         
+
       <button  style="position:relative;top:8px;" class="btn btn-sm btn-outline-success  mx-2" href="">
         <span>+</span>
         <span><img style="height: 20px;" src="/images/add-to-cart.svg" alt="remove_from_cart"> </span>
@@ -99,24 +99,8 @@
 <hr>
 <div class="text-right">
 <% if(user){%>
-  <div>
-    <form action="/orders" method="post">
-      <div class="form-group">
-        <input type="text" class="form-control input-lg" name="address" placeholder="Address" required="required" style="margin-bottom:10px;">
-    </div>
-    <div class="form-group">
-      <input type="number" class="form-control input-lg" name="pincode" placeholder="Pincode" required="required" style="margin-bottom:10px;">
-  </div>
-  <div class="form-group">
-    <input type="number" class="form-control input-lg" name="phone" placeholder="Mobile Number" required="required" style="margin-bottom:10px;">
-</div>
-      <!-- <input name="address" style="width:100%;border-radius:10px;border:1px #a6f6f1 solid;" class="py-3" type="text" placeholder="Address" required> -->
-       <div>
-        <button class="btn btn-lg btn-outline-success my-2" type="submit" name="button">Order Now</button>
+  <a class="btn btn-lg btn-primary" href="/userDetails">Check Out</a>
 
-       </div>
-    </form>
-  </div>
 <% } else{  %>
 <div>
   <a class="btn btn-lg btn-outline-success" href="/login">login to place order</a>
@@ -155,6 +139,7 @@ function myFunction(){
 			preloader.style.display = 'none';
 		};
 });
+
 </script>
 <script src="/js/elecEquip.js" charset="utf-8"></script>
 

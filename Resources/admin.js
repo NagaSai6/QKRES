@@ -7,8 +7,8 @@ export function initAdmin(socket) {
 
 
 
-  const orderTableBody =$('#orderTableBody')
-  let orders=[]
+  const orderTableBody = $('#orderTableBody')
+  let orders = []
   let markup
 
   axios.get('/admin/orders', {
@@ -25,9 +25,10 @@ export function initAdmin(socket) {
     // console.log(markup);
 
     orderTableBody.html(markup)
-  }).catch(err =>{
+  }).catch(err => {
     console.log(err);
   })
+
   function renderItems(items) {
     let parsedItems = Object.values(items)
     return parsedItems.map(menuItem => {
@@ -46,22 +47,25 @@ export function initAdmin(socket) {
       ${ moment(order.createdAt).format('MMMM Do YYYY hh:mm A') }
       </div>
 
-    
+
 
                <p class="my-2"> <b>Order Id:</b> ${ order._id } </p>
 <hr>
 
                     <div class="orderedItems my-3"> <b>Ordered Items :</b>${ renderItems(order.items) }</div>
-            
-<hr>      
-              <p class="mb-2">Name : <b>  ${ order.customerId.google ? order.customerId.google.customerName :  order.customerId.local.customerName}   </b></p>
-       
+
+<hr>
+
+
               <b class="mb-3">Phone : <i>  ${ order.phone} </i> </b>
                <p class="mb-3">Addresss : <b>  ${ order.address } </b> </p>
 
                <p class="mb-3">Pincode : <b>  ${ order.pincode } </b> </p>
 
-                
+               <td class="border px-4 py-2">${ order.name }</td>
+
+
+
                     <div class="inline-block relative w-64">
                         <form action="/admin/order/status" method="POST">
                             <div class="form-group">
@@ -83,14 +87,14 @@ export function initAdmin(socket) {
                                 </option>
                             </select>
                         </form>
-                   
-                    </div>
-                    <hr style="height:2px;width:100%;background:yellow;" >   
 
-                    
-               
-                    
-         
+                    </div>
+                    <hr style="height:2px;width:100%;background:yellow;" >
+
+
+
+
+
         `
     }).join('')
   }
@@ -106,6 +110,6 @@ export function initAdmin(socket) {
     }).show();
     orders.unshift(order)
     orderTableBody.html("")
-    orderTableBody.html( generateMarkup(orders))
+    orderTableBody.html(generateMarkup(orders))
   })
 }

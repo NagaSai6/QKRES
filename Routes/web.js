@@ -53,7 +53,7 @@ function initRoutes(app) {
 
   app.get("/mech",material().mech)
 
-// chemical Equipments routes 
+// chemical Equipments routes
 
 app.get("/chem",chemical().index)
 
@@ -63,13 +63,15 @@ app.get("/chem",chemical().index)
 
   app.post("/update-cart", cart().update)
 
-  app.get("/delete_cart",cart().delete_cart)
+  app.get("/delete_cart",secure,cart().delete_cart)
+
+  app.get("/userDetails",secure,cart().userInfo)
 
   app.post("/del_Items",secure,cart().delete_items_in_cart)
 
   app.post("/add_Items",secure,cart().add_items_to_cart)
 
- 
+
 
  // local routes
 

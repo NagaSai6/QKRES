@@ -10,17 +10,19 @@ function orderController() {
     store(req, res) {
       const user = req.user
     // validate request
+    const name = req.body.name;
     const address = req.body.address;
     const pincode=req.body.pincode;
     const phone = req.body.phone;
     // const{address,pincode,phone}=req.body
-    if(!address || !phone || !pincode ){
+    if(!address || !phone || !pincode|| !name){
       req.flash("error","All  fields are required")
       return res.redirect("/cart")
     }
  const order = new Order({
    customerId:user._id,
    items:req.session.cart.items,
+   name:req.body.name,
    phone:req.body.phone,
    address:req.body.address,
    pincode:req.body.pincode
@@ -28,7 +30,7 @@ function orderController() {
  order.save().then(order=>{
 
   Order.populate(order,{path:"customerId"},(err,placedOrder)=>{
-    delete req.session.cart 
+    delete req.session.cart
     //emit
                    const eventEmitter =req.app.get("eventEmitter")
                   eventEmitter.emit("orderPlaced",placedOrder)
@@ -40,7 +42,7 @@ function orderController() {
                     Thanks for shopping with QkRes \n\n
                     You will receive quotation from us in next 3 hours and u can check status of your order by logging in to your account\n`,
                   };
-              
+
                   sgMail.send(mailOptions, (error, result) => {
                     if (error) {
                       return res.status(500).json({
@@ -48,10 +50,10 @@ function orderController() {
                       });
                     }
                     return res.redirect("/customer/orders")
-    
+
                     // res.status(200).json({message: 'A reset email has been sent to ' + user.email + '.'});
                   });
-   
+
 
 
   })

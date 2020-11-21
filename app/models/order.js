@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema({
     items :{type:Object,required:true},
     phone :{type:String,required:true},
     pincode:{type:String,required:true},
+    name:{type:String,required:true},
     address:{type:String,required:true},
     paymentMethod:{type:String,default:"Cash on Delivery"},
     status:{type:String,default:"order_placed"}

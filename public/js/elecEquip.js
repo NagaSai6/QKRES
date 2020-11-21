@@ -36,6 +36,22 @@ function myFunction(){
 
 let addToCart = document.querySelectorAll('.add_to_cart');
 let cartCounter = $("#cartCounter");
+// var modal = document.getElementById('checkOut');
+// var btn = document.getElementById("formBtn");
+// var span = document.getElementsByClassName("closeBtn")[0];
+// btn.onclick = function() {
+//   modal.style.display = "block";
+// }
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//       modal.style.display = "none";
+//   }
+// }
+
+
 
 function updateCart(Equipment){
       axios.post("/update-cart",Equipment).then(res =>{
@@ -81,18 +97,10 @@ addToCart.forEach(btn => {
 
  });
 
-
-
-
-
-
-
- 
-
-
  const alertMsg = document.querySelector('#success')
 if(alertMsg) {
     setTimeout(() => {
         alertMsg.remove()
     }, 2000)
 }
+
