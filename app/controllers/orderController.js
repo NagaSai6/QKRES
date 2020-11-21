@@ -25,7 +25,9 @@ function orderController() {
    name:req.body.name,
    phone:req.body.phone,
    address:req.body.address,
-   pincode:req.body.pincode
+   pincode:req.body.pincode,
+   city:req.body.city,
+   landmark:req.body.landmark 
  })
  order.save().then(order=>{
 
