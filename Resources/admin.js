@@ -64,7 +64,7 @@ export function initAdmin(socket) {
 
                <p class="mb-3">Addresss : <b>  ${ order.address } </b> </p>
 
-               <p class="mb-3">Pincode : <b>  ${ order.landmark } </b> </p>
+               <p class="mb-3">Landmark : <b>  ${ order.landmark } </b> </p>
 
 
                <p class="mb-3">Pincode : <b>  ${ order.pincode } </b> </p>
