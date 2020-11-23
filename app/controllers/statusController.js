@@ -16,6 +16,7 @@ return{
                         const mail = order.uEmail;
                         const name = order.name;
                         const status = order.status;
+                        console.log(order.customerId);
                         const mailOptions = {
                             to:mail,
                             from: process.env.FROM_EMAIL,
