@@ -39,6 +39,15 @@ function resetPassword() {
                 Please click on the following link  ${link} . \n\n
                 If you did not request this, please ignore this email and your password will remain unchanged.\n`,
               };
+              sgMail.send(mailOptions,(err,result)=>{
+                if(err){
+                  console.log(err);
+                }
+                else{
+                  res.redirect("/success")
+                }
+
+              })
 
             })
             .catch(err => {
