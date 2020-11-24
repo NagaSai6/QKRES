@@ -558,6 +558,9 @@ margin: 2px;
     transform: rotateX(0deg);
   }
 }
+#stat{
+  margin-left: auto;
+}
 /* media query for responsiveness in small screens */
 @media only screen and (max-width:700px) {
   .boxes {
@@ -565,6 +568,9 @@ margin: 2px;
     margin: 10px auto;
 /* position:absolute; */
     overflow-x: hidden;
+  }
+  #stat{
+    margin-left: 0;
   }
 /*   .hero {
   width: 100%;
