@@ -47,7 +47,7 @@
     
          <div> <b>OrderId:</b>
            <span><%=order._id%></span>
-           <span><a class="btn btn-sm btn-outline-primary" href="/customer/order/<%= order._id %>">Status</a></span>
+           <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= order._id %>">Status</a></span>
          </div>
      
          <p> <b>Phone:</b> <span><%= order.phone %></span></p>
@@ -60,9 +60,11 @@
         <div>
           <b>Order placed at :</b>
           <span>
-            <%= moment(order.createdAt).format('MMM Do YYYY') %>,
-
+            <%= moment(order.createdAt).format('MMM Do YYYY') %>
           </span>
+        </div>
+        <div style="margin-left: auto;">
+          <a href="/cancel_order/:token" class="btn btn-sm btn-danger my-2">Cancel Order</a>
         </div>
 
      </div>
