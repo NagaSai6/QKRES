@@ -186,6 +186,9 @@ app.get("/admin/orders",adminAuth,adminOrder().index)
 
 app.post("/admin/order/status",adminAuth,statusController().update)
 
+app.post("/admin/order/cancel",adminAuth,statusController().cancel)
+
+
 // forgot password routes
 
 

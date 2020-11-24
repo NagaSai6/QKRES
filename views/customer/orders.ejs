@@ -44,7 +44,7 @@
   
 
      <div class="container-fluid  wedueid">
-      <% if(order.status != "completed"){ %>
+      <% if(order.status != "completed" && order.status != "Cancel Approved"){ %>
         <div> <b>OrderId:</b>
           <span><%=order._id%></span>
           <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= order._id %>">Status</a></span>

@@ -101,7 +101,7 @@ export function initAdmin(socket) {
                     </div>
 
 
-                    <form action="/admin/order/status" method="POST">
+                    <form action="/admin/order/cancel" method="POST">
                     <div class="form-group">
                     <input class="form-control input-lg" type="hidden" name="orderId" value="${ order._id }">
                     </div>
