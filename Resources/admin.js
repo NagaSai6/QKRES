@@ -55,7 +55,8 @@ export function initAdmin(socket) {
                     <div class="orderedItems my-3"> <b>Ordered Items :</b>${ renderItems(order.items) }</div>
 
 <hr>
- 
+<p class="mb-3">status : <b>  ${ order.status} </b> </p>
+
               <p class="mb-3">Name: <b>  ${ order.name} </b> </p>
 
               <p class="mb-3">Phone : <b>  ${ order.phone} </b> </p>
