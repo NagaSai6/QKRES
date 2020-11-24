@@ -62,6 +62,10 @@
 
         <p> <b>City:</b> <span><%= order.city %></span></p>
 
+        <p> <b>Pincode:</b> <span><%= order.pincode %></span></p>
+
+        <p> <b>Landmark:</b> <span><%= order.landmark %></span></p>
+
 
 
         <p style="display: flex;flex-direction: column;"> <b>Address:</b> <%= order.address %>
@@ -91,6 +95,10 @@
 
       <p> <b>City:</b> <span><%= order.city %></span></p>
 
+      <p> <b>Pincode:</b> <span><%= order.pincode %></span></p>
+
+      <p> <b>Landmark:</b> <span><%= order.landmark %></span></p>
+
 
       <p style="display: flex;flex-direction: column;"> <b>Address:</b> <%= order.address %>
      </p>
@@ -98,7 +106,7 @@
      <div>
        <b>Order placed at :</b>
        <span>
-         <%= moment(order.createdAt).format('MMM Do YYYY') %>
+         <%= moment(order.createdAt).format('MMM Do YYYY hh:mm') %>
        </span>
      </div>
      <div style="margin-left: auto;">

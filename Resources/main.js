@@ -40,7 +40,6 @@ let time = document.createElement("small")
                   status.appendChild(time)
                   if(status.nextElementSibling){
                      status.nextElementSibling.classList.add("current")
-
                   }
                   
                }

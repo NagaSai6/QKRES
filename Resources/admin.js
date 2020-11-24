@@ -62,7 +62,7 @@ export function initAdmin(socket) {
 
               <p class="mb-3">City : <b>  ${ order.city } </b> </p>
 
-               <p class="mb-3">Addresss : <b>  ${ order.address } </b> </p>
+               <p style="overflow:hidden;word-wrap:break-word;" class="mb-3">Addresss : <b>  ${ order.address } </b> </p>
 
                <p class="mb-3">Landmark : <b>  ${ order.landmark } </b> </p>
 
@@ -73,7 +73,7 @@ export function initAdmin(socket) {
 
 
 
-                    <div class="inline-block relative w-64">
+                    <div style="text-align:center;"  class=" my-2 ">
                         <form action="/admin/order/status" method="POST">
                             <div class="form-group">
                             <input class="form-control input-lg" type="hidden" name="orderId" value="${ order._id }">
@@ -92,10 +92,27 @@ export function initAdmin(socket) {
                                 <option value="completed" ${ order.status === 'completed' ? 'selected' : '' }>
                                     Completed
                                 </option>
+  
                             </select>
+
                         </form>
+                    
 
                     </div>
+
+
+                    <form action="/admin/order/status" method="POST">
+                    <div class="form-group">
+                    <input class="form-control input-lg" type="hidden" name="orderId" value="${ order._id }">
+                    </div>
+                    <div class="form-group">
+                    <input class="form-control input-lg" type="hidden" name="cancel" value="Cancel Approved">
+                    </div>
+                    <button type="submit"  class="btn btn-lg btn-danger mx-auto my-2 ">Cancel</button>
+                    </form>
+
+
+               
                     <hr style="height:2px;width:100%;background:yellow;" >
 
 
