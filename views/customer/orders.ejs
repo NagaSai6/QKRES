@@ -44,28 +44,66 @@
   
 
      <div class="container-fluid  wedueid">
+      <% if(order.status != "completed"){ %>
+        <div> <b>OrderId:</b>
+          <span><%=order._id%></span>
+          <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= order._id %>">Status</a></span>
+        </div>
+        <h6 class="ml7"> <b>status:</b>
+           <span class="text-wrapper">
+            <span class="letters"><%= order.status %></span>
+           </span>
+        </h6>
+
+        <p> <b>Phone:</b> <span><%= order.phone %></span></p>
+
+        <p> <b>City:</b> <span><%= order.city %></span></p>
+
+
+
+        <p style="display: flex;flex-direction: column;"> <b>Address:</b> <%= order.address %>
+       </p>
+      
+       <div>
+         <b>Order placed at :</b>
+         <span>
+           <%= moment(order.createdAt).format('MMM Do YYYY') %>
+         </span>
+       </div>
+       <div style="margin-left: auto;">
+         <a href="/cancel_order/:token" class="btn btn-sm btn-danger my-2">Cancel Order</a>
+       </div>
+    <%  }else{ %>
+      <div> 
+        <strike>
+          <b>OrderId:</b>
+        <span><%=order._id%></span>
+        </strike>
+        <!-- <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= order._id %>">Status</a></span> -->
+      </div>
+
+      <p> <b>status:</b> <span><%= order.status %></span></p>
+
+      <p> <b>Phone:</b> <span><%= order.phone %></span></p>
+
+      <p> <b>City:</b> <span><%= order.city %></span></p>
+
+
+      <p style="display: flex;flex-direction: column;"> <b>Address:</b> <%= order.address %>
+     </p>
     
-         <div> <b>OrderId:</b>
-           <span><%=order._id%></span>
-           <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= order._id %>">Status</a></span>
-         </div>
-     
-         <p> <b>Phone:</b> <span><%= order.phone %></span></p>
+     <div>
+       <b>Order placed at :</b>
+       <span>
+         <%= moment(order.createdAt).format('MMM Do YYYY') %>
+       </span>
+     </div>
+     <div style="margin-left: auto;">
+       <!-- <a href="/cancel_order/:token" class="btn btn-sm btn-danger my-2">Cancel Order</a> -->
+     </div>
 
-         <p> <b>City:</b> <span><%= order.city %></span></p>
-
-         <p style="display: flex;flex-direction: column;"> <b>Address:</b> <%= order.address %>
-        </p>
-       
-        <div>
-          <b>Order placed at :</b>
-          <span>
-            <%= moment(order.createdAt).format('MMM Do YYYY') %>
-          </span>
-        </div>
-        <div style="margin-left: auto;">
-          <a href="/cancel_order/:token" class="btn btn-sm btn-danger my-2">Cancel Order</a>
-        </div>
+   <% } %>
+        
 
      </div>
 
@@ -83,16 +121,40 @@
 
 
    <%}%>
-   
+
+  
 
 
-  </div>
+ 
 
 </section>
 
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/head.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script>
+  var textWrapper = document.querySelector('.ml7 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml7 .letter',
+    translateY: ["1.1em", 0],
+    translateX: ["0.55em", 0],
+    translateZ: 0,
+    rotateZ: [180, 0],
+    duration: 750,
+    easing: "easeOutExpo",
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml7',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
 
 </body>
 
