@@ -8,8 +8,10 @@ export function initAdmin(socket) {
 
 
   const orderTableBody = $('#orderTableBody')
+  const messageBody = $("#message")
   let orders = []
   let markup
+  let markup1
 
   axios.get('/admin/orders', {
     headers: {
@@ -22,9 +24,13 @@ export function initAdmin(socket) {
     // console.log(orders);
 
     markup = generateMarkup(orders)
+    markup1= genearteMarkup1(orders)
     // console.log(markup);
 
     orderTableBody.html(markup)
+    messageBody.html(markup1)
+
+
   }).catch(err => {
     console.log(err);
   })
@@ -55,7 +61,11 @@ export function initAdmin(socket) {
                     <div class="orderedItems my-3"> <b>Ordered Items :</b>${ renderItems(order.items) }</div>
 
 <hr>
+<input type="hidden" name="id" value="<%= order._id %>">
+
 <p class="mb-3">status : <b>  ${ order.status} </b> </p>
+<p class="mb-3">status : <b id="test">  </b> </p>
+
 
               <p class="mb-3">Name: <b>  ${ order.name} </b> </p>
 
@@ -71,7 +81,9 @@ export function initAdmin(socket) {
                <p class="mb-3">Pincode : <b>  ${ order.pincode } </b> </p>
 
               
+               <div id="message">
 
+               </div>
 
 
                     <div style="text-align:center;"  class=" my-2 ">
@@ -114,7 +126,6 @@ export function initAdmin(socket) {
 
 
                
-                    <hr style="height:2px;width:100%;background:yellow;" >
 
 
 
@@ -122,6 +133,18 @@ export function initAdmin(socket) {
 
         `
     }).join('')
+  }
+  function genearteMarkup1(orders){
+    return orders.map(order => {
+      return `
+      <h6> ${order.message} </h6>
+      <hr style="height:2px;width:100%;background:yellow;" >
+
+      `
+
+
+    })
+
   }
 
 
@@ -137,4 +160,13 @@ export function initAdmin(socket) {
     orderTableBody.html("")
     orderTableBody.html(generateMarkup(orders))
   })
+
+  socket.on('requestforCancellation',(order)=>{
+    
+    messageBody.html(genearteMarkup1(orders))
+  })
+
+
+
+
 }

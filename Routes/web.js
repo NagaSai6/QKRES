@@ -10,6 +10,7 @@ const adminOrder=require("../app/controllers/adminController")
 const forgotPassword = require("../app/controllers/passwordResetController")
 const chemical = require("../app/controllers/chemicals/chemicalController")
 const statusController = require("../app/controllers/statusController")
+const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelController")
 // const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
 
@@ -57,7 +58,7 @@ function initRoutes(app) {
 
 app.get("/chem",chemical().index)
 
-
+// cart routes 
 
   app.get("/cart", cart().index)
 
@@ -179,6 +180,9 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
   app.post("/orders",secure,order().store)
 app.get("/customer/orders",secure,order().index)
 app.get("/customer/order/:id",secure,order().show)
+
+// cancel order request routes
+app.post("/cancelOrderRequest",secure,cancelRequest().index)
 
 // admin routes
 

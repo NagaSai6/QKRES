@@ -80,7 +80,6 @@ app.use(passport.session())
 app.use((req, res, next) => {
   res.locals.session = req.session
   res.locals.user = req.user
-  res.locals.sgMail=req.sgMail
   next()
 })
 
@@ -120,4 +119,8 @@ eventEmitter.on("orderUpdated",(data) =>{
 
 eventEmitter.on("orderPlaced",(data) =>{
   io.to("adminRoom").emit("orderPlaced",data)
+})
+
+eventEmitter.on("requestforCancellation",(data)=>{
+  io.to("adminRoom").emit("requestforCancellation",data)
 })

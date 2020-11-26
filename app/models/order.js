@@ -16,7 +16,9 @@ const orderSchema = new mongoose.Schema({
     landmark:{type:String},
     uEmail:{type:String},
     paymentMethod:{type:String,default:"Cash on Delivery"},
-    status:{type:String,default:"order_placed"}
+    status:{type:String,default:"order_placed"},
+    message:{type:String,default:"No request made for cancellation"}
+
 },{timestamps:true})
 
 
