@@ -1,4 +1,8 @@
 /* html tags */
+html{
+  scroll-behavior:smooth ;
+}
+
 #mechLoader{
 	align-items: center;
   cursor: none;
@@ -30,6 +34,7 @@ h1{
   font-family: 'Montserrat',sans-serif;
   font-weight: bold;
   color: white;
+
 }
 p {
   font-size: 1rem;
