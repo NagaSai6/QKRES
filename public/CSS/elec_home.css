@@ -36,6 +36,12 @@ h1{
   color: white;
 
 }
+h2,h4{
+  font-family: 'Montserrat',sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
 p {
   font-size: 1rem;
   line-height: 1.2;
@@ -83,7 +89,7 @@ p {
   background: #cffffe;border:1px solid;border-radius:10px;
 }
 #cart_link:hover{
-  background: #b2ebf2;
+  background: #bc6ff1;
 }
 /* classes */
 
@@ -103,9 +109,7 @@ p {
   padding: 10px;
 
 }
-.elec:hover{
-  background: #e8ffff;
-}
+
 
 .menu_img{
   margin-bottom: 10px;
