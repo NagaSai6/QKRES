@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Signup</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/CSS/signup.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+<style>
+    .form-check-label{
+   display: flex;
+   align-items: center;
+   margin-left: 50px;
+  
+    }
+    .form-check-input{
+        margin-left: 20px;
+       display: flex;
+       align-items: center;
+    }
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+  <!-- <script src="" charset="utf-8"></script> -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body class="text-center">
+  <div id="particles-js"><canvas class="particles-js-canvas-el" width="1889" height="349" style="width: 100%; height: 100%;"></canvas></div>
+  <%- include("../navbar.ejs")  %>
+
+<div class="signup-form container">
+<% data.forEach(function(e){ %>
+    <form action="/mechServiceForm" method="post" class="form-signin" enctype="multipart/form-data">
+        <img class="mb-2" src="images/Qres.logo.png" alt="" height="40">
+        <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;"><%=e.name%></h4>
+        <div class="form-group">
+    
+                <input type="text" class="form-control input-md" name="customerName" placeholder="Name" required="required">
+            </div>
+            <div class="form-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="email" class="form-control input-sm" name="email" placeholder="Email Address" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" name="department" placeholder="Department" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" name="insti" placeholder="Institute">
+            </div>
+          
+            <div class="form-group"  >
+    <textarea style="border-radius: 10px;outline: none !important;padding: 5px;"   name="requirement" id="" class=" input-sm" cols="47" rows="6" placeholder="Tell us your Requirement"></textarea>        </div>
+     
+    <!-- <b  class="my-3">upload requirement file :</b> -->
+<b>Service Requirement File</b>
+                <input id="fileUpload"  type="file" accept=".pdf .doc .docx" class="input-sm my-2" name="fileToUpload" placeholder="uploadFile" required="required" style="margin-bottom:10px;">
+<div>     
+    <b>How Frequently your firm/work needs this service ?</b>
+</div>               
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+    <label class="form-check-label" for="exampleRadios1">
+     very Frequently(once in a month or less)
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+    <label class="form-check-label" for="exampleRadios2">
+      Rare
+    </label>
+  </div>
+  <div class="form-check disabled">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+    <label class="form-check-label" for="exampleRadios3">
+      Other
+    </label>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control input-sm my-2" name="other" placeholder="If you chose Other,kindly let us know">
+</div>
+
+    
+        <button id="signbutton" style="border-radius:50px;" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <p class="mt-2 mb-2 text-muted">© 2020-2021</p>
+      </form>
+
+<% }) %>
+</div>
+
+  <script src="/js/particles.min.js" charset="utf-8"></script>
+  <script src="/js/apply.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="/js/sign.js" charset="utf-8"></script>
+
+</body>
+
+</html>

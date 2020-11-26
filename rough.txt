@@ -1,3 +1,7 @@
+<button data-x="<%= JSON.stringify(e) %>" style="position:relative;top:8px;" class="btn btn-sm btn-outline-success add_to_cart  mx-3" href="">
+     <span>+</span>
+                  <span><img style="height: 20px;" src="/images/add-to-cart.svg" alt="add-to-cart"> </span>
+                </button>
 <!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 

@@ -128,6 +128,17 @@ function materialController(){
           return res.render("electricals/other",{other:others})
         }
       })
+    },
+    mechForm(req,res){
+       Material.find({"_id":req.params.token},(err,data)=>{
+         if(err){
+           console.log(err);
+         }else{
+           return  res.render("servicesForm/mechService",{data:data})
+         }
+       })
+      // res.render("servicesForm/mechService")
+
     }
 
   }
