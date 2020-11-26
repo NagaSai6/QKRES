@@ -48,26 +48,13 @@ return{
         if(err){
           return console.log(err);
         }else{
-          Order.findById(req.body.orderId,function(err,order){
-            const mail = order.uEmail;
-            const name = order.name;
-            const status = order.status;
+          Order.deleteOne({_id:req.body.orderId},function(err,order){
+            if (err){
+              console.log(err);
+
+            }
             console.log(order.customerId);
-            const mailOptions = {
-                to:mail,
-                from: process.env.FROM_EMAIL,
-                subject: req.body.status,
-                text: `Hi ${name} \n
-                Your order  has been Cancelled \n\n
-                Order Status : ${status}\n`,
-              };
-              sgMail.send(mailOptions, (error, result) => {
-                if (error) {
-                  return res.status(500).json({
-                    message: error.message
-                  });
-                }
-              });
+ 
         })
         return res.redirect("/admin/orders")
         }
@@ -79,3 +66,20 @@ return{
 
 
 module.exports = statusController
+
+
+// const mailOptions = {
+//   to:mail,
+//   from: process.env.FROM_EMAIL,
+//   subject: req.body.status,
+//   text: `Hi ${name} \n
+//   Your order  has been Cancelled \n\n
+//   Order Status : ${status}\n`,
+// };
+// sgMail.send(mailOptions, (error, result) => {
+//   if (error) {
+//     return res.status(500).json({
+//       message: error.message
+//     });
+//   }
+// });

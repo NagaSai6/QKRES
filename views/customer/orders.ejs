@@ -81,7 +81,7 @@
         <form action="/cancelOrderRequest" method="POST">
           <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
           <input type="hidden" name="id" value="<%= order._id %>">
-          <input type="hidden" name="cancelInput" value="customer requested for cancellation">
+          <input type="hidden" name="cancelInput" id="cancel" value="customer requested for cancellation">
         <% if(order.message === "customer requested for cancellation"){ %>
           <p style="padding: 5px;border: 2px solid black;border-radius: 50px;background-color: aliceblue;">Cancel order request submitted</p>
 

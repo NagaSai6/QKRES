@@ -64,7 +64,7 @@ export function initAdmin(socket) {
 <input type="hidden" name="id" value="<%= order._id %>">
 
 <p class="mb-3">status : <b>  ${ order.status} </b> </p>
-<p class="mb-3">status : <b id="test">  </b> </p>
+<p class="mb-3">cancelRequest : <b style="color:red;font-weight:bold;" id="test">${ order.message}  </b> </p>
 
 
               <p class="mb-3">Name: <b>  ${ order.name} </b> </p>
@@ -81,9 +81,7 @@ export function initAdmin(socket) {
                <p class="mb-3">Pincode : <b>  ${ order.pincode } </b> </p>
 
               
-               <div id="message">
-
-               </div>
+               <input type="hidden" value="${order._id}">
 
 
                     <div style="text-align:center;"  class=" my-2 ">
@@ -141,8 +139,6 @@ export function initAdmin(socket) {
       <hr style="height:2px;width:100%;background:yellow;" >
 
       `
-
-
     })
 
   }
