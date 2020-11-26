@@ -12,16 +12,24 @@
   z-index: 2000;
   background-color: #706897;
 }
+.wave-top {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
 
 body {
   margin-top: 60px;
-  color:#393b44;
+  background-color: #141f36;
   overflow-x: hidden;
   align-items: center;
 }
 h1{
   font-family: 'Montserrat',sans-serif;
   font-weight: bold;
+  color: white;
 }
 p {
   font-size: 1rem;
