@@ -40,21 +40,27 @@
         <img class="mb-2" src="../images/Qres.logo.png" alt="" height="40">
         <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;"><%=e.name%></h4>
         <div class="form-group">
+          <% if(messages.error){ %>
+            <span style="color:red;"><%= messages.error %>  </span>
+        <%  }%>
+          <input type="hidden" name="id" value="<%=e._id%>">
+          <input type="hidden" name="serviceName" value="<%=e.name%>">
+
     
-                <input type="text" class="form-control input-md" name="customerName" placeholder="Name" required="required">
+                <input type="text" class="form-control input-md" value="<%=messages.customerName%>" name="customerName" placeholder="Name" required="required">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control input-sm" name="email" placeholder="Email Address" required="required">
+                <input type="email" class="form-control input-sm" value="<%=messages.email%>" name="email" placeholder="Email Address" required="required">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control input-sm" name="department" placeholder="Department" required="required">
+                <input type="text" class="form-control input-sm" value="<%=messages.department%>"  name="department" placeholder="Department" required="required">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control input-sm" name="insti" placeholder="Institute">
+                <input type="text" class="form-control input-sm" value="<%=messages.insti%>" name="insti" placeholder="Institute">
             </div>
           
             <div class="form-group"  >
-    <textarea id="textArea"  name="requirement" id="" class=" input-sm" cols="40" rows="4" placeholder="Tell us your Requirement"></textarea>        </div>
+    <textarea id="textArea"  name="requirement" id="" class=" input-sm" cols="40" rows="4" placeholder="Tell us your Requirement" required="required"></textarea>        </div>
      
 <b>Service Requirement File</b>
                 <input id="fileUpload"  type="file" accept=".pdf .doc .docx" class="input-sm my-2" name="file" placeholder="uploadFile" required="required" style="margin-bottom:10px;">
@@ -62,31 +68,30 @@
     <b>How Frequently your firm/work needs this service ?</b>
 </div>               
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+    <input class="form-check-input" type="radio" name="frequency" id="exampleRadios1" value="very Frequently(once in a month or less)" checked>
     <label class="form-check-label" for="exampleRadios1">
      very Frequently(once in a month or less)
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+    <input class="form-check-input" type="radio" name="frequency" id="exampleRadios2" value="Rare">
     <label class="form-check-label" for="exampleRadios2">
       Rare
     </label>
   </div>
-  <div class="form-check disabled">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+  <div class="form-check ">
+    <input class="form-check-input" type="radio" name="frequency" id="exampleRadios3" value="Other">
     <label class="form-check-label" for="exampleRadios3">
       Other
     </label>
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control input-sm my-2" name="other" placeholder="If you chose Other,kindly let us know">
+    <input type="text" class="form-control input-sm my-2" value="<%=messages.other%>" name="other" placeholder="If you chose Other,kindly let us know">
 </div>
 
    
         <a href="#helper" id="signbutton" style="border-radius:50px;" class="btn btn-lg btn-primary btn-block" onclick="myFunction()">Continue</a>
-        <p class="mt-2 mb-2 text-muted">© 2020-2021</p>
         <div style="height: 60px;visibility: hidden;" id="helper">
           hbbcfjncaklccocnxkcncocwo,This div wont visible
         </div>
@@ -95,21 +100,22 @@
   <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;">Enter your details</h4>
 
   <div class="form-group">
-    <input type="number" class="form-control input-md" name="pincode" placeholder="pincode" required="required">
+    <input type="number" class="form-control input-md" value="<%=messages.pincode%>"  name="pincode" placeholder="pincode" required="required">
 </div>
 <div class="form-group">
   <input type="text" class="form-control input-md" name="Landmark" placeholder="Landmark" required="required">
 </div>
 <div class="form-group">
-  <input type="text" class="form-control input-md" name="address" placeholder="Address" required="required">
+  <input type="text" class="form-control input-md" value="<%=messages.address%>" name="address" placeholder="Address" required="required">
 </div>
 <div class="form-group">
-  <input type="number" class="form-control input-md" name="phone" placeholder="Mobile" required="required">
+  <input type="number" class="form-control input-md"  name="phone" placeholder="Mobile" required="required">
 </div>
 <div class="form-group">
-  <input type="text" class="form-control input-md" name="suggestion" placeholder="Any thing you want to convey? (Optional)">
+  <input type="text" class="form-control input-md" value="<%=messages.suggestion%>" name="suggestion" placeholder="Any thing you want to convey? (Optional)">
 </div>
 <button type="submit" class="btn btn-block btn-primary" >Submit requirement</button>
+<p class="mt-2 mb-2 text-muted">© 2020-2021</p>
 
 </div>
 
