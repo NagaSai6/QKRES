@@ -36,7 +36,7 @@
 
 <div class="signup-form container">
 <% data.forEach(function(e){ %>
-    <form action="/mechServiceForm" method="post" class="form-signin" enctype="multipart/form-data">
+    <form action="/upload/single" method="post" class="form-signin" enctype="multipart/form-data">
         <img class="mb-2" src="../images/Qres.logo.png" alt="" height="40">
         <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;"><%=e.name%></h4>
         <div class="form-group">
@@ -57,7 +57,7 @@
     <textarea id="textArea"  name="requirement" id="" class=" input-sm" cols="40" rows="4" placeholder="Tell us your Requirement"></textarea>        </div>
      
 <b>Service Requirement File</b>
-                <input id="fileUpload"  type="file" accept=".pdf .doc .docx" class="input-sm my-2" name="fileToUpload" placeholder="uploadFile" required="required" style="margin-bottom:10px;">
+                <input id="fileUpload"  type="file" accept=".pdf .doc .docx" class="input-sm my-2" name="file" placeholder="uploadFile" required="required" style="margin-bottom:10px;">
 <div>     
     <b>How Frequently your firm/work needs this service ?</b>
 </div>               
@@ -84,9 +84,35 @@
     <input type="text" class="form-control input-sm my-2" name="other" placeholder="If you chose Other,kindly let us know">
 </div>
 
-    
-        <button id="signbutton" style="border-radius:50px;" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+   
+        <a href="#helper" id="signbutton" style="border-radius:50px;" class="btn btn-lg btn-primary btn-block" onclick="myFunction()">Continue</a>
         <p class="mt-2 mb-2 text-muted">© 2020-2021</p>
+        <div style="height: 60px;visibility: hidden;" id="helper">
+          hbbcfjncaklccocnxkcncocwo,This div wont visible
+        </div>
+
+<div class="signup-form container" id="userInfo">
+  <h4 class="mb-2 font-weight-normal" style="  font-family: 'Lato',sans-serif;">Enter your details</h4>
+
+  <div class="form-group">
+    <input type="number" class="form-control input-md" name="pincode" placeholder="pincode" required="required">
+</div>
+<div class="form-group">
+  <input type="text" class="form-control input-md" name="Landmark" placeholder="Landmark" required="required">
+</div>
+<div class="form-group">
+  <input type="text" class="form-control input-md" name="address" placeholder="Address" required="required">
+</div>
+<div class="form-group">
+  <input type="number" class="form-control input-md" name="phone" placeholder="Mobile" required="required">
+</div>
+<div class="form-group">
+  <input type="text" class="form-control input-md" name="suggestion" placeholder="Any thing you want to convey? (Optional)">
+</div>
+<button type="submit" class="btn btn-block btn-primary" >Submit requirement</button>
+
+</div>
+
       </form>
 
 <% }) %>
@@ -97,7 +123,6 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="/js/sign.js" charset="utf-8"></script>
-
 </body>
 
 </html>

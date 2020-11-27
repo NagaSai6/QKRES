@@ -94,3 +94,9 @@ $(window).scroll(function() {
     $('.fixed-top').css('background', '#d3dbff');
   }
 });
+
+
+function myFunction(){
+document.getElementById("userInfo").style.display = "block"
+document.getElementById("signbutton").style.display="none"
+}

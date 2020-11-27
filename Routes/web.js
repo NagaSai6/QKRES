@@ -11,8 +11,22 @@ const forgotPassword = require("../app/controllers/passwordResetController")
 const chemical = require("../app/controllers/chemicals/chemicalController")
 const statusController = require("../app/controllers/statusController")
 const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelController")
+const services = require("../app/controllers/services/serviceController")
 // const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
+// file storage
+const multer   = require("multer")
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./public/uploads")
+  },
+  filename: (req, file, cb) => {
+    cb(null,file.originalname  + "-" + Date.now() )
+  },
+})
+const uploadStorage = multer({ storage: storage })
+
+
 
 
 
@@ -49,12 +63,12 @@ function initRoutes(app) {
 
   app.get("/electricals/other",material().other)
 
-// mech Equipments routes
-
-
+// mech services routes
   app.get("/mech",material().mech)
 
   app.get("/mech/:token",secure,material().mechForm)
+
+  app.post("/upload/single", uploadStorage.single("file"),services().index)
 
 // chemical Equipments routes
 
@@ -182,6 +196,8 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
   app.post("/orders",secure,order().store)
 app.get("/customer/orders",secure,order().index)
 app.get("/customer/order/:id",secure,order().show)
+
+
 
 // cancel order request routes
 app.post("/cancelOrderRequest",secure,cancelRequest().index)

@@ -11,7 +11,6 @@ const flash = require("express-flash");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const emitter = require("events")
-
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -82,6 +81,7 @@ app.use((req, res, next) => {
   res.locals.user = req.user
   next()
 })
+
 
 
 
