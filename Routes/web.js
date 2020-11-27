@@ -54,7 +54,7 @@ function initRoutes(app) {
 
   app.get("/mech",material().mech)
 
-  app.get("/mech/:token",material().mechForm)
+  app.get("/mech/:token",secure,material().mechForm)
 
 // chemical Equipments routes
 
