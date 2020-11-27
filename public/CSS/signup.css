@@ -142,10 +142,19 @@ margin: 2px;
   background: #145374;
   width: 0%;
 }
-
+#textArea{
+  border-radius: 10px;
+  outline: none !important;
+  padding: 5px;
+width: 400px;
+  overflow: hidden;
+}
 @media only screen and (max-width: 700px){
   body{
     margin-top:18px;
+  }
+  #textArea{
+    width: 300px;
   }
 }
 @media only screen and (min-width: 900px) {
