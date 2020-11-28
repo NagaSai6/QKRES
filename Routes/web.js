@@ -68,7 +68,7 @@ function initRoutes(app) {
 
   app.get("/mech/:token",secure,material().mechForm)
 
-  app.post("/upload/single", uploadStorage.single("file"),services().index)
+  
 
 // chemical Equipments routes
 
@@ -196,7 +196,10 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
   app.post("/orders",secure,order().store)
 app.get("/customer/orders",secure,order().index)
 app.get("/customer/order/:id",secure,order().show)
-
+// customer services routes
+app.post("/upload/single", uploadStorage.single("file"),services().serviceStore)
+app.get("/customer/services",secure,services().serviceIndex)
+app.get("/customer/service/:id",secure,services().serviceShow)
 
 
 // cancel order request routes

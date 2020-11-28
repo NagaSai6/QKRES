@@ -1,8 +1,9 @@
 const Service = require("../../models/service")
+const moment = require("moment");
 
 function serviceController(){
     return{
-        index(req,res){
+        serviceStore(req,res){
             const{customerName,email,department,insti,requirement} = req.body
             const frequency = req.body.frequency
             const pincode = req.body.pincode;
@@ -25,7 +26,6 @@ function serviceController(){
             req.flash("email", email)
             req.flash("department",department)
             req.flash("insti",insti)
-            req.flash("requirement",requirement)
             req.flash("pincode", pincode)
             req.flash("address", address)
             req.flash("other", other)
@@ -52,23 +52,23 @@ function serviceController(){
            })
 
            service.save().then(function(service){
-            res.redirect("/")  
+            res.redirect("/customer/services")  
            }).catch(err=>{
                console.log(err);
                req.flash("error", "Something went wrong")      
                 res.redirect(redirectPath) 
            })
-
-
-
-
-
-
-
-
+        },
+        async serviceIndex(req,res){
+            let services = await Service.find({customerId:req.user._id},
+              null,
+              {sort:{"createdAt": -1}})
+              res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0')
+            res.render("customer/services/service",{service:services,moment:moment})
+          },
+        serviceShow(req,res){
 
         }
-
     }
 }
 module.exports = serviceController

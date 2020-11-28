@@ -29,7 +29,8 @@ const serviceSchema = new mongoose.Schema({
     landmark:{type:String,required:true},
     suggestion:{type:String},
     frequency:{type:String},
-    other:{type:String}
+    other:{type:String},
+    status:{type:String,default:"order_placed"}
 },{timestamps:true})
 
 const Service = mongoose.model("Service",serviceSchema,"services")
