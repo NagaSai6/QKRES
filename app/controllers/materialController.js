@@ -26,7 +26,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/Dc",{dc:dcs})
+          return res.render("electricals/elecComponents",{data:dcs,header:"Dc Power Supply"})
         }
       })
     },
@@ -35,7 +35,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/demomodules",{demo:demos})
+          return res.render("electricals/elecComponents",{data:demos,header:"Demonstration modules"})
         }
       })
     },
@@ -44,7 +44,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/dmulti",{dmulti:dmultis})
+          return res.render("electricals/elecComponents",{data:dmultis,header:"Digital Multimeter"})
         }
       })
     },
@@ -53,7 +53,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/dso",{dso:dsos})
+          return res.render("electricals/elecComponents",{data:dsos,header:"Digital Storage Oscillope"})
         }
       })
     },
@@ -62,7 +62,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/etm",{etm:etms})
+          return res.render("electricals/elecComponents",{data:etms,header:"Electronic Training Modules"})
         }
       })
     },
@@ -71,7 +71,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/dm",{dm:dms})
+          return res.render("electricals/elecComponents",{data:dms,header:"Digital Meter"})
         }
       })
     },
@@ -80,7 +80,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/digiohm",{digiohm:digiohms})
+          return res.render("electricals/elecComponents",{data:digiohms,header:"Digital Ohm Meter"})
         }
       })
     },
@@ -89,7 +89,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/oscilloscope",{oscilloscope:oscilloscopes})
+          return res.render("electricals/elecComponents",{data:oscilloscopes,header:"Oscilloscope"})
         }
       })
     },
@@ -98,7 +98,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/etb",{etb:etbs})
+          return res.render("electricals/elecComponents",{data:etbs,header:"Electronic Training Board"})
         }
       })
     },
@@ -107,7 +107,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/typemeter",{typemeter:typemeters})
+          return res.render("electricals/elecComponents",{data:typemeters,header:"Portable Type Meter"})
         }
       })
     },
@@ -116,7 +116,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/decade",{decade:decades})
+          return res.render("electricals/elecComponents",{data:decades,header:"Decade Box"})
         }
       })
     },
@@ -125,7 +125,7 @@ function materialController(){
         if(err){
           console.log(err);
         }else{
-          return res.render("electricals/other",{other:others})
+          return res.render("electricals/elecComponents",{data:others,header:"Some important Electrical Equipments"})
         }
       })
     },

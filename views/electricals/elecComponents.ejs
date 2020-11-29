@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Demo modules</title>
+  <title>Electric Training Board</title>
   <!-- css -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
   <div id="head">
     <div id="title" data-aos="flip-left">
-      <h2>Digital Multimeter</h2>
+      <h2><%=header%></h2>
     </div>
     <div class="arrow bounce">
       <a style="color:white;" class="fa fa-angle-down fa-3x" href="#Nsiqwe"></a>
@@ -50,7 +50,7 @@
           <h4>Our Products</h4>
         </div>
         <div class="container-fluid row mx-auto ">
-          <% dmulti.forEach(function(e){ %>
+          <% data.forEach(function(e){ %>
           <div class="col-md-4 my-4 elec">
             <div class="text-center">
               <img style="height:120px;" class="mb-4 menu_img" src="/<%= e.image %>" alt="img">
