@@ -14,11 +14,21 @@ const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelCont
 const services = require("../app/controllers/services/serviceController")
 // const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
+const AWS = require('aws-sdk');
+
+
+//configuring the AWS environment
+AWS.config.update({
+  accessKeyId: process.env.AWSAccessKeyId,
+  secretAccessKey: process.env.AWSSecretKey
+});
+
+var s3 = new AWS.S3();
 // file storage
 const multer   = require("multer")
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./public/uploads")
+    cb(null, "")
   },
   filename: (req, file, cb) => {
     cb(null,file.originalname )
@@ -197,7 +207,7 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
 app.get("/customer/orders",secure,order().index)
 app.get("/customer/order/:id",secure,order().show)
 // customer services routes
-app.post("/upload/single", uploadStorage.single("file"),services().serviceStore)
+app.post("/upload/single",services().serviceStore)
 app.get("/customer/services",secure,services().serviceIndex)
 app.get("/customer/service/:id",secure,services().serviceShow)
 

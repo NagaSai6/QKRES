@@ -2,17 +2,17 @@
 html{
   scroll-behavior:smooth ;
 }
-/* .ml15 {
-  font-weight: 900;
-  font-size: 2.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+#mechBgBody{
+ z-index: -999;
+
+
 }
 
-.ml15 .word {
-  display:inline-block;
-  line-height: 1em;
-} */
+#animBg .anim svg{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
 #popUpShow{
   display: none;

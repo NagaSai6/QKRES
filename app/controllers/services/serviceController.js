@@ -1,9 +1,12 @@
 const Service = require("../../models/service")
 const moment = require("moment");
+// const uploads = require("./awsFilecontoller")
+// const singleUpload = uploads.single("file")
 
 function serviceController(){
     return{
         serviceStore(req,res){
+            singleUpload
             const{customerName,email,department,insti,requirement} = req.body
             const frequency = req.body.frequency
             const pincode = req.body.pincode;
