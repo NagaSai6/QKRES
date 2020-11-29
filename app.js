@@ -17,8 +17,9 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const mongodb_store = require("connect-mongo")(session);
 const app = express();
-// process.env.URL
-mongoose.connect("mongodb://localhost:27017/QkResDB"
+
+// "mongodb://localhost:27017/QkResDB"
+mongoose.connect(process.env.URL
 , {
   useNewUrlParser: true,
   useUnifiedTopology: true
