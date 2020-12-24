@@ -164,6 +164,7 @@ nav{
   }
   #sticky{
     position: sticky;
+    position: -webkit-sticky;
     top:65px;
     /* background-color:#8ad7c1; */
     padding: 2px 0px;

@@ -46,10 +46,12 @@
         <input type="hidden" name="id" value="<%=qkresServiceData._id%>">
         <input type="hidden" name="serviceName" value="<%=qkresServiceData.name%>">
         <input type="text" id="customerName" class=" input-md" value="<%=messages.customerName%>" name="customerName" placeholder="Name" required="required">
+        <input type="number" class=" input-md"  name="phone" placeholder="Mobile" required="required">
         <input type="email" id="email" class=" input-sm" value="<%=messages.email%>" name="email" placeholder="Email Address" required="required">
         <input type="text" id="department" class=" input-sm" value="<%=messages.department%>"  name="department" placeholder="Department" required="required">
         <input type="text" id="insti" class="input-sm" value="<%=messages.insti%>" name="insti" placeholder="Institute" required>
         <textarea   name="requirement" id="requi" class=" input-sm" cols="40" rows="4" placeholder="Tell us your Requirement in <%=qkresServiceData.name%> " required="required"></textarea>
+
         <input type="button" name="next" class="next action-button" value="Next" />
 
       </fieldset>
@@ -64,7 +66,6 @@
       <fieldset>
         <h2 class="qkres-fs-title">Contact Details</h2>
         <h3 class="qkres-fs-subtitle">Your Privacy is our utmost priority</h3>
-        <input type="number" class=" input-md"  name="phone" placeholder="Mobile" required="required">
         <input type="text" class=" input-md"  name="Country" placeholder="Country" required="required">
         <input type="text" class=" input-md"  name="State" placeholder="State" required="required">
         <input type="text" class=" input-md" name="city" placeholder="City/Town" required="required">
