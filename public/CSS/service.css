@@ -1,0 +1,177 @@
+body{
+    box-sizing: border-box;
+    margin-top: 60px;
+    /* background-color: #8ad7c1; */
+    
+background-repeat: no-repeat;    
+}
+#qkresServiceForm{
+	max-width: 500px;
+	margin: 50px auto;
+	text-align: center;
+    position: relative;
+}
+#qkresServiceForm fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+#qkresServiceForm fieldset:not(:first-of-type) {
+	display: none;
+}
+#qkresServiceForm input,#qkresServiceForm textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+.qkres-fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.qkres-fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+#qkres-progressbar {
+    position: sticky;
+  margin: 5px auto;
+    max-width: 500px;
+	text-align: center;
+
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#qkres-progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#qkres-progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+#qkres-progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+
+#qkres-progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+#qkres-progressbar li.active:before,  #qkres-progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+}
+#qkresServiceForm .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#qkresServiceForm .action-button:hover, #qkresServiceForm .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+nav{
+    padding: 8px 16px;
+}
+.nav-item {
+    font-family: 'Lato', sans-serif;
+  }
+  .navbar-collapse ul li a {
+    font-weight: bold;
+    color: #000;
+    font-size: 0.9rem;
+  }
+  .dropdown-item {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .dropdown-item:hover {
+    background-color: #5eaaa8;
+  }
+  .sign{
+  margin: 2px;
+  }
+  @media only screen and (min-width: 900px) {
+    .navbar .nav-item .dropdown-menu {
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+      margin-top: 0;
+    }
+    .navbar .nav-item:hover .nav-link {
+      color: #000;
+    }
+    .navbar .dropdown-menu.fade-down {
+      top: 80%;
+      transform: rotateX(-75deg);
+      transform-origin: 0% 0%;
+    }
+    .navbar .dropdown-menu.fade-up {
+      top: 180%;
+    }
+    .navbar .nav-item:hover .dropdown-menu {
+      transition: .3s;
+      opacity: 1;
+      visibility: visible;
+      top: 100%;
+      transform: rotateX(0deg);
+    }
+  }
+  #sticky{
+    position: sticky;
+    top:65px;
+    /* background-color:#8ad7c1; */
+    padding: 2px 0px;
+    z-index: 12;
+    background: #5f2c82;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+  background-repeat: no-repeat;
+  }

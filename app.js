@@ -17,7 +17,6 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const mongodb_store = require("connect-mongo")(session);
 const app = express();
-
 // "mongodb://localhost:27017/QkResDB"
 mongoose.connect(process.env.URL
 , {
@@ -51,11 +50,11 @@ app.use(session({
   store: mongoStore,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 730
+    maxAge: 1000 * 60 * 60 * 24
   },
-
-  // cookie valid for 1 month
+  // cookie valid for one day
 }));
+
 
 
 app.use(flash())
@@ -77,6 +76,7 @@ app.use(passport.session())
 
 
 app.use((req, res, next) => {
+  res.locals.session1=req.session1
   res.locals.session = req.session
   res.locals.user = req.user
   next()

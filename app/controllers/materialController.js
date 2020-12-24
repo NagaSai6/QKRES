@@ -134,7 +134,7 @@ function materialController(){
          if(err){
            console.log(err);
          }else{
-           return  res.render("servicesForm/mechService",{data:data})
+           return  res.render("servicesForm/mechServices",{data:data})
          }
        })
       // res.render("servicesForm/mechService")
