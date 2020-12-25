@@ -11,7 +11,7 @@ var require=$("#requi").val();
 
 
 $(".next").on("click",function(){
- 
+
     //    $("#info").html("All feilds are required").css("color:red")
     if(animating) return false;
     animating = true;
@@ -48,10 +48,6 @@ $(".next").on("click",function(){
         //this comes from the custom easing plugin
         easing: 'easeInOutBack'
     });
-    
-
-
-
 });
 
 $(".previous").on("click",function(){
@@ -92,3 +88,82 @@ $(".previous").on("click",function(){
 // $(".submit").on("click",function(){
 // 	return false;
 // })
+$("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", function(){
+    if($("#customerName").val() != "" && $("#email").val() != "" && $("#phone").val() != ""){
+        if($("#department").val() != "" && $("#insti").val() != "" && $("textarea").val() != ""){
+            $("#firstB").css("background","#27AE60");
+            $("#firstB").removeAttr("disabled"); 
+        }else{
+            $("#firstB").attr("disabled", "disabled");
+            $("#firstB").css("background","#e6e6e6");
+        }     
+    } else {
+        $("#firstB").attr("disabled", "disabled");
+        $("#firstB").css("background","#e6e6e6");
+    }
+});
+
+
+
+    
+        $('#fileUpload').on("change",
+            function(){
+                if ($("#fileUpload").val()) {
+                    $('#secondB').removeAttr('disabled'); 
+                    $("#secondB").css("background","#27AE60");
+                }else{
+                    $("#secondB").attr("disabled", "disabled");
+                    $("#secondB").css("background","#e6e6e6");
+                } 
+            }
+            );
+  
+
+
+
+
+
+
+
+
+
+
+
+
+// $("#fileUpload").on("keyup",function(){
+//     if($("#fileUpload").val != ""){
+//         $("#secondB").css("background","#27AE60");
+//             $("#secondB").removeAttr("disabled"); 
+
+//     }
+// })
+
+
+
+
+
+
+
+
+
+
+// $("#fileUpload").on("keyup", function(){
+   
+//     if($("#fileUpload").val() != ""){
+//         $("#secondB").removeAttr("disabled");
+//     } else {
+//         $("#secondB").attr("disabled", "disabled");
+//     }
+// });
+
+
+(() => {
+    $("#fileUpload").onchange = () => {
+      const files = $('#fileUpload').files;
+      const file = files[0];
+      if(file == null){
+        return alert('No file selected.');
+      }
+      getSignedRequest(file);
+    };
+  })();

@@ -101,8 +101,9 @@ background-repeat: no-repeat;
 	color: white;
 }
 #qkresServiceForm .action-button {
-	width: 100px;
-	background: #27AE60;
+    width: 100px;
+    /* #27AE60 */
+	background:#e6e6e6;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -112,7 +113,23 @@ background-repeat: no-repeat;
 	margin: 10px 5px;
 }
 #qkresServiceForm .action-button:hover, #qkresServiceForm .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #e6e6e6;
+}
+#qkresServiceForm .pb{
+    width: 100px;
+    /* */
+	background:#27AE60 ;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+
+}
+#qkresServiceForm .pb:hover,#qkresServiceForm .pb:focus{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 nav{
     padding: 8px 16px;
