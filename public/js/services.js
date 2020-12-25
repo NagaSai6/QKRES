@@ -102,68 +102,68 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
         $("#firstB").css("background","#e6e6e6");
     }
 });
-
-
-
-    
-        $('#fileUpload').on("change",
+  $('#fileUpload').on("change",
             function(){
                 if ($("#fileUpload").val()) {
+                    // const file = $('#fileUpload').files[0];
+                    // getSignedRequest(file);
                     $('#secondB').removeAttr('disabled'); 
                     $("#secondB").css("background","#27AE60");
                 }else{
                     $("#secondB").attr("disabled", "disabled");
                     $("#secondB").css("background","#e6e6e6");
-                } 
-            }
-            );
-  
+                    return alert('No file selected.');
+                } });
+
+
+                function uploadFile(file, signedRequest, url){
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('PUT', signedRequest);
+                    xhr.onreadystatechange = () => {
+                      if(xhr.readyState === 4){
+                        if(xhr.status === 200){
+                        //   document.getElementById('preview').src = url;
+                          $('#uploadedFileUrl').val(url);
+                          alert("Your file was uploaded")
+                        }
+                        else{
+                          alert('Could not upload file.');
+                        }
+                      }
+                    };
+                    xhr.send(file);
+                  }
+
+
+                function getSignedRequest(file){
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+                    xhr.onreadystatechange = () => {
+                      if(xhr.readyState === 4){
+                        if(xhr.status === 200){
+                          const response = JSON.parse(xhr.responseText);
+                          uploadFile(file, response.signedRequest, response.url);
+                        }
+                        else{
+                          alert('Could not get signed URL.');
+                        }
+                      }
+                    };
+                    xhr.send();
+                  }
 
 
 
 
 
 
-
-
-
-
-
-
-// $("#fileUpload").on("keyup",function(){
-//     if($("#fileUpload").val != ""){
-//         $("#secondB").css("background","#27AE60");
-//             $("#secondB").removeAttr("disabled"); 
-
-//     }
-// })
-
-
-
-
-
-
-
-
-
-
-// $("#fileUpload").on("keyup", function(){
-   
-//     if($("#fileUpload").val() != ""){
-//         $("#secondB").removeAttr("disabled");
-//     } else {
-//         $("#secondB").attr("disabled", "disabled");
-//     }
-// });
-
-
-(() => {
-    $("#fileUpload").onchange = () => {
-      const files = $('#fileUpload').files;
-      const file = files[0];
-      if(file == null){
-        return alert('No file selected.');
-      }
-      getSignedRequest(file);
-    };
-  })();
+                (() => {
+                    document.getElementById("fileUpload").onchange = () => {
+                      const files = document.getElementById('fileUpload').files;
+                      const file = files[0];
+                      if(file == null){
+                        return alert('No file selected.');
+                      }
+                      getSignedRequest(file);
+                    };
+                  })();
