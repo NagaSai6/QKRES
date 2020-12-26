@@ -22,12 +22,12 @@ function serviceController(){
             var random = Math.floor(Math.random() * 900000000000000000);
         
             fileName = random + '.' + fileName;
-            const s3Params = {
+            let s3Params = {
                 Bucket: process.env.AWS_BUCKETNAME,
                 Key: fileName,
-                Expires: 120,
-                ContentType: fileType,
-                ACL: 'public-read'
+                Expires: 150,
+                ContentType:'application/pdf',
+                ACL: 'private'
               };
               s3.getSignedUrl("putObject",s3Params,(err,data)=>{
                 if(err){

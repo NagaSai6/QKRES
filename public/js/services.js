@@ -107,14 +107,23 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                 if ($("#fileUpload").val()) {
                     // const file = $('#fileUpload').files[0];
                     // getSignedRequest(file);
-                    $('#secondB').removeAttr('disabled'); 
-                    $("#secondB").css("background","#27AE60");
+                    $('#submitForm').removeAttr('disabled'); 
+                    $("#submitForm").css("background","#27AE60");
                 }else{
-                    $("#secondB").attr("disabled", "disabled");
-                    $("#secondB").css("background","#e6e6e6");
+                    $("#submitForm").attr("disabled", "disabled");
+                    $("#submitForm").css("background","#e6e6e6");
+                    $("#submitForm").val("Upload")
                     return alert('No file selected.');
                 } });
 
+                $("#uploadedFileUrl").on("keyup",function(){
+                  if($("#uploadedFileUrl").val() != ""){
+                    $("#submitForm").css("display","none")
+                    $("#secondB").removeAttr("disabled"); 
+                    $("#secondB").css("display",''); 
+
+                  }
+                })
 
                 function uploadFile(file, signedRequest, url){
                     const xhr = new XMLHttpRequest();
@@ -124,10 +133,16 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                         if(xhr.status === 200){
                         //   document.getElementById('preview').src = url;
                           $('#uploadedFileUrl').val(url);
-                          alert("Your file was uploaded")
+                          
+                          $("#submitForm").css("display","none")
+                          $("#secondB").removeAttr("disabled"); 
+                          $("#secondB").css({"display":'','background':'#27AE60'}); 
+                          
+                          alert("Your file is uploaded")
                         }
                         else{
                           alert('Could not upload file.');
+                          $("#submitForm").val("Upload")
                         }
                       }
                     };
@@ -137,7 +152,7 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
 
                 function getSignedRequest(file){
                     const xhr = new XMLHttpRequest();
-                    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+                    xhr.open('GET', `/sign-s3?file-name=${encodeURIComponent(file.name)}&file-type=${encodeURIComponent(file.type)}`);
                     xhr.onreadystatechange = () => {
                       if(xhr.readyState === 4){
                         if(xhr.status === 200){
@@ -158,7 +173,13 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
 
 
                 (() => {
-                    document.getElementById("fileUpload").onchange = () => {
+                    document.getElementById("submitForm").onclick = () => {
+                      
+                        if(document.getElementById("uploadedFileUrl").value == ""){
+                          
+                          document.getElementById("submitForm").value = "Uploading.."
+                        } 
+                     
                       const files = document.getElementById('fileUpload').files;
                       const file = files[0];
                       if(file == null){

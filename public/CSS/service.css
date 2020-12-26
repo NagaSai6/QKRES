@@ -10,7 +10,7 @@ background-repeat: no-repeat;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
-	overflow-x: auto;
+	/* overflow-x: auto; */
 }
 #qkresServiceForm fieldset {
 	background: white;
@@ -101,7 +101,7 @@ background-repeat: no-repeat;
 	background: #27AE60;
 	color: white;
 }
-#qkresServiceForm .action-button {
+#qkresServiceForm #firstB {
     width: 100px;
     /* #27AE60 */
 	background:#e6e6e6;
@@ -112,9 +112,36 @@ background-repeat: no-repeat;
 	cursor: pointer;
 	padding: 10px 5px;
 	margin: 10px 5px;
+	
+}
+#qkresServiceForm #secondB{
+	width: 100px;
+    /* #27AE60 */
+	background:#e6e6e6;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+	
 }
 #qkresServiceForm .action-button:hover, #qkresServiceForm .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #e6e6e6;
+}
+#qkresServiceForm #submitForm{
+	width: 100px;
+    /* */
+	background:#e6e6e6;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+	
 }
 #qkresServiceForm .pb{
     width: 100px;
