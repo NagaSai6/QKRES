@@ -33,7 +33,7 @@ function serviceController(){
                 Conditions:[
                   {"acl":'private'},
                   ['starts-with', '$Content-Type', 'application/pdf'],
-                  ["content-length-range",0,15360000]
+                  ["content-length-range",1,15360000]
                 ],
                 ContentType :"application/pdf"
               };
@@ -46,7 +46,7 @@ function serviceController(){
                     signedRequest: data,
                     url:`https://${process.env.AWS_BUCKETNAME}.s3.amazonaws.com/${fileName}`
                   };
-                  console.log(returnData);
+                  // console.log(returnData);
                   res.write(JSON.stringify(returnData));
                   res.end();
 

@@ -179,9 +179,9 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
 
                           formData.append("file",file);
                           // console.log(formData);
-                          for (var pair of formData.entries()) {
-                            console.log(pair[0]+ ', ' + pair[1]); 
-                        }
+                        //   for (var pair of formData.entries()) {
+                        //     console.log(pair[0]+ ', ' + pair[1]); 
+                        // }
                           uploadFile(formData, response.signedRequest, response.url);
                           
                         }
