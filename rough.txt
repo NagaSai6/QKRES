@@ -493,3 +493,19 @@ passport.use(new GoogleStrategy({
       <input type="hidden" name="id" value="<%= x._id %>" >
       <button type="submit" class="btn btn-sm btn-outline-primary my-3" >Remove from cart</button>
       </form> -->
+
+
+
+      {
+    "Version": "2012-10-17",
+    "Id": "Policy1608960351697",
+    "Statement": [
+        {
+            "Sid": "Stmt1608960348713",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:PutObject",
+            "NotResource": "arn:aws:s3:::qkres-bucket-6303305778/*.pdf"
+        }
+    ]
+}

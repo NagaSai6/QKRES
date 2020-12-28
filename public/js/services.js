@@ -105,11 +105,19 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
   $('#fileUpload').on("change",
             function(){
                 if ($("#fileUpload").val()) {
-                    // const file = $('#fileUpload').files[0];
-                    // getSignedRequest(file);
+                  if($("#fileUpload")[0].files[0].size < 15*1024000 ){
                     $('#submitForm').removeAttr('disabled'); 
                     $("#submitForm").css("background","#27AE60");
+                    $("#errorMsg").html("")
+                  }else{
+                    $("#errorMsg").html("File size exceeds 15 Mb")
+                    $("#submitForm").css("background","#e6e6e6");
+                    $("#submitForm").attr("disabled", "disabled");
+                   
+                  }
+                  
                 }else{
+                  $("#errorMsg").html("")
                     $("#submitForm").attr("disabled", "disabled");
                     $("#submitForm").css("background","#e6e6e6");
                     $("#submitForm").val("Upload")
@@ -125,12 +133,12 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                   }
                 })
 
-                function uploadFile(file, signedRequest, url){
+                function uploadFile(formData, signedRequest, url){
                     const xhr = new XMLHttpRequest();
-                    xhr.open('PUT', signedRequest);
+                    xhr.open('POST',signedRequest.url);
                     xhr.onreadystatechange = () => {
                       if(xhr.readyState === 4){
-                        if(xhr.status === 200){
+                        if(xhr.status === 200 || xhr.status === 204){
                         //   document.getElementById('preview').src = url;
                           $('#uploadedFileUrl').val(url);
                           
@@ -146,8 +154,11 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                         }
                       }
                     };
-                    xhr.send(file);
+                    xhr.send(formData);
                   }
+                // function uploadFile(file,){
+                //   return fetch()
+                // }
 
 
                 function getSignedRequest(file){
@@ -155,9 +166,24 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                     xhr.open('GET', `/sign-s3?file-name=${encodeURIComponent(file.name)}&file-type=${encodeURIComponent(file.type)}`);
                     xhr.onreadystatechange = () => {
                       if(xhr.readyState === 4){
-                        if(xhr.status === 200){
+                        if(xhr.status === 200  ){
                           const response = JSON.parse(xhr.responseText);
-                          uploadFile(file, response.signedRequest, response.url);
+                          let formData = new FormData()
+                          const files = document.getElementById('fileUpload').files;
+                        const file = files[0];
+                        formData.append("Content-Type", file.type);
+                          Object.entries(response.signedRequest.fields).forEach(([k, v]) => {
+                            formData.append(k, v);
+                        });
+                        
+
+                          formData.append("file",file);
+                          // console.log(formData);
+                          for (var pair of formData.entries()) {
+                            console.log(pair[0]+ ', ' + pair[1]); 
+                        }
+                          uploadFile(formData, response.signedRequest, response.url);
+                          
                         }
                         else{
                           alert('Could not get signed URL.');
@@ -185,6 +211,7 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                       if(file == null){
                         return alert('No file selected.');
                       }
+                    
                       getSignedRequest(file);
                     };
                   })();

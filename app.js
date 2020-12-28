@@ -96,8 +96,8 @@ app.use((req,res)=>{
 
 
 
-const server = app.listen(process.env.PORT||4000,function(){
-    console.log("Server is up on port 4000");
+const server = app.listen(process.env.PORT||7000,function(){
+    console.log("Server is up on port 7000");
 })
 
 
