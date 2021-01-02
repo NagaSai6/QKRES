@@ -139,6 +139,9 @@ function materialController(){
        })
       // res.render("servicesForm/mechService")
 
+    },
+    chemIndex(req,res){
+      return res.render("chemicals/chemicals")
     }
 
   }

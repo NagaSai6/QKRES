@@ -57,7 +57,7 @@ function initRoutes(app) {
 
   app.get("/sign-s3",secure,services().getSignedRequest)
 
- 
+  app.get("/qkres_chemicals",material().chemIndex)
 
 // chemical Equipments routes
 
