@@ -53,8 +53,11 @@ function initRoutes(app) {
   app.get("/mech",material().mech)
 
   app.get("/mech/:token",secure,material().mechForm)
+  
 
   app.get("/sign-s3",secure,services().getSignedRequest)
+
+ 
 
 // chemical Equipments routes
 
@@ -64,11 +67,11 @@ app.get("/chem",chemical().index)
 
   app.get("/cart", cart().index)
 
-  app.post("/update-cart", cart().update)
-
   app.get("/delete_cart",secure,cart().delete_cart)
 
   app.get("/userDetails",secure,cart().userInfo)
+
+  app.post("/update-cart", cart().update)
 
   app.post("/del_Items",secure,cart().delete_items_in_cart)
 
@@ -178,10 +181,14 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
 
 
 
-// customer routes
+// customer routes for materials
   app.post("/orders",secure,order().store)
 app.get("/customer/orders",secure,order().index)
 app.get("/customer/order/:id",secure,order().show)
+// customer routes for services
+app.post("/qkres_Services",secure,services().serviceFormInputs)
+app.get("/customer/serviceOrders",secure,services().index)
+app.get("/customer/serviceOrder/:id",secure,services().show)
 // customer services routes
 // app.post("/upload/single",services().serviceStore)
 // app.get("/customer/services",secure,services().serviceIndex)
@@ -195,7 +202,13 @@ app.post("/cancelOrderRequest",secure,cancelRequest().index)
 
 app.get("/admin/orders",adminAuth,adminOrder().index)
 
+app.get("/admin/services",adminAuth,adminOrder().serviceIndex)
+
 app.post("/admin/order/status",adminAuth,statusController().update)
+
+app.post("/admin/serviceOrder/status",adminAuth,statusController().serviceUpdate)
+
+
 
 app.post("/admin/order/cancel",adminAuth,statusController().cancel)
 

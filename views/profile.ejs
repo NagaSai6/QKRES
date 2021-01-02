@@ -59,11 +59,14 @@
  <br>
  <hr>
  <% if(user.role==="customer"){ %>
-    <a class="btn btn-lg btn-primary " href="/customer/orders">My orders</a>
+    <a class="btn btn-lg btn-primary " href="/customer/orders">Materials orders</a>
+    <a class="btn btn-lg btn-primary my-3" href="/customer/serviceOrders">Service orders</a>
+
     <a class="btn btn-lg btn-outline-danger my-2 " href="/logout">Logout</a>
  <%} %>
  <% if(user.role==="admin"){ %>
     <a class="btn btn-lg btn-primary " href="/admin/orders">Orders Panel</a>
+    <a class="btn btn-lg btn-primary " href="/admin/services">Service Orders Panel</a>
     <a class="btn btn-lg btn-outline-danger my-2 " href="/logout">Logout</a> 
  <% } %>
 </div>

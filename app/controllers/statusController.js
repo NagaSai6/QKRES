@@ -1,6 +1,7 @@
 const Order = require("../models/order")
 
 const sgMail = require('@sendgrid/mail');
+const Service = require("../models/service");
 
 sgMail.setApiKey(process.env.S_EMAILAPI);
 
@@ -41,6 +42,19 @@ return{
                
   
         })
+
+    },
+    serviceUpdate(req,res){
+      Service.updateOne({_id:req.body.serviceOrderId},{status:req.body.status},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+                    const eventEmitter =req.app.get("eventEmitter")
+                    eventEmitter.emit("serviceOrderUpdated",{id:req.body.serviceOrderId,status:req.body.status})
+                    return res.redirect("/admin/services")
+
+        }
+      })
 
     },
     cancel(req,res){

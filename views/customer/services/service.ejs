@@ -47,7 +47,7 @@
       <% if(service.status != "completed" && service.status != "Cancel Approved"){ %>
         <div> <b>OrderId:</b>
           <span><%=service._id%></span>
-          <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= service._id %>">Status</a></span>
+          <span><a class="btn btn-sm btn-primary" href="/customer/serviceOrder/<%= service._id %>">Status</a></span>
         </div>
       <div id="stat">
       <span><b>status:</b></span>
@@ -59,7 +59,7 @@
       </div>
       <p> <b>Name :</b> <span><%= service.name %></span></p>
 
-      <p> <b>Service requested for :</b> <span><%= service.serviceName %></span></p>
+      <p> <b>Ordered for :</b> <span><%= service.serviceName %></span></p>
 
       <p> <b>Institute :</b> <span><%= service.insti %></span></p>
       <p> <b>Department :</b> <span><%= service.department %></span></p>
@@ -101,7 +101,6 @@
           <b>OrderId:</b>
         <span><%=service._id%></span>
         </strike>
-        <!-- <span><a class="btn btn-sm btn-primary" href="/customer/order/<%= order._id %>">Status</a></span> -->
       </div>
 
       <p> <b>status:</b> <span><%= service.status %></span></p>
@@ -119,7 +118,7 @@
      <div>
        <b>Order placed at :</b>
        <span>
-         <%= moment(order.createdAt).format('MMM Do YYYY hh:mm') %>
+         <%= moment(service.createdAt).format('MMM Do YYYY hh:mm') %>
        </span>
      </div>
      <div style="margin-left: auto;">

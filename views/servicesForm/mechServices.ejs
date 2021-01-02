@@ -17,7 +17,9 @@
     <script src="https://kit.fontawesome.com/8203e495f4.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
-<style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Langar&family=Redressed&display=swap" rel="stylesheet">
+    <style>
   body{
     background: #5f2c82;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
@@ -38,14 +40,16 @@
       <li>Address</li>
     </ul>
     </div>
-  <form id="qkresServiceForm" action="/services">
+  <form id="qkresServiceForm" action="/qkres_Services" method="POST">
     
     
       <fieldset>
         <h2 class="qkres-fs-title">Personal Details</h2>
         <h3 class="qkres-fs-subtitle">Your Details are secure with us</h3>
-        
-        <input type="hidden" name="id" value="<%=qkresServiceData._id%>">
+        <% if(messages.error){ %>
+          <span style="color:#ee9595;font-family: 'Langar',sans-serif;"><%= messages.error %>  </span>
+      <%  }%>
+        <input type="hidden" name="Itemid" value="<%=qkresServiceData._id%>">
         <input type="hidden" name="serviceName" value="<%=qkresServiceData.name%>">
         <input type="text" id="customerName" class=" input-md" value="<%=messages.customerName%>" name="customerName" placeholder="Name" required="required">
         <input type="number" class=" input-md" id="phone"  name="phone" placeholder="Mobile" required="required">
@@ -61,7 +65,7 @@
         <h2 class="qkres-fs-title">Upload Service requirement File (pdf)</h2>
         <h3 class="qkres-fs-subtitle">File size should not exceed 15Mb</h3>
         <input id="fileUpload"  type="file" accept=".pdf" class="input-sm my-2" name="file" placeholder="uploadFile" required="required" style="margin-bottom:10px;">
-        <input type="hidden" id="uploadedFileUrl" value="">
+        <input name="url" type="hidden" id="uploadedFileUrl" value="">
         <p id="errorMsg" style="color: red;text-align: center;font-size: 0.8rem;"></p>
         <input type="button" name="previous"   class="previous  pb" value="Previous" />
         <input type="button" id="submitForm" value="Upload" disabled>
@@ -71,12 +75,15 @@
       <fieldset>
         <h2 class="qkres-fs-title">Contact Details</h2>
         <h3 class="qkres-fs-subtitle">Your Privacy is our utmost priority</h3>
+        <% if(messages.error){ %>
+          <span style="color:red;"><%= messages.error %>  </span>
+      <%  }%>
         <input type="text" class=" input-md"  name="Country" placeholder="Country" required="required">
         <input type="text" class=" input-md"  name="State" placeholder="State" required="required">
         <input type="text" class=" input-md" name="city" placeholder="City/Town" required="required">
         <input type="number" class=" input-md" value="<%=messages.pincode%>"  name="pincode" placeholder="Pincode" required="required">
-        <input type="text" class="form-control input-md" name="Landmark" placeholder="Landmark" required="required">
-        <textarea   name="requirement" id="" class=" input-sm" cols="40" rows="4" placeholder="Address" required="required"></textarea> 
+        <input type="text" class="form-control input-md" name="landmark" placeholder="Landmark" required="required">
+        <textarea   name="address" id="" class=" input-sm" cols="40" rows="4" placeholder="Address" required="required"></textarea> 
         <input type="text" readonly class=" input-md" value="Check your inbox for updates"  >
         <input type="button" name="previous"  class="previous pb" value="Previous" />
         <button type="submit" class="btn btn-lg btn-primary">Submit</button>

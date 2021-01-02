@@ -22,7 +22,7 @@ function orderController() {
       return res.redirect("/userDetails")
     }
  const order = new Order({
-   customerId:user._id,
+   customerId:user.id,
    items:req.session.cart.items,
    name:req.body.name,
    phone:req.body.phone,
@@ -75,7 +75,7 @@ async index(req,res){
     {sort:{"createdAt": -1}})
     res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0')
   res.render("customer/orders",{order:orders,moment:moment})
-  console.log(orders);
+  // console.log(orders);
 },
 async show(req,res){
  const order = await Order.findById(req.params.id)

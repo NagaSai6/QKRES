@@ -5,7 +5,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-const request = require("request")
+// const helmet = require("helmet")
 
 const flash = require("express-flash");
 const passport = require("passport");
@@ -14,9 +14,9 @@ const emitter = require("events")
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const FacebookStrategy = require("passport-facebook").Strategy;
 const mongodb_store = require("connect-mongo")(session);
 const app = express();
+
 // "mongodb://localhost:27017/QkResDB"
 mongoose.connect(process.env.URL
 , {
@@ -55,6 +55,8 @@ app.use(session({
   // cookie valid for one day
 }));
 
+// app.use(helmet())
+
 
 
 app.use(flash())
@@ -76,7 +78,6 @@ app.use(passport.session())
 
 
 app.use((req, res, next) => {
-  res.locals.session1=req.session1
   res.locals.session = req.session
   res.locals.user = req.user
   next()
@@ -111,6 +112,13 @@ io.on("connection",(socket)=>{
           // console.log(room);
            socket.join(orderId)
         })
+    
+})
+io.on("connection",(socket)=>{
+  socket.on("join",(serviceOrderId)=>{
+    // console.log(room);
+    socket.join(serviceOrderId)
+  })
 })
 
 eventEmitter.on("orderUpdated",(data) =>{
@@ -121,6 +129,10 @@ eventEmitter.on("orderPlaced",(data) =>{
   io.to("adminRoom").emit("orderPlaced",data)
 })
 
-eventEmitter.on("requestforCancellation",(data)=>{
-  io.to("adminRoom").emit("requestforCancellation",data)
+eventEmitter.on("serviceOrderPlaced",(data)=>{
+  io.to("adminRoom1").emit("serviceOrderPlaced",data)
+})
+
+eventEmitter.on("serviceOrderUpdated",(data)=>{
+  io.to(`serviceOrder_${data.id}`).emit("serviceOrderUpdated",data)
 })
