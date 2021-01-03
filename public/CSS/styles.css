@@ -565,52 +565,6 @@ margin: 2px;
   margin-left: auto;
 }
 /* media query for responsiveness in small screens */
-@media only screen and (max-width:700px) {
-  .boxes {
-/*     width: 85%; */
-    margin: 10px auto;
-/* position:absolute; */
-    overflow-x: hidden;
-  }
-  #stat{
-    margin-left: 0;
-  }
-
-  .progress-container {
-    height: 3px;
-  }
-  #index_image{
-    height: 230px;
-  }
-
-  .progress-bar {
-    height: 3px;
-  }
-
-/*   .backgrounds .background {
-    background-image: none;
-    background-color: #fefefe;
-  } */
-
-  i {
-    display: block;
-  }
-  .status-box ul li span:before {
-    font-size: 34px;
-}
-
-  #fourth .container-fluid .body {
-    text-align: left;
-  }
-
-  #fifth p {
-    text-align: center;
-  }
-  .chemicaltube{
-    display: none;
-  }
-}
-
 
 .status-box {
   padding: 60px 0 0;
@@ -720,10 +674,7 @@ margin: 2px;
   padding-left: 8px!important;
 }
 
-#chemPage{
-  background: #1a1c20 no-repeat;  ; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-}
 .chemicaltube{
   position: absolute;
   top:80px;
@@ -742,16 +693,134 @@ margin: 2px;
 }
 #header{
   position: relative;
+   height: 100vh; 
+  background:#1a1c20 no-repeat;
+  background-attachment: fixed; 
+  z-index: -1;
+
 }
+
+
 .chead{
-  width: 300px;
-  height: 400px;
+  /* max-width: 300px;
+  max-height: 400px; */
   color: white;
   position: absolute;
-  top:150px;
-  right:calc(50% - 220px) ;
+  top:40%;
+  left: 50%;
+  transform: translate(-50%,-40%);
 }
 #cheading{
   font-family: "Merriweather",sans-serif;
 }
+.hatom{
+  max-height: 64px;
+  position: absolute;
+  right: 40px;
+  top:30px;
+}
+.hflask{
+  max-height: 64px;
+  max-width: 64px;
+  position: absolute;
+  bottom: 160px;
+  right:300px;
+  transform: rotate(20deg);
+}
+.hchemical{
+  position: absolute;
+  max-height: 64px;
+  bottom:150px;
+  right:100px;
+}
+#csection2{
+  min-height: 100vh;
+  background:#1a1c20;
+  /* background-image: url("/images/section2bg.png");
+  background-repeat: no-repeat;
+  background-position: calc(50% + 550px) center; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px; 
+}
+#csection2 h1{
+  font-family: "Montserrat",sans-serif;
+position: absolute;
+top:60px;
+font-size: 1.7em;
+color: #fff3b2;
+z-index: 3;
+}
+#cs2d1{
+  position: absolute;
+ top:50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+}
+#cs2d1 h4{
+  text-align: left;
+  padding: 5px 0;
+  color:#d4e2d4;
+  font-family: serif;
+}
+#cs2d1 p{
 
+   font-size: 'Merryweather';
+   color: #efdab9;
+}
+
+
+
+@media only screen and (max-width:700px) {
+  .boxes {
+/*     width: 85%; */
+    margin: 10px auto;
+/* position:absolute; */
+    overflow-x: hidden;
+  }
+  #stat{
+    margin-left: 0;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+  #index_image{
+    height: 230px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+/*   .backgrounds .background {
+    background-image: none;
+    background-color: #fefefe;
+  } */
+
+  i {
+    display: block;
+  }
+  .status-box ul li span:before {
+    font-size: 34px;
+}
+
+  #fourth .container-fluid .body {
+    text-align: left;
+  }
+
+  #fifth p {
+    text-align: center;
+  }
+  .chemicaltube{
+    display: none;
+  }
+  .chead{
+    text-align: center;
+  }
+  #csection2 h1{
+    font-size: 1.3em;
+    text-align: center;
+  }
+}

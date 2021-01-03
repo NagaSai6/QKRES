@@ -11,15 +11,15 @@ $(function() {
   AOS.refresh();
 });
  // navbar color change
- $(window).scroll(function() {
-   var scroll = $(window).scrollTop();
-   if (scroll < 150) {
-     $('.fixed-top').css('background', '#fff');
-   }
-    else {
-     $('.fixed-top').css('background', '#d3dbff');
-   }
- });
+//  $(window).scroll(function() {
+//    var scroll = $(window).scrollTop();
+//    if (scroll < 150) {
+//      $('.fixed-top').css('background', '#fff');
+//    }
+//     else {
+//      $('.fixed-top').css('background', '#d3dbff');
+//    }
+//  });
 
 
 //to make the loader stop after loading page completely 
@@ -54,3 +54,14 @@ function myFunction() {
   var scrolled = (winScroll / height) * 100;
   document.getElementById("myBar").style.width = scrolled + "%";
 }
+
+
+function parallax (element,distance,speed){
+const item = document.querySelector(element);
+item.style.transform=`translateY(${distance*speed}px)`;
+}
+
+window.addEventListener('scroll',function(){
+  parallax(".hatom",window.scrollY,0.3)
+  parallax(".hflask",window.scrollY,0.2)
+})
