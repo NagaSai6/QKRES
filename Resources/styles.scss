@@ -946,6 +946,7 @@ html{
           
           h3 {
             font-size: 1.8em;
+            font-family: 'Lato',sans-serif;
             color: #777;
             z-index: 1;
             transition: 0.5s;
@@ -999,16 +1000,16 @@ html{
     grid-row: 3 / 4;
   
     &__input {
-      width: 5rem;
+      width: 5.8rem;
       height: 3rem;
       border: none;
       border-radius: 1rem;
       font-size: 1.4rem;
-      padding-left: 1.4rem;
+      padding-left: 1.2rem;
       box-shadow: $inner-shadow;
       background: none;
       font-family: inherit;
-      color: var(--greyDark);
+      color: black;
   
       &::placeholder { color: var(--greyLight-3); }
       &:focus { outline: none; box-shadow: $shadow; }

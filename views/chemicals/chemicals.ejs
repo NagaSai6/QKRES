@@ -51,84 +51,22 @@
             <p id="cs3p">Chemicals</p>
           </div>
           <div class="ccontainer">
-              <div class="ccard">
-                  <div class="cbox">
-                      <div class="ccontent">
-                      <img style="height: 64px;" src="/images/molecule.svg" alt="img">
-                      <h3>Acetone</h3>
-                      <p>Enter required quantity in litres</p>
-                     <form action="">
-                        <input class="form__input" type="text"  required>
-                     </form>
-                      <button class="btn btn-lg cbutton">Add to cart</button>
-                      </div>
-                  </div>
-              </div>
-              <div class="ccard">
-                <div class="cbox">
-                    <div class="ccontent">
-                    <img style="height: 64px;" src="/images/molecule.svg" alt="img">
-                    <h3>Acetone</h3>
-                    <p>Enter required quantity in litres</p>
-                   <form action="">
-                      <input class="form__input" type="text"  required>
-                   </form>
-                    <button class="btn btn-lg cbutton">Add to cart</button>
-                    </div>
-                </div>
+ <% data.forEach(function(c){ %>
+    <div class="ccard">
+        <div class="cbox">
+            <div class="ccontent">
+            <img style="height: 64px;" src="/images/molecule.svg" alt="img">
+            <h3> <%= c.name %> </h3>
+            <p>Enter required quantity in litres or kg's</p>
+           <form action="">
+              <input id="<%=c.name%>" class="form__input" type="text"  required>
+           </form>
+            <button class="btn btn-lg cbutton">Add to cart</button>
             </div>
-            <div class="ccard">
-                <div class="cbox">
-                    <div class="ccontent">
-                    <img style="height: 64px;" src="/images/molecule.svg" alt="img">
-                    <h3>Acetone</h3>
-                    <p>Enter required quantity in litres</p>
-                   <form action="">
-                      <input class="form__input" type="text"  required>
-                   </form>
-                    <button class="btn btn-lg cbutton">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="ccard">
-                <div class="cbox">
-                    <div class="ccontent">
-                    <img style="height: 64px;" src="/images/molecule.svg" alt="img">
-                    <h3>Acetone</h3>
-                    <p>Enter required quantity in litres</p>
-                   <form action="">
-                      <input class="form__input" type="text"  required>
-                   </form>
-                    <button class="btn btn-lg cbutton">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="ccard">
-                <div class="cbox">
-                    <div class="ccontent">
-                    <img style="height: 64px;" src="/images/molecule.svg" alt="img">
-                    <h3>Acetone</h3>
-                    <p>Enter required quantity in litres</p>
-                   <form action="">
-                      <input class="form__input" type="text"  required>
-                   </form>
-                    <button class="btn btn-lg cbutton">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="ccard">
-                <div class="cbox">
-                    <div class="ccontent">
-                    <img style="height: 64px;" src="/images/molecule.svg" alt="img">
-                    <h3>Acetone</h3>
-                    <p>Enter required quantity in litres</p>
-                   <form action="">
-                      <input class="form__input" type="text"  required>
-                   </form>
-                    <button class="btn btn-lg cbutton">Add to cart</button>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>  
+
+ <% })  %>   
           </div>
     </div>
 

@@ -999,6 +999,7 @@ p {
 
 .ccontainer .ccard .cbox .ccontent h3 {
   font-size: 1.8em;
+  font-family: "Lato", sans-serif;
   color: #777;
   z-index: 1;
   transition: 0.5s;
@@ -1047,16 +1048,16 @@ p {
 }
 
 .form__input {
-  width: 5rem;
+  width: 5.8rem;
   height: 3rem;
   border: none;
   border-radius: 1rem;
   font-size: 1.4rem;
-  padding-left: 1.4rem;
+  padding-left: 1.2rem;
   box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
   background: none;
   font-family: inherit;
-  color: var(--greyDark);
+  color: black;
 }
 
 .form__input::-moz-placeholder {

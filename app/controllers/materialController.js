@@ -141,7 +141,14 @@ function materialController(){
 
     },
     chemIndex(req,res){
-      return res.render("chemicals/chemicals")
+      Material.find({"identity":"chemicals"},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("chemicals/chemicals",{data:data})
+        }
+      })
+      
     }
 
   }
