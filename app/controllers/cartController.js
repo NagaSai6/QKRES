@@ -8,29 +8,6 @@ function cartController() {
     update(req, res) {
       // console.log(typeOf(req.body.required));
    
-
-      if(validator.isEmpty(req.body.required)){
-        return res.json({
-          "null":"validation failed"
-        })
-      }
-      if(!validator.isNumeric(req.body.required)){
-       return res.json({
-         "validationError":"validation failed"
-       })
-      }
-      if(validator.isAlpha(req.body.required)){
-        return res.json({
-          "typeError":"validation failed"
-        })
-       }
-      if(req.body.required < 0 ){
-        return res.json({
-          "error":"validation failed"
-        })
-      }
-   
-
       if (!req.session.cart) {
         req.session.cart = {
           items: {},
@@ -43,6 +20,30 @@ function cartController() {
       let cart = req.session.cart
 
       if(req.body.identity === "chemicals"){
+
+      
+        if(validator.isEmpty(req.body.required)){
+          return res.json({
+            "null":"validation failed"
+          })
+        }
+        if(!validator.isNumeric(req.body.required)){
+         return res.json({
+           "validationError":"validation failed"
+         })
+        }
+        if(validator.isAlpha(req.body.required)){
+          return res.json({
+            "typeError":"validation failed"
+          })
+         }
+        if(req.body.required < 0 ){
+          return res.json({
+            "error":"validation failed"
+          })
+        }
+
+
         if(!cart.items[req.body._id]){
           cart.items[req.body._id] = {
             item: req.body,
