@@ -110,14 +110,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _adm
 
 /***/ }),
 
-/***/ "./Resources/services/main.scss":
-/*!**************************************!*\
-  !*** ./Resources/services/main.scss ***!
-  \**************************************/
+/***/ "./Resources/styles.scss":
+/*!*******************************!*\
+  !*** ./Resources/styles.scss ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9SZXNvdXJjZXMvc2VydmljZXMvbWFpbi5zY3NzP2E0YzMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoiLi9SZXNvdXJjZXMvc2VydmljZXMvbWFpbi5zY3NzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gcmVtb3ZlZCBieSBleHRyYWN0LXRleHQtd2VicGFjay1wbHVnaW4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./Resources/services/main.scss\n");
+eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9SZXNvdXJjZXMvc3R5bGVzLnNjc3M/M2YyNiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsImZpbGUiOiIuL1Jlc291cmNlcy9zdHlsZXMuc2Nzcy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIHJlbW92ZWQgYnkgZXh0cmFjdC10ZXh0LXdlYnBhY2stcGx1Z2luIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./Resources/styles.scss\n");
 
 /***/ }),
 
@@ -1973,14 +1973,14 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************!*\
-  !*** multi ./Resources/services/main.js ./Resources/services/main.scss ***!
-  \*************************************************************************/
+/*!******************************************************************!*\
+  !*** multi ./Resources/services/main.js ./Resources/styles.scss ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\Naga Sai\Documents\NonCore\WebOps\Projects\Qkres\Resources\services\main.js */"./Resources/services/main.js");
-module.exports = __webpack_require__(/*! C:\Users\Naga Sai\Documents\NonCore\WebOps\Projects\Qkres\Resources\services\main.scss */"./Resources/services/main.scss");
+module.exports = __webpack_require__(/*! C:\Users\Naga Sai\Documents\NonCore\WebOps\Projects\Qkres\Resources\styles.scss */"./Resources/styles.scss");
 
 
 /***/ })
