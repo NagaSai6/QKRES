@@ -1,18 +1,64 @@
+var validator = require("validator")
+
 function cartController() {
   return {
     index(req, res) {
       res.render("cart/cart")
     },
     update(req, res) {
+      // console.log(typeOf(req.body.required));
+   
+
+      if(validator.isEmpty(req.body.required)){
+        return res.json({
+          "null":"validation failed"
+        })
+      }
+      if(!validator.isNumeric(req.body.required)){
+       return res.json({
+         "validationError":"validation failed"
+       })
+      }
+      if(validator.isAlpha(req.body.required)){
+        return res.json({
+          "typeError":"validation failed"
+        })
+       }
+      if(req.body.required < 0 ){
+        return res.json({
+          "error":"validation failed"
+        })
+      }
+   
+
       if (!req.session.cart) {
         req.session.cart = {
           items: {},
           totalQty: 0,
-          totalPrice: 0
+          totalPrice: 0,
+          required:0
         }
-
       }
+
       let cart = req.session.cart
+
+      if(req.body.identity === "chemicals"){
+        if(!cart.items[req.body._id]){
+          cart.items[req.body._id] = {
+            item: req.body,
+            Qty: parseInt( req.body.required)
+          }
+          cart.totalQty = cart.totalQty + 1
+        }else{
+          cart.items[req.body._id].Qty = cart.items[req.body._id].Qty + parseInt(req.body.required)
+          return res.json({
+            "updated":"success"
+          })
+        }
+        return res.json({
+          totalQty:req.session.cart.totalQty
+        })
+      }
 
       if (!cart.items[req.body._id]) {
         cart.items[req.body._id] = {

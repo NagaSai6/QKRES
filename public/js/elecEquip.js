@@ -38,6 +38,7 @@ let addToCart = document.querySelectorAll('.add_to_cart');
 let cartCounter = $("#cartCounter");
 
 
+
 function updateCart(Equipment){
       axios.post("/update-cart",Equipment).then(res =>{
         // console.log(res);

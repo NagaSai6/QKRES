@@ -1,4 +1,5 @@
 
+
 // animation on scroll
 $(function() {
   AOS.init({
@@ -67,6 +68,79 @@ window.addEventListener('scroll',function(){
 })
 
 let addToCart = document.querySelectorAll(".add_To_Cart")
+let cartCounter = $("#cartCounter");
+
+
+function updateCart(chemical){
+  axios.post("/update-cart",chemical).then(res =>{
+    if(res.data.error){
+    return  new Noty({
+        type:"error",
+        timeout:500,
+        text: "Quantity can't be Negative",
+        progressBar:false
+      
+    }).show();
+
+    }
+    if(res.data.updated){
+      return  new Noty({
+        type:"success",
+        timeout:500,
+        text: "Quantity value updated !",
+        progressBar:false
+      
+    }).show();
+    }
+    if(res.data.typeError){
+      return  new Noty({
+        type:"error",
+        timeout:1000,
+        text: "Please enter value not text !",
+        progressBar:false
+      
+    }).show();
+    }
+    if(res.data.typeError1){
+      return  new Noty({
+        type:"error",
+        timeout:1000,
+        text: "Alpha numeric values are not allowed",
+        progressBar:false
+      
+    }).show();
+    }
+    if(res.data.null){
+      return  new Noty({
+        type:"error",
+        timeout:1000,
+        text: "Please Enter value !",
+        progressBar:false
+      
+    }).show();
+    }
+    if(res.data.validationError){
+      return  new Noty({
+        type:"error",
+        timeout:1000,
+        text: "Alpha numeric values are not allowed !",
+        progressBar:false
+      
+    }).show();
+    }
+    new Noty({
+      type:"success",
+      timeout:500,
+      text: "Item added to cart Successfully",
+      progressBar:false
+    
+  }).show();
+
+
+  cartCounter.html(res.data.totalQty)
+
+  })
+}
 
 
 
