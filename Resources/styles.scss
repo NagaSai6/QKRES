@@ -974,15 +974,16 @@ html{
     }
     
     .ccard:hover .cbox .ccontent .cbutton {
-      background: #FF4049;
+      background: #cae4db;
+      color: #000;
     }
   }
   
   .ccontainer .ccard:hover .cbox {
       transform: translateY(-50px);
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-      background: linear-gradient(45deg, #B95CE4, #4F29CD);
- 
+      background: linear-gradient(45deg,#f5f4f4 ,#00303f );
+    //   #B95CE4 #4F29CD
   }
   
   .ccontainer .ccard:hover .cbox .ccontent h3,
