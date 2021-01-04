@@ -36,21 +36,6 @@ function myFunction(){
 
 let addToCart = document.querySelectorAll('.add_to_cart');
 let cartCounter = $("#cartCounter");
-// var modal = document.getElementById('checkOut');
-// var btn = document.getElementById("formBtn");
-// var span = document.getElementsByClassName("closeBtn")[0];
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//       modal.style.display = "none";
-//   }
-// }
-
 
 
 function updateCart(Equipment){
@@ -86,15 +71,12 @@ function updateCart(Equipment){
 
 
 addToCart.forEach(btn => {
-
     btn.addEventListener("click", event => {
         // console.log( event );
         let Equipment = JSON.parse(btn.dataset.x)
                   console.log(Equipment);
                  updateCart(Equipment)
-
     });
-
  });
 
  const alertMsg = document.querySelector('#success')

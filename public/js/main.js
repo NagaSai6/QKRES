@@ -65,3 +65,24 @@ window.addEventListener('scroll',function(){
   parallax(".hatom",window.scrollY,0.3)
   parallax(".hflask",window.scrollY,0.2)
 })
+
+let addToCart = document.querySelectorAll(".add_To_Cart")
+
+
+
+
+
+addToCart.forEach(btn => {
+
+  btn.addEventListener("click", event => {
+     
+      let chemical = JSON.parse(btn.dataset.x)
+   let val = chemical.name
+
+      chemical.required = document.getElementById(val).value
+                console.log(chemical);
+               updateCart(chemical)
+
+  });
+
+});
