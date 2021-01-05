@@ -77,7 +77,7 @@ function updateCart(chemical){
     return  new Noty({
         type:"error",
         timeout:500,
-        text: "Quantity can't be Negative",
+        text: "Quantity can't be Negative or Zero",
         progressBar:false
       
     }).show();

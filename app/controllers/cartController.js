@@ -37,7 +37,7 @@ function cartController() {
             "typeError":"validation failed"
           })
          }
-        if(req.body.required < 0 ){
+        if(req.body.required <= 0 ){
           return res.json({
             "error":"validation failed"
           })
