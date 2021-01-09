@@ -63,6 +63,9 @@ function initRoutes(app) {
 
 app.get("/chem",chemical().index)
 
+
+app.get("/qkres_businessOpportunities",material().bsOpp)
+
 // cart routes 
 
   app.get("/cart", cart().index)

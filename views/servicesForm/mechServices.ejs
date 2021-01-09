@@ -47,7 +47,7 @@
         <h2 class="qkres-fs-title">Personal Details</h2>
         <h3 class="qkres-fs-subtitle">Your Details are secure with us</h3>
         <% if(messages.error){ %>
-          <span style="color:#ee9595;font-family: 'Langar',sans-serif;"><%= messages.error %>  </span>
+          <span style="color:red;font-family: sans-serif;font-size: small;"><%= messages.error %>  </span>
       <%  }%>
         <input type="hidden" name="Itemid" value="<%=qkresServiceData._id%>">
         <input type="hidden" name="serviceName" value="<%=qkresServiceData.name%>">
@@ -76,7 +76,7 @@
         <h2 class="qkres-fs-title">Contact Details</h2>
         <h3 class="qkres-fs-subtitle">Your Privacy is our utmost priority</h3>
         <% if(messages.error){ %>
-          <span style="color:red;"><%= messages.error %>  </span>
+          <span style="color:red;font-family: sans-serif;font-size: small; "><%= messages.error %>  </span>
       <%  }%>
         <input type="text" class=" input-md"  name="Country" placeholder="Country" required="required">
         <input type="text" class=" input-md"  name="State" placeholder="State" required="required">

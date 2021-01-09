@@ -1,8 +1,10 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const Service = require("../../models/service")
+const Material = require("../../models/materials")
 const moment = require("moment");
-const aws = require("aws-sdk")
+const aws = require("aws-sdk");
+const validator = require("validator")
 
 aws.config.update({
     region:process.env.AWS_REGION,
@@ -53,45 +55,76 @@ function serviceController(){
               });
             
         },
-        serviceFormInputs(req,res){
+       serviceFormInputs(req,res){
           const user = req.user;
-          const {Itemid,serviceName,customerName,phone,email,department,
+          let {Itemid,serviceName,customerName,phone,email,department,
             insti,requirement,file,url,country,state,
             city,pincode,landmark,address} = req.body
+            // console.log(typeof(email));
 
-            // validate input request
-            if(!serviceName||!customerName||!phone||!email){
-                req.flash("error", "All fields are required")
-               return res.redirect(`/mech/${Itemid}`)
-              }
+            if(validator.isEmpty(Itemid)){
+              return res.redirect("/error")
+            }
 
-              const service = new Service({
-                scustomerId : user.id,
-                serviceName:serviceName,
-                filePath:url,
-                requirement:requirement,
-                name:customerName,
-                email:email,
-                city:city,
-                department:department,
-                insti:insti,
-                address:address,
-                pincode:pincode,
-                phone:phone,
-                landmark:landmark,
-              })
-              service.save().then((service)=>{
-                Service.populate(service,{path:"scustomerId"},(err,serviceOrderPlaced)=>{
-                  const eventEmitter =req.app.get("eventEmitter")
-                  eventEmitter.emit("serviceOrderPlaced",serviceOrderPlaced)
-                     return res.redirect('/customer/serviceOrders')
-                })
-              }).catch(err=>{
-                console.log(err);
-                req.flash("error","something went wrong")
-                return res.redirect(`/mech/${Itemid}`)
-              })
-            
+        Material.findById(Itemid,function(err,success){
+          console.log(success);
+           if(err){
+            req.flash("error","Something is wrong,refresh and try again")
+            return res.redirect("/error") ;
+           }
+           if(validator.isEmpty(serviceName)){
+            req.flash("error","Something is wrong,refresh and try again")
+            return res.redirect(`/mech/${Itemid}`) ;
+          }
+          if(serviceName.toString() != success.name.toString()){
+            req.flash("error","Something is wrong,refresh and try again")
+            return res.redirect(`/mech/${Itemid}`) ;
+          }
+          if(validator.isEmpty(email)){
+            req.flash("error","Please Enter Email address")
+            return res.redirect(`/mech/${Itemid}`) ;
+          }
+          if(!validator.isEmail(email)){
+            req.flash("error","Please Enter valid Email address")
+            return res.redirect(`/mech/${Itemid}`) ;
+          }
+        
+
+          
+
+           const service = new Service({
+            scustomerId : user.id,
+            serviceName:serviceName,
+            filePath:url,
+            requirement:requirement,
+            name:customerName,
+            email:email,
+            city:city,
+            department:department,
+            insti:insti,
+            address:address,
+            pincode:pincode,
+            phone:phone,
+            landmark:landmark,
+          })
+          
+          service.save().then((service)=>{
+            Service.populate(service,{path:"scustomerId"},(err,serviceOrderPlaced)=>{
+              const eventEmitter =req.app.get("eventEmitter")
+              eventEmitter.emit("serviceOrderPlaced",serviceOrderPlaced)
+                 return res.redirect('/customer/serviceOrders')
+            })
+          }).catch(err=>{
+            console.log(err);
+            req.flash("error","something went wrong")
+            return res.redirect(`/mech/${Itemid}`)
+          } )
+
+
+
+
+         })
+      
         
         },
        async index(req,res){
