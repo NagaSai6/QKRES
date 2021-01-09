@@ -151,7 +151,7 @@ function materialController(){
       
     },
     bsOpp(req,res){
-     return res.render("bsoPP")
+     return res.render("bSoPP")
     }
 
   }
