@@ -133,7 +133,7 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                   }
                 })
 
-                function uploadFile(formData, signedRequest, url){
+                function uploadFile(formData, signedRequest, url,fileName){
                     const xhr = new XMLHttpRequest();
                     xhr.open('POST',signedRequest.url);
                     xhr.onreadystatechange = () => {
@@ -182,7 +182,7 @@ $("#customerName,#email,#department,#insti,#phone, textarea").on("keyup", functi
                         //   for (var pair of formData.entries()) {
                         //     console.log(pair[0]+ ', ' + pair[1]); 
                         // }
-                          uploadFile(formData, response.signedRequest, response.url);
+                          uploadFile(formData, response.signedRequest, response.url,response.fileName);
                           
                         }
                         else{

@@ -46,7 +46,8 @@ function serviceController(){
                   }
                   const returnData ={
                     signedRequest: data,
-                    url:`https://${process.env.AWS_BUCKETNAME}.s3.amazonaws.com/${fileName}`
+                    url:`https://${process.env.AWS_BUCKETNAME}.s3.amazonaws.com/${fileName}`,
+                    name:fileName
                   };
                   // console.log(returnData);
                   res.write(JSON.stringify(returnData));
@@ -60,72 +61,112 @@ function serviceController(){
           let {Itemid,serviceName,customerName,phone,email,department,
             insti,requirement,file,url,country,state,
             city,pincode,landmark,address} = req.body
-            // console.log(typeof(email));
+     
+            const str = url;
+            const extFileName = str.slice(49,)
+            console.log(extFileName);
+        
+            const s3 = new aws.S3();
 
+            const params = {
+                    Bucket:process.env.AWS_BUCKETNAME ,
+                    Key: extFileName //if any sub folder-> path/of/the/folder.ext
+            }
+            async function deleteObject(){
+              try {
+                await s3.headObject(params).promise()
+                console.log("File Found in S3")
+                try {
+                  await s3.deleteObject(params).promise()
+                  console.log("file deleted Successfully")
+              }
+              catch (err) {
+                   console.log("ERROR in file Deleting : " + JSON.stringify(err))
+              }
+                
+              } catch (error) {
+                console.log("File not Found ERROR : " + err.code)
+                // return res.redirect("/error")
+              }
+             }
+       
             if(validator.isEmpty(Itemid)){
+              deleteObject();
               return res.redirect("/error")
             }
 
-        Material.findById(Itemid,function(err,success){
-          console.log(success);
-           if(err){
-            req.flash("error","Something is wrong,refresh and try again")
-            return res.redirect("/error") ;
-           }
-           if(validator.isEmpty(serviceName)){
-            req.flash("error","Something is wrong,refresh and try again")
-            return res.redirect(`/mech/${Itemid}`) ;
-          }
-          if(serviceName.toString() != success.name.toString()){
-            req.flash("error","Something is wrong,refresh and try again")
-            return res.redirect(`/mech/${Itemid}`) ;
-          }
-          if(validator.isEmpty(email)){
-            req.flash("error","Please Enter Email address")
-            return res.redirect(`/mech/${Itemid}`) ;
-          }
-          if(!validator.isEmail(email)){
-            req.flash("error","Please Enter valid Email address")
-            return res.redirect(`/mech/${Itemid}`) ;
-          }
-        
+          Material.findById(Itemid,function(err,success){
+              console.log(success);
+               if(err){
+                deleteObject();
+                req.flash("error","Validation failed, try again")
+                return res.redirect("/error") ;
+               }
+               if(validator.isEmpty(serviceName)){
+                deleteObject();
+                req.flash("error","Validation failed, try again")
+                return res.redirect(`/mech/${Itemid}`) ;
+              }
+              if(serviceName.toString() != success.name.toString()){
+                deleteObject();
+                req.flash("error","Validation failed, try again")
+                return res.redirect(`/mech/${Itemid}`) ;
+              }
+             })
 
-          
-
-           const service = new Service({
-            scustomerId : user.id,
-            serviceName:serviceName,
-            filePath:url,
-            requirement:requirement,
-            name:customerName,
-            email:email,
-            city:city,
-            department:department,
-            insti:insti,
-            address:address,
-            pincode:pincode,
-            phone:phone,
-            landmark:landmark,
-          })
-          
-          service.save().then((service)=>{
-            Service.populate(service,{path:"scustomerId"},(err,serviceOrderPlaced)=>{
-              const eventEmitter =req.app.get("eventEmitter")
-              eventEmitter.emit("serviceOrderPlaced",serviceOrderPlaced)
-                 return res.redirect('/customer/serviceOrders')
+           s3.headObject(params,function (err,response) {
+              if(err){
+                console.log("error");
+                req.flash("error","Invalid file upload, try again");
+                return res.redirect(`/mech/${Itemid}`) ;
+              }
+              console.log(response);
             })
-          }).catch(err=>{
-            console.log(err);
-            req.flash("error","something went wrong")
-            return res.redirect(`/mech/${Itemid}`)
-          } )
 
 
-
-
-         })
       
+
+    
+     
+      
+         
+
+         if(validator.isEmpty(email)){
+          req.flash("error","Please Enter Email address")
+          return res.redirect(`/mech/${Itemid}`) ;
+        }
+        if(!validator.isEmail(email)){
+          req.flash("error","Please Enter valid Email address")
+          return res.redirect(`/mech/${Itemid}`) ;
+        }
+
+         const service = new Service({
+          scustomerId : user.id,
+          serviceName:serviceName,
+          filePath:url,
+          requirement:requirement,
+          name:customerName,
+          email:email,
+          city:city,
+          department:department,
+          insti:insti,
+          address:address,
+          pincode:pincode,
+          phone:phone,
+          landmark:landmark,
+        })
         
+        service.save().then((service)=>{
+          Service.populate(service,{path:"scustomerId"},(err,serviceOrderPlaced)=>{
+            const eventEmitter =req.app.get("eventEmitter")
+            eventEmitter.emit("serviceOrderPlaced",serviceOrderPlaced)
+               return res.redirect('/customer/serviceOrders')
+          })
+        }).catch(err=>{
+          console.log(err);
+          req.flash("error","something went wrong")
+          return res.redirect(`/mech/${Itemid}`)
+        } )
         },
        async index(req,res){
           const services = await Service.find({scustomerId:req.user._id},
