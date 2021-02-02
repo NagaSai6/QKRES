@@ -5,7 +5,6 @@ const findOrCreate = require("mongoose-findorcreate");
 const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-// const FacebookStrategy=require("passport-facebook").Strategy;
 const User = require("../models/users");
 const key = require("./keys")
 

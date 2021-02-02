@@ -12,6 +12,7 @@ const chemical = require("../app/controllers/chemicals/chemicalController")
 const statusController = require("../app/controllers/statusController")
 const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelController")
 const services = require("../app/controllers/services/serviceController")
+const fileDownloadController = require("../app/controllers/fileDownloadController")
 // const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
 
@@ -211,7 +212,7 @@ app.post("/admin/order/status",adminAuth,statusController().update)
 
 app.post("/admin/serviceOrder/status",adminAuth,statusController().serviceUpdate)
 
-
+app.get("/admin/file/:fileName",adminAuth,fileDownloadController().index)
 
 app.post("/admin/order/cancel",adminAuth,statusController().cancel)
 

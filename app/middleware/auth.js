@@ -3,7 +3,6 @@ function auth(req,res,next){
        return  next()
     }
     return res.redirect("/login")
- 
 }
 
 module.exports=auth

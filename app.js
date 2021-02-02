@@ -16,7 +16,7 @@ const saltRounds = 10;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongodb_store = require("connect-mongo")(session);
 const app = express();
-
+app.set("view engine", "ejs");
 // "mongodb://localhost:27017/QkResDB"
 mongoose.connect(process.env.URL
 , {
@@ -42,7 +42,7 @@ const eventEmitter= new emitter()
 
 app.set("eventEmitter",eventEmitter)
 
-app.set("view engine", "ejs");
+
 
 app.use(session({
   secret: process.env.SECRET_SESSION,

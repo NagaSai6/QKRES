@@ -57,8 +57,8 @@ export function initAdmin(socket) {
              <p class="mb-3" ><a href="mailto:${ service.email }">Send email</a></p>
 
              <p class="mb-3">Pincode : <b>  ${ service.pincode } </b> </p>
-
-
+        
+       
               <p class="mb-3">Name: <b>  ${ service.name} </b> </p>
 
               <p class="mb-3">Phone : <b>  ${ service.phone} </b> </p>
@@ -76,9 +76,12 @@ export function initAdmin(socket) {
 
                <p class="mb-3">Pincode : <b>  ${ service.pincode } </b> </p>
 
-              
-               <input type="hidden" value="${service._id}">
-
+               <form action="/admin/file/${service.filePath.slice(49,)}" method="GET">
+               <input name="serviceId" type="hidden" value="${service._id}">
+               <input id="url" type="hidden" value="${service.filePath.slice(49,)}">
+               <button id="downloadButton" type="submit" class="btn btn-lg btn-outline-primary">Download Requirement File</button>
+               </form>
+            
 
                     <div style="text-align:center;"  class=" my-2 ">
                         <form action="/admin/serviceOrder/status" method="POST">
