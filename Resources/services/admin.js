@@ -76,11 +76,8 @@ export function initAdmin(socket) {
 
                <p class="mb-3">Pincode : <b>  ${ service.pincode } </b> </p>
 
-               <form action="/admin/file/${service.filePath.slice(49,)}" method="GET">
-               <input name="serviceId" type="hidden" value="${service._id}">
-               <input id="url" type="hidden" value="${service.filePath.slice(49,)}">
-               <button id="downloadButton" type="submit" class="btn btn-lg btn-outline-primary">Download Requirement File</button>
-               </form>
+          
+              <a target="_blank" role="button" class="btn btn-lg btn-outline-primary" href="/admin/file/${service.filePath.slice(49,)}">Download Requirement File</a>
             
 
                     <div style="text-align:center;"  class=" my-2 ">
