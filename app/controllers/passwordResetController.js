@@ -23,7 +23,7 @@ function resetPassword() {
         .then(user => {
           if (!user) {
             req.flash("error", "No user found")
-           return res.redirect("/reset")
+            res.redirect("/reset")
           }
     
           user.generatePasswordReset();
