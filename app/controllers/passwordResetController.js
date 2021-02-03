@@ -117,8 +117,7 @@ function resetPassword() {
                 to: user.local.email,
                 from: process.env.FROM_EMAIL,
                 subject: "Your password has been changed",
-                text: `Hi ${user.local.customerName} \n
-                    This is a confirmation that the password for your account ${user.local.email} has just been changed.\n`
+                templateId:'d-58c3510b63c043f8a124af3f9df6489f',
               };
 
               sgMail.send(mailOptions, (error, result) => {
