@@ -3,6 +3,8 @@ const sgMail = require('@sendgrid/mail');
 const bcrypt = require("bcrypt")
 sgMail.setApiKey(process.env.S_EMAILAPI);
 
+
+
 function resetPassword() {
   return {
     reset(req, res) {
@@ -21,7 +23,7 @@ function resetPassword() {
         .then(user => {
           if (!user) {
             req.flash("error", "No user found")
-            res.redirect("/reset")
+           return res.redirect("/reset")
           }
     
           user.generatePasswordReset();
@@ -35,9 +37,10 @@ function resetPassword() {
                 to: user.local.email,
                 from: process.env.FROM_EMAIL,
                 subject: "Password change request",
-                text: `Hi ${user.local.customerName} \n
-                Please click on the following link  ${link} . \n\n
-                If you did not request this, please ignore this email and your password will remain unchanged.\n`,
+                templateId:'d-d00805d845f542589a45c0de58553f2b',
+                dynamic_template_data:{
+                  reset_url : link
+                }
               };
               sgMail.send(mailOptions,(err,result)=>{
                 if(err){

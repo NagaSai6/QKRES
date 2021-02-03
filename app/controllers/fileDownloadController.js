@@ -21,7 +21,7 @@ function fileDownloadController(){
             s3.getObject(downloadParams)
             .createReadStream()
               .on('error', function(err){
-                res.status(500).json({error:"Error -> " + err});
+                res.status(500).json({error:"Error ->file not found ,cancel the order " + err});
             }).pipe(res);
 
         }
