@@ -241,7 +241,7 @@ app.post("/forgot/:token",forgotPassword().newEntries)
 // app.post("GetStartedInitiation",webhook().handleProfile)
 // app.get("/GetStartedInitiation",webhook().getProfile)
 
-
+app.get("/about-us",homePage().aboutUs)
 
 
 }

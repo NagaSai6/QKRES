@@ -42,10 +42,7 @@ function orderController() {
                   const mailOptions = {
                     to:user.google.email || user.local.email,
                     from: process.env.FROM_EMAIL,
-                    subject: "Order Placed",
-                    text: `Hi ${user.local ? user.local.customerName : "customer"} \n
-                    Thanks for shopping with QkRes \n\n
-                    You will receive quotation from us in next 3 hours and u can check status of your order by logging in to your account\n`,
+                    templateId:'d-b32b47a123544095b3f851434ef1d97f'
                   };
 
                   sgMail.send(mailOptions, (error, result) => {
