@@ -51,14 +51,14 @@ function initRoutes(app) {
   app.get("/electrical-lab-equipments/other",material().other)
 
 // mech services routes
-  app.get("/mech",material().mech)
+  app.get("/mechanical-services",material().mech)
 
   app.get("/mech/:token",secure,material().mechForm)
   
 
   app.get("/sign-s3",secure,services().getSignedRequest)
 
-  app.get("/qkres_chemicals",material().chemIndex)
+  app.get("/chemicals",material().chemIndex)
 
 // chemical Equipments routes
 
