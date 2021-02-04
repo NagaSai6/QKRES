@@ -1,12 +1,9 @@
 const Order = require("../models/order")
-var mailjet = require("node-mailjet")
+const sgMail = require('@sendgrid/mail');
 const moment = require("moment");
 // const { getMaxListeners } = require("../models/order");
-mailjet.connect('64c21cd56e0dd5646ab152fb6c271d67','391b64ddbcc0570d0508c331a2ae0c32')
-// 64c21cd56e0dd5646ab152fb6c271d67
-// 391b64ddbcc0570d0508c331a2ae0c32
-// process.env.MJ_APIKEY_PUBLIC
-// process.env.MJ_APIKEY_PRIVATE
+sgMail.setApiKey(process.env.S_EMAILAPI);
+
 
 function orderController() {
   return {
@@ -42,40 +39,24 @@ function orderController() {
     //emit
                    const eventEmitter =req.app.get("eventEmitter")
                   eventEmitter.emit("orderPlaced",placedOrder)
+                  const mailOptions = {
+                    to:user.google.email || user.local.email,
+                    from: process.env.FROM_EMAIL,
+                    templateId:'d-b32b47a123544095b3f851434ef1d97f'
+                  };
 
-                  const request = mailjet
-                  .post("send", {'version': 'v3.1'})
-                  .request({
-                    "Messages":[
-                      {
-                        "From": {
-                          "Email": "tapti272@gmail.com",
-                          "Name": "sameer Ashiq"
-                        },
-                        "To": [
-                          {
-                            "Email": uEmail,
-                            "Name": "passenger 1"
-                          }
-                        ],
-                        "TemplateID": 2363365,
-                        "TemplateLanguage": true,
-                        "Subject": "Order Placed",
-                        "Variables": {}
-                      }
-                    ]
-                  })
-                request
-                  .then((result) => {
-                    console.log(result.body)
-                  })
-                  .catch((err) => {
-                    console.log(err.statusCode)
-                  })
-             
+                  sgMail.send(mailOptions, (error, result) => {
+                    if (error) {
+                      return res.status(500).json({
+                        message: error.message
+                      });
+                    }
+                    return res.redirect("/customer/orders")
+
+                    // res.status(200).json({message: 'A reset email has been sent to ' + user.email + '.'});
+                  });
 
 
-             return res.redirect("/customer/orders")
 
   })
 
