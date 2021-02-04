@@ -150,6 +150,78 @@ function materialController(){
       })
       
     },
+    mnf(req,res){
+     Material.find({"identity":"mnf_home"},(err,data)=>{
+       if(err){
+         console.log(err);
+       }else{
+         return res.render("manufacturing",{data:data})
+       }
+     })
+    },
+    weldingForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
+    edmForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
+    wjmForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
+    cncForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
+    castingForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
+    lcmForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
+    dlcForm(req,res){
+      Material.find({"_id":req.params.id},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
     bsOpp(req,res){
      return res.render("bSoPP")
     }

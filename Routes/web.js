@@ -243,6 +243,21 @@ app.post("/forgot/:token",forgotPassword().newEntries)
 
 app.get("/about-us",homePage().aboutUs)
 
+app.get("/manufacturing-and-fabrication",material().mnf)
+
+app.get("/welding-services/:id",material().weldingForm)
+
+app.get("/electrical-discharge-machining-services/edm-services/:id",material().edmForm)
+
+app.get("/water-jet-machining-services/:id",material().wjmForm)
+
+app.get("/computer-numerical-control-services/cnc-services/:id",material().cncForm)
+
+app.get("/casting-services/:id",material().castingForm)
+
+app.get("/laser-cut-machining-services/:id",material().lcmForm)
+
+app.get("/diamond-laser-cutting-services/:id",material().dlcForm)
 
 }
 

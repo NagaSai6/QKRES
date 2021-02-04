@@ -1,4 +1,4 @@
-
+const Material = require("../models/materials")
 
 
 function homePage(){
@@ -8,6 +8,9 @@ function homePage(){
     },
     aboutUs(req,res){
       res.render("About")
+    },
+    mnf(req,res){
+      res.render("manufacturing")
     }
 
   }
