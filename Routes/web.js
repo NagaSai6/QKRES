@@ -24,31 +24,31 @@ function initRoutes(app) {
 
 // ***************** ELEC EQUIPMENTS *********************
 
-  app.get("/elec",material().elecHome)
+  app.get("/electrical-lab-equipments",material().elecHome)
 
-  app.get("/electricals/Dc",material().dc)
+  app.get("/electrical-lab-equipments/dc-power-supply",material().dc)
 
-  app.get("/electricals/demomodules",material().demo)
+  app.get("/electrical-lab-equipments/demonstration-modules",material().demo)
 
-  app.get("/electricals/dmulti",material().dmulti)
+  app.get("/electrical-lab-equipments/digital-multimeter",material().dmulti)
 
-  app.get("/electricals/dso",material().dso)
+  app.get("/electrical-lab-equipments/digital-storage-oscilloscope",material().dso)
 
-  app.get("/electricals/etm",material().etm)
+  app.get("/electrical-lab-equipments/electric-training-modules",material().etm)
 
-  app.get("/electricals/dm",material().dm)
+  app.get("/electrical-lab-equipments/digital-meter",material().dm)
 
-  app.get("/electricals/digiohm",material().digiohm)
+  app.get("/electrical-lab-equipments/digital-ohmmeter",material().digiohm)
 
-  app.get("/electricals/oscilloscope",material().oscilloscope)
+  app.get("/electrical-lab-equipments/oscilloscope",material().oscilloscope)
 
-  app.get("/electricals/etb",material().etb)
+  app.get("/electrical-lab-equipments/electric-training-board",material().etb)
 
-  app.get("/electricals/typemeter",material().typemeter)
+  app.get("/electrical-lab-equipments/portable-typemeter",material().typemeter)
 
-  app.get("/electricals/decade",material().decade)
+  app.get("/electrical-lab-equipments/decade-box",material().decade)
 
-  app.get("/electricals/other",material().other)
+  app.get("/electrical-lab-equipments/other",material().other)
 
 // mech services routes
   app.get("/mech",material().mech)
