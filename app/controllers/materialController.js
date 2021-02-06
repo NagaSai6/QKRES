@@ -222,6 +222,24 @@ function materialController(){
         }
       })
     },
+    threedprinting(req,res){
+     Material.findOne({"identity":"3d-printing"},(err,data)=>{
+       if(err){
+         console.log(err);
+       }else{
+         return res.render("3d-printing",{data:data})
+       }
+     })
+    },
+    tdpForm(req,res){
+      Material.find({"_id":req.params.token},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
     bsOpp(req,res){
      return res.render("bSoPP")
     }
