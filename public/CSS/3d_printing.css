@@ -101,6 +101,17 @@ html {
       transform: translateY(-15px);
     }
   }
+  .context {
+    color: #0000
+  }
+  .context p {
+    font-size: 25px;
+    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
+      color: #fff;
+    text-align: center;
+    margin: 1rem 0rem;
+  }
   @media all and (max-width: 600px){
     .home_grid{
       margin: auto;
