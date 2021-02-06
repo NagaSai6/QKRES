@@ -13,7 +13,6 @@ const statusController = require("../app/controllers/statusController")
 const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelController")
 const services = require("../app/controllers/services/serviceController")
 const fileDownloadController = require("../app/controllers/fileDownloadController")
-// const webhook = require("../app/controllers/messengerAPI/webhookController")
 const passport = require("passport");
 
 
@@ -81,8 +80,6 @@ app.get("/qkres_businessOpportunities",material().bsOpp)
 
   app.post("/add_Items",secure,cart().add_items_to_cart)
 
-
-
  // local routes
 
  app.get("/register",guest, auth().register)
@@ -94,12 +91,6 @@ app.get("/profile",secure,auth().profile)
     failureRedirect:"/register",
     failureFlash : true
   }))
-
-
-
-
-
-
 
   app.get("/login",guest, auth().login)
   app.post("/login",passport.authenticate("local-login",{
@@ -176,15 +167,6 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
             });
         });
 
-
-
-
-
-
-
-
-
-
 // customer routes for materials
   app.post("/orders",secure,order().store)
 app.get("/customer/orders",secure,order().index)
@@ -193,10 +175,7 @@ app.get("/customer/order/:id",secure,order().show)
 app.post("/qkres_Services",secure,services().serviceFormInputs)
 app.get("/customer/serviceOrders",secure,services().index)
 app.get("/customer/serviceOrder/:id",secure,services().show)
-// customer services routes
-// app.post("/upload/single",services().serviceStore)
-// app.get("/customer/services",secure,services().serviceIndex)
-// app.get("/customer/service/:id",secure,services().serviceShow)
+
 
 
 // cancel order request routes
@@ -217,8 +196,7 @@ app.get("/admin/file/:fileName",adminAuth,fileDownloadController().index)
 app.post("/admin/order/cancel",adminAuth,statusController().cancel)
 
 
-// forgot password routes
-
+//  password recovery routes
 
 app.get("/reset",forgotPassword().reset)
 
@@ -230,16 +208,6 @@ app.get("/forgot/:token",forgotPassword().afteremail)
 
 app.post("/forgot/:token",forgotPassword().newEntries)
 
-
-// ===================================================================================
-// **************************** Messenger Api ***************************************
-// ===================================================================================
-
-// app.post("/webhook",webhook().index)
-// app.get("/webhook",webhook().webGet)
-
-// app.post("GetStartedInitiation",webhook().handleProfile)
-// app.get("/GetStartedInitiation",webhook().getProfile)
 
 app.get("/about-us",homePage().aboutUs)
 
