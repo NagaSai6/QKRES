@@ -240,6 +240,24 @@ function materialController(){
         }
       })
     },
+    consultancy(req,res){
+      Material.findOne({"identity":"consultancy"},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("consultancy",{data:data})
+        }
+      })
+    },
+    consultForm(req,res){
+      Material.find({"_id":req.params.token},(err,data)=>{
+        if(err){
+          console.log(err);
+        }else{
+          return res.render("servicesForm/mechServices",{data:data})
+        }
+      })
+    },
     bsOpp(req,res){
      return res.render("bSoPP")
     }

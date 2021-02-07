@@ -234,6 +234,11 @@ app.get("/diamond-laser-cutting-services/:id",secure,material().dlcForm)
 app.get("/facilities-services/3d-printing",material().threedprinting)
 app.get("/facilities-services/3d-printing/form/:token",material().tdpForm)
 
+// consultancy routes
+
+app.get("/facilities-services/consultancy",material().consultancy)
+app.get("/facilities-services/consultancy-services/form/:token",material().consultForm)
+
 }
 
 

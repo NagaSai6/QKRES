@@ -8,16 +8,7 @@ function cartController() {
     update(req, res) {
       // console.log(typeOf(req.body.required));
    
-      if (!req.session.cart) {
-        req.session.cart = {
-          items: {},
-          totalQty: 0,
-          totalPrice: 0,
-          required:0
-        }
-      }
-
-      let cart = req.session.cart
+     
 
       if(req.body.identity === "chemicals"){
 
@@ -43,6 +34,17 @@ function cartController() {
           })
         }
 
+        if (!req.session.cart) {
+          req.session.cart = {
+            items: {},
+            totalQty: 0,
+            totalPrice: 0,
+            required:0
+          }
+        }
+  
+        let cart = req.session.cart
+
 
         if(!cart.items[req.body._id]){
           cart.items[req.body._id] = {
@@ -60,6 +62,17 @@ function cartController() {
           totalQty:req.session.cart.totalQty
         })
       }
+      if (!req.session.cart) {
+        req.session.cart = {
+          items: {},
+          totalQty: 0,
+          totalPrice: 0,
+          required:0
+        }
+      }
+
+      let cart = req.session.cart
+
 
       if (!cart.items[req.body._id]) {
         cart.items[req.body._id] = {

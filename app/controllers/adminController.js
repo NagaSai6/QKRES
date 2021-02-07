@@ -11,8 +11,9 @@ function adminController(){
               if(err){
                 console.log(err);
               }else{
-                if(req.xhr){
+                if(req.xhr){  
                   // console.log(orders);
+                
                     return res.json(orders)
                 }else{
                     return  res.render("admin/orders")
