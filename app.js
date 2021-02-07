@@ -57,16 +57,7 @@ app.use(session({
 }));
 
 // app.use(helmet())
-var limiter = new RateLimit({
-  store: new MongoStore({
-    uri: process.env.URL,
-    collectionName:"requestRateRecords"
-  }),
-  max: 100,
-  windowMs: 15 * 60 * 1000
-});
 
-app.use(limiter);
 
 app.use(flash())
 
