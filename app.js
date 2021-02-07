@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 // const helmet = require("helmet")
-
+var RateLimit = require('express-rate-limit');
+var MongoStore = require('rate-limit-mongo');
 const flash = require("express-flash");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
@@ -56,8 +57,16 @@ app.use(session({
 }));
 
 // app.use(helmet())
+var limiter = new RateLimit({
+  store: new MongoStore({
+    uri: process.env.URL,
+    collectionName:"requestRateRecords"
+  }),
+  max: 100,
+  windowMs: 15 * 60 * 1000
+});
 
-
+app.use(limiter);
 
 app.use(flash())
 
