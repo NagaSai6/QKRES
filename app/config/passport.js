@@ -97,7 +97,7 @@ function init(passport) {
               if(validator.isEmpty(req.body.customerName)){
                 return done(null, false, req.flash("error","validation failed"));
               }
-              if(!validator.isNumeric(req.body.customerName)){
+              if(validator.isNumeric(req.body.customerName)){
                return done(null, false, req.flash("error","Numeric string are not allowed"));
               }
               if(!check(password).isLength({min:8})){
