@@ -5,7 +5,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-// const helmet = require("helmet")
+const helmet = require("helmet")
 var RateLimit = require('express-rate-limit');
 var MongoStore = require('rate-limit-mongo');
 const flash = require("express-flash");
@@ -18,6 +18,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongodb_store = require("connect-mongo")(session);
 const app = express();
 app.set("view engine", "ejs");
+app.set('trust proxy', 1) // trust first proxy
 // "mongodb://localhost:27017/QkResDB"
 mongoose.connect(process.env.URL
 , {
@@ -51,6 +52,8 @@ app.use(session({
   store: mongoStore,
   saveUninitialized: false,
   cookie: {
+    secure:true,
+    httpOnly:true,
     maxAge: 1000 * 60 * 60 * 24
   },
   // cookie valid for one day
@@ -58,6 +61,7 @@ app.use(session({
 
 // app.use(helmet())
 
+app.disable('x-powered-by')
 
 app.use(flash())
 

@@ -208,6 +208,13 @@ html {
   }
 }
 
+
+.qkres-homepage-h7{
+  font-size: 0.8rem;
+}
+.qkres-home-invisible-div{
+  height:60px;visibility:hidden;
+}
 /* cart page */
 
 #cartLoader {
