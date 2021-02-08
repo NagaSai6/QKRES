@@ -6,8 +6,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const helmet = require("helmet")
-var RateLimit = require('express-rate-limit');
-var MongoStore = require('rate-limit-mongo');
+
 var csrf = require("csurf");
 const flash = require("express-flash");
 const passport = require("passport");
@@ -63,7 +62,7 @@ app.use(session({
 // app.use(helmet())
 
 app.disable('x-powered-by')
-
+app.use(helmet.xssFilter());
 app.use(flash())
 
 app.use(express.static("public"));

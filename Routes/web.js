@@ -14,7 +14,19 @@ const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelCont
 const services = require("../app/controllers/services/serviceController")
 const fileDownloadController = require("../app/controllers/fileDownloadController")
 const passport = require("passport");
-
+const RateLimit = require("express-rate-limit");
+var MongoStore = require('rate-limit-mongo');
+var limiter = new RateLimit({
+  store: new MongoStore({
+    uri:process.env.URL,
+    collectionName:"loginRecordRates",
+    expireTimeMs:7200000
+  }),
+  max: 5,
+  windowMs: 15 * 60 * 1000,
+  message:
+  "We detected suspicious activity from this IP, please try again after two hours"
+});
 
 
 function initRoutes(app) {
@@ -93,7 +105,7 @@ app.get("/profile",secure,auth().profile)
   }))
 
   app.get("/login",guest, auth().login)
-  app.post("/login",passport.authenticate("local-login",{
+  app.post("/login",limiter,passport.authenticate("local-login",{
     successRedirect:"/profile",
     failureRedirect:"/login",
     failureFlash : true

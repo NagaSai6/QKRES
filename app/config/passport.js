@@ -7,8 +7,8 @@ const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require("../models/users");
 const key = require("./keys")
-
-
+const {check} = require("express-validator")
+const validator = require("validator")
 
 
 
@@ -32,7 +32,9 @@ function init(passport) {
     passwordField: "password",
 
   }, async (email, password, done) => {
-
+    if(!validator.isEmail(email)){
+      return done(null, false, req.flash("error","invalid email address"));
+    }
     await User.findOne({
      "local.email": email
     }, function(err, user) {
@@ -79,6 +81,7 @@ function init(passport) {
     function(req, email, password, done) {
       process.nextTick(function() {
         if(!req.user) {
+        
           User.findOne({'local.email': email}, function(err, user) {
           if(err) {
             console.error(err);
@@ -88,6 +91,19 @@ function init(passport) {
             return done(null, false, req.flash("error","Oops,this Email already exists"));
           }
           else {
+              if(!validator.isEmail(email)){
+                return done(null, false, req.flash("error","invalid email address"));
+              }
+              if(validator.isEmpty(req.body.customerName)){
+                return done(null, false, req.flash("error","validation failed"));
+              }
+              if(!validator.isNumeric(req.body.required)){
+               return done(null, false, req.flash("error","validation failed"));
+              }
+              if(!check(password).isLength({min:8})){
+                return done(null, false, req.flash("error","validation failed"));
+              }
+
               var newUser = new User();
               newUser.local.customerName = req.body.customerName;
               newUser.local.email = email;

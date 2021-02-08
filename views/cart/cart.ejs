@@ -64,7 +64,7 @@
        <h3 style="font-size:1rem;font-family:Lato;">Your Orders</h3>
      </div>
      <div class="my-2">
-      <a class="btn btn-sm btn-danger" href="/delete_cart">Delete All</a>
+      <a class="btn btn-sm btn-danger" href="/delete-cart">Delete All</a>
     </div>
     </div>
     <div>
@@ -85,7 +85,7 @@
         <h1 class="mx-2 my-2" style="font-size:0.8rem;float:right"> <%= x.item.name %> </h1>
       <span > <b>Qty :</b> <%= x.Qty %> </span>
       <div id="userInfo" style="display: flex;flex-direction: row;">
-        <form action="/del_Items" method="POST">
+        <form action="/delete-items" method="POST">
         <input type="hidden" value="<%=x.item._id%>" name="id">
   
         <button  style="position:relative;top:8px;" class="btn btn-sm btn-outline-danger  mx-2" href="">
@@ -93,7 +93,7 @@
           <span><img style="height: 20px;" src="/images/remove-from-cart.svg" alt="remove from cart svg"> </span>
         </button>
       </form>
-      <form action="/add_Items" method="POST">
+      <form action="/add-items" method="POST">
         <input type="hidden" value="<%=x.item._id%>" name="id">
   
         <button  style="position:relative;top:8px;" class="btn btn-sm btn-outline-success  mx-2" href="">
