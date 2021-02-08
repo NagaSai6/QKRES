@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet")
 var RateLimit = require('express-rate-limit');
 var MongoStore = require('rate-limit-mongo');
+var csrf = require("csurf");
 const flash = require("express-flash");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
