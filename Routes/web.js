@@ -259,6 +259,9 @@ app.get("/facilities-services/3d-printing/form/:token",material().tdpForm)
 
 app.get("/consultancy",material().consultancy)
 app.get("/facilities-services/consultancy-services/form/:token",material().consultForm)
+// chemical equipments routes
+
+app.get("/chemical-lab-equipments",material().chemEquip)
 
 }
 

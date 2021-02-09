@@ -258,6 +258,9 @@ function materialController(){
         }
       })
     },
+    chemEquip(req,res){
+      return res.render("chemicals/chem_lab_equipments")
+    },
     bsOpp(req,res){
      return res.render("bSoPP")
     }
