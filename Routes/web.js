@@ -27,7 +27,16 @@ var limiter = new RateLimit({
   message:
   "We detected suspicious activity from this IP, please try again after two hours"
 });
-
+var passwordResetLimiter = new RateLimit({
+  store:new MongoStore({
+    uri:process.env.URL,
+    collectionName:"passwordResetRateRecords",
+    expireTimeMs:1800000
+  }),
+  max: 3,
+  windowMs:10 * 60 * 1000,
+  message:"we detected multiple requests from this IP, please try again after 30 mins"
+})
 
 function initRoutes(app) {
 
@@ -212,7 +221,7 @@ app.post("/admin/order/cancel",adminAuth,statusController().cancel)
 
 app.get("/reset",forgotPassword().reset)
 
-app.post("/reset",forgotPassword().recover)
+app.post("/reset",passwordResetLimiter,forgotPassword().recover)
 
 app.get("/success",forgotPassword().success)
 
