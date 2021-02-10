@@ -36,6 +36,25 @@ function adminController(){
               }
             }
           })
+        },
+      async  adminProfile(req,res){
+       await   Service.find({status:{$ne:"completed"}},(err,data)=>{
+            if(err){
+              console.log(err);
+            }else{
+              Order.find({status:{$ne:"completed"}},(err,data1)=>{
+                if(err){
+                  console.log(err);
+                }
+                else{
+                 let masterArray = data.concat(data1);
+                 let activeOrders = masterArray.length
+
+                 return res.render("admin/profile",{data:activeOrders})
+                }
+              })
+            }
+          })
         }
     }
 }

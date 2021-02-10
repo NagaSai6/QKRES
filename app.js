@@ -52,8 +52,8 @@ app.use(session({
   store: mongoStore,
   saveUninitialized: false,
   cookie: {
-    secure:true,
-    httpOnly:true,
+    // secure:true,
+    // httpOnly:true,
     maxAge: 1000 * 60 * 60 * 24
   },
   // cookie valid for one day

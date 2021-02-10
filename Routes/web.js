@@ -1,6 +1,8 @@
 const guest = require("../app/middleware/guest")
 const adminAuth=require("../app/middleware/admin")
 const secure = require("../app/middleware/auth")
+const adminProfile = require("../app/middleware/adminRedirect")
+const verify = require("../app/middleware/userInputValidation");
 const order = require("../app/controllers/orderController")
 const auth = require("../app/controllers/authController")
 const cart = require("../app/controllers/cartController")
@@ -14,6 +16,7 @@ const cancelRequest = require("../app/controllers/cancelOrderRequest/oCancelCont
 const services = require("../app/controllers/services/serviceController")
 const fileDownloadController = require("../app/controllers/fileDownloadController")
 const passport = require("passport");
+const { check } = require('express-validator');
 const RateLimit = require("express-rate-limit");
 var MongoStore = require('rate-limit-mongo');
 var limiter = new RateLimit({
@@ -80,10 +83,6 @@ function initRoutes(app) {
 
   app.get("/chemicals",material().chemIndex)
 
-// chemical Equipments routes
-
-app.get("/chem",chemical().index)
-
 
 app.get("/business-opportunities",material().bsOpp)
 
@@ -91,21 +90,21 @@ app.get("/business-opportunities",material().bsOpp)
 
   app.get("/cart", cart().index)
 
-  app.get("/delete_cart",secure,cart().delete_cart)
+  app.get("/delete-cart",secure,cart().delete_cart)
 
   app.get("/userDetails",secure,cart().userInfo)
 
   app.post("/update-cart", cart().update)
 
-  app.post("/del_Items",secure,cart().delete_items_in_cart)
+  app.post("/delete-items",secure,cart().delete_items_in_cart)
 
-  app.post("/add_Items",secure,cart().add_items_to_cart)
+  app.post("/add-items",secure,cart().add_items_to_cart)
 
  // local routes
 
  app.get("/register",guest, auth().register)
 
-app.get("/profile",secure,auth().profile)
+app.get("/profile",adminProfile,auth().profile)
 
   app.post("/register",passport.authenticate("local-signup",{
     successRedirect:"/login",
@@ -193,7 +192,7 @@ app.post('/connect/local',secure, passport.authenticate('local-signup', {
 app.get("/customer/orders",secure,order().index)
 app.get("/customer/order/:id",secure,order().show)
 // customer routes for services
-app.post("/qkres_Services",secure,services().serviceFormInputs)
+app.post("/qkres-services-form",verify,secure,services().serviceFormInputs)
 app.get("/customer/serviceOrders",secure,services().index)
 app.get("/customer/serviceOrder/:id",secure,services().show)
 
@@ -216,6 +215,7 @@ app.get("/admin/file/:fileName",adminAuth,fileDownloadController().index)
 
 app.post("/admin/order/cancel",adminAuth,statusController().cancel)
 
+app.get("/admin/profile",adminAuth,adminOrder().adminProfile)
 
 //  password recovery routes
 

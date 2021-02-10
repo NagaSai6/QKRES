@@ -5,6 +5,7 @@ const Material = require("../../models/materials")
 const moment = require("moment");
 const aws = require("aws-sdk");
 const validator = require("validator")
+const {validationResult}= require("express-validator")
 
 aws.config.update({
     region:process.env.AWS_REGION,
@@ -57,15 +58,19 @@ function serviceController(){
             
         },
        serviceFormInputs(req,res){
+        
+
           const user = req.user;
+          const errors = validationResult(req) 
+        
           let {Itemid,serviceName,customerName,phone,email,department,
             insti,requirement,file,url,country,state,
             city,pincode,landmark,address} = req.body
-     
+           
             const str = url;
             const extFileName = str.slice(49,)
             console.log(extFileName);
-        
+           
             const s3 = new aws.S3();
 
             const params = {
@@ -89,12 +94,18 @@ function serviceController(){
                 // return res.redirect("/error")
               }
              }
+             if(!errors.isEmpty()){
+              deleteObject();
+              console.log(errors);
+              req.flash("error","Validation failed, try again")
+              return res.redirect(`/mech/${Itemid}`) ;
+            }
        
             if(validator.isEmpty(Itemid)){
               deleteObject();
               return res.redirect("/error")
             }
-
+       
           Material.findById(Itemid,function(err,success){
               console.log(success);
                if(err){
@@ -122,15 +133,6 @@ function serviceController(){
               }
               console.log(response);
             })
-
-
-      
-
-    
-     
-      
-         
-
          if(validator.isEmpty(email)){
           req.flash("error","Please Enter Email address")
           return res.redirect(`/mech/${Itemid}`) ;
@@ -139,7 +141,8 @@ function serviceController(){
           req.flash("error","Please Enter valid Email address")
           return res.redirect(`/mech/${Itemid}`) ;
         }
-
+        // check('email').isEmail().normalizeEmail()
+  
          const service = new Service({
           scustomerId : user.id,
           serviceName:serviceName,
@@ -154,6 +157,8 @@ function serviceController(){
           pincode:pincode,
           phone:phone,
           landmark:landmark,
+          country:country,
+          state:state
         })
         
         service.save().then((service)=>{

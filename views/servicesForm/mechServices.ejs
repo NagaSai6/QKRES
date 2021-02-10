@@ -42,7 +42,7 @@
       <li>Address</li>
     </ul>
     </div>
-  <form id="qkresServiceForm" action="/qkres_Services" method="POST">
+  <form id="qkresServiceForm" action="/qkres-services-form" method="POST">
     
     
       <fieldset>
@@ -58,7 +58,7 @@
         <input type="email" id="email" class="input-sm" value="<%=messages.email%>" name="email" placeholder="Email Address" required="required">
         <input type="text" id="department" class=" input-sm" value="<%=messages.department%>"  name="department" placeholder="Department" required="required">
         <input type="text" id="insti" class="input-sm" value="<%=messages.insti%>" name="insti" placeholder="Institute" required>
-        <textarea   name="requirement" id="requi" class=" input-sm" cols="40" rows="4" placeholder="Tell us your Requirement in <%=qkresServiceData.name%> " required="required"></textarea>
+        <textarea   name="requirement" id="requi" class=" input-sm" cols="40" rows="4" placeholder="Tell us your Requirement in <%=qkresServiceData.name%> in 3 to 60 words" required="required"></textarea>
 
         <input type="button" id="firstB" name="next" class="next action-button" disabled  value="Next" />
 
@@ -80,8 +80,8 @@
         <% if(messages.error){ %>
           <span style="color:red;font-family: sans-serif;font-size: small; "><%= messages.error %>  </span>
       <%  }%>
-        <input type="text" class=" input-md"  name="Country" placeholder="Country" required="required">
-        <input type="text" class=" input-md"  name="State" placeholder="State" required="required">
+        <input type="text" class=" input-md"  name="country" placeholder="Country" required="required">
+        <input type="text" class=" input-md"  name="state" placeholder="State" required="required">
         <input type="text" class=" input-md" name="city" placeholder="City/Town" required="required">
         <input type="number" class=" input-md" value="<%=messages.pincode%>"  name="pincode" placeholder="Pincode" required="required">
         <input type="text" class="form-control input-md" name="landmark" placeholder="Landmark" required="required">
